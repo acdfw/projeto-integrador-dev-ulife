@@ -4,10 +4,15 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>bd529a4b-f8a5-433b-a089-9353c5850ab1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Anima.ProjetoIntegrador.Infrastructure.Data.Persistence\Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
