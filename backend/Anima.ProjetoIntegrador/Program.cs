@@ -1,16 +1,11 @@
-using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts;
-using Microsoft.EntityFrameworkCore;
+using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 
-//TODO mover para a classe de injeção de dependência.
-var connectionString = configuration.GetConnectionString("IntegradorDb");
-
-builder.Services.AddDbContext<IntegradorContext>(options => options.UseSqlServer(connectionString));
-
+builder.Services.AddInfrastructureData(configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
