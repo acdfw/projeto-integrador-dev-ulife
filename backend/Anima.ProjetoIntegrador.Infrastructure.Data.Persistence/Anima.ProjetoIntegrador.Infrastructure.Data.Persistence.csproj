@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Anima.ProjetoIntegrador.Domain.Core\Anima.ProjetoIntegrador.Domain.Core.csproj" />
     <ProjectReference Include="..\Anima.ProjetoIntegrador.Domain.Shared\Anima.ProjetoIntegrador.Domain.Shared.csproj" />
   </ItemGroup>
 

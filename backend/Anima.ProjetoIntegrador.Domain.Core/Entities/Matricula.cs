@@ -6,6 +6,8 @@ namespace Anima.ProjetoIntegrador.Domain.Core.Entities
     {
         public Guid AlunoId { get; set; }
         public virtual Aluno Aluno { get; set; }
+        public Guid TurmaId { get; set; }
+        public virtual Turma Turma { get; set; }
         public virtual ICollection<AvaliacaoMatricula> AvaliacoesMatriculas { get; set; }
     }
 }
