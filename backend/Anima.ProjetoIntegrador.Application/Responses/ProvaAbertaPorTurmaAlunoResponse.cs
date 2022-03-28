@@ -1,6 +1,6 @@
 ﻿namespace Anima.ProjetoIntegrador.Application.Responses
 {
-    public class ProvasAbertasTurmaAlunoResponse
+    public class ProvaAbertaPorTurmaAlunoResponse
     {
         public string? NomeProva { get; set; }
     }

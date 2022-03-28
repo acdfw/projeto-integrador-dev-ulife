@@ -1,8 +1,8 @@
 ﻿namespace Anima.ProjetoIntegrador.Application.Responses
 {
-    public class AvaliacoesPendentesTurmaAlunoResponse
+    public class TurmaNaoMatriculadaAlunoResponse
     {
         public string? NomeTurma { get; set; }
-        public string? NomeProfessor { get; set; }
+        public string? ProfessorNome { get; set; }
     }
 }

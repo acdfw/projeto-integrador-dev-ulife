@@ -4,13 +4,13 @@ namespace Anima.ProjetoIntegrador.Domain.Shared.Interfaces
 {
     public interface IAlunoRepository
     {
-        IList<AvaliacoesPendentesTurmaAlunoResponse> ConsultarTurmasProfessoresAvaliacoesPendentes(Guid id);
+        IList<AvaliacaoPendenteTurmaAlunoResponse> ConsultarTurmasProfessoresAvaliacoesPendentes(Guid id);
 
-        IList<TurmasNaoMatriculasAlunoResponse> ConsultarTurmasNaoMatriculas(Guid id);
+        IList<TurmaNaoMatriculadaAlunoResponse> ConsultarTurmasNaoMatriculas(Guid id);
 
-        IList<ProvasAbertasTurmaAlunoResponse> ConsultarAvaliacoesAbertasDeUmaTurma(Guid id, Guid idTurma);
-        IList<ProvasRealizadasTurmaAlunoResponse> ConsultarAvaliacoesRealizadasDeUmaTurma(Guid id, Guid idTurma);
-        IList<ProvasAbertasTodasTurmasAlunoResponse> ConsultarAvaliacoesAbertasNasTurmaMatriculadas(Guid id);
-        IList<ProvasRealizadasTodasTurmasAlunoResponse> ConsultarAvaliacoesRealizadasNasTurmaMatriculadas(Guid id);
+        IList<ProvaAbertaPorTurmaAlunoResponse> ConsultarAvaliacoesAbertasDeUmaTurma(Guid id, Guid idTurma);
+        IList<ProvaRealizadaPorTurmaAlunoResponse> ConsultarAvaliacoesRealizadasDeUmaTurma(Guid id, Guid idTurma);
+        IList<ProvaAbertaTodasTurmasAlunoResponse> ConsultarAvaliacoesAbertasNasTurmaMatriculadas(Guid id);
+        IList<ProvaRealizadaTodasTurmasAlunoResponse> ConsultarAvaliacoesRealizadasNasTurmaMatriculadas(Guid id);
     }
 }

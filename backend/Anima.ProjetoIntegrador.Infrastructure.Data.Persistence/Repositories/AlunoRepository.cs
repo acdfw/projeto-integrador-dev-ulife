@@ -11,7 +11,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         {
         }
 
-        public IList<AvaliacoesPendentesTurmaAlunoResponse> ConsultarTurmasProfessoresAvaliacoesPendentes(Guid id)
+        public IList<AvaliacaoPendenteTurmaAlunoResponse> ConsultarTurmasProfessoresAvaliacoesPendentes(Guid id)
         {
             var query = from aluno in _context.Set<Aluno>()
                         join matricula in _context.Set<Matricula>()
@@ -23,7 +23,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         join usuario in _context.Set<Usuario>()
                             on professor.UsuarioId equals usuario.Id
                         where aluno.Id == id
-                        select new AvaliacoesPendentesTurmaAlunoResponse
+                        select new AvaliacaoPendenteTurmaAlunoResponse
                         {
                             NomeTurma = turma.Nome,
                             NomeProfessor = usuario.Nome
@@ -33,7 +33,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return query.ToList();
         }
 
-        public IList<TurmasNaoMatriculasAlunoResponse> ConsultarTurmasNaoMatriculas(Guid id)
+        public IList<TurmaNaoMatriculadaAlunoResponse> ConsultarTurmasNaoMatriculas(Guid id)
         {
             var queryTodasTurmas = _context.Set<Turma>().AsQueryable();
             var queryTurmasMatriculadas = from aluno in _context.Set<Aluno>()
@@ -49,7 +49,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                                             on turma.ProfessorId equals professor.Id
                                         join usuario in _context.Set<Usuario>()
                                             on professor.UsuarioId equals usuario.Id
-                                        select new TurmasNaoMatriculasAlunoResponse
+                                        select new TurmaNaoMatriculadaAlunoResponse
                                         {
                                             NomeTurma = turma.Nome,
                                             ProfessorNome = usuario.Nome
@@ -58,7 +58,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return turmasNaoMatriculadas.ToList();
         }
 
-        public IList<ProvasAbertasTurmaAlunoResponse> ConsultarAvaliacoesAbertasDeUmaTurma(Guid id, Guid idTurma)
+        public IList<ProvaAbertaPorTurmaAlunoResponse> ConsultarAvaliacoesAbertasDeUmaTurma(Guid id, Guid idTurma)
         {
             var queryTodasAvaliacoes = from aluno in _context.Set<Aluno>()
                                         join matricula in _context.Set<Matricula>()
@@ -86,7 +86,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             var provasAbertas = from avaliacao in queryAvaliacoesAbertas.ToList()
                                 join prova in _context.Set<Prova>()
                                     on avaliacao.ProvaId equals prova.Id
-                                select new ProvasAbertasTurmaAlunoResponse
+                                select new ProvaAbertaPorTurmaAlunoResponse
                                 {
                                     NomeProva = prova.Nome
                                 };
@@ -94,7 +94,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return provasAbertas.ToList();
         }
 
-        public IList<ProvasRealizadasTurmaAlunoResponse> ConsultarAvaliacoesRealizadasDeUmaTurma(Guid id, Guid idTurma)
+        public IList<ProvaRealizadaPorTurmaAlunoResponse> ConsultarAvaliacoesRealizadasDeUmaTurma(Guid id, Guid idTurma)
         {
             var query = from aluno in _context.Set<Aluno>()
                         join matricula in _context.Set<Matricula>()
@@ -108,7 +108,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         join prova in _context.Set<Prova>()
                             on avaliacao.ProvaId equals prova.Id
                         where aluno.Id == id && turma.Id == idTurma
-                        select new ProvasRealizadasTurmaAlunoResponse
+                        select new ProvaRealizadaPorTurmaAlunoResponse
                         {
                             NomeProva = prova.Nome,
                             Nota = avaliacaoMatricula.Nota
@@ -117,7 +117,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return query.ToList();
         }
 
-        public IList<ProvasAbertasTodasTurmasAlunoResponse> ConsultarAvaliacoesAbertasNasTurmaMatriculadas(Guid id)
+        public IList<ProvaAbertaTodasTurmasAlunoResponse> ConsultarAvaliacoesAbertasNasTurmaMatriculadas(Guid id)
         {
             var queryTodasAvaliacoes = from aluno in _context.Set<Aluno>()
                                        join matricula in _context.Set<Matricula>()
@@ -151,7 +151,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                                     on prova.ProfessorId equals professor.Id
                                 join usuario in _context.Set<Usuario>()
                                     on professor.UsuarioId equals usuario.Id
-                                select new ProvasAbertasTodasTurmasAlunoResponse
+                                select new ProvaAbertaTodasTurmasAlunoResponse
                                 {
                                     NomeProva = prova.Nome,
                                     NomeTurma = turma.Nome,
@@ -161,7 +161,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return provasAbertasTurmas.ToList();
         }        
 
-        public IList<ProvasRealizadasTodasTurmasAlunoResponse> ConsultarAvaliacoesRealizadasNasTurmaMatriculadas(Guid id)
+        public IList<ProvaRealizadaTodasTurmasAlunoResponse> ConsultarAvaliacoesRealizadasNasTurmaMatriculadas(Guid id)
         {
             var query = from aluno in _context.Set<Aluno>()
                         join matricula in _context.Set<Matricula>()
@@ -179,7 +179,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         join usuario in _context.Set<Usuario>()
                             on professor.UsuarioId equals usuario.Id                        
                         where aluno.Id == id
-                        select new ProvasRealizadasTodasTurmasAlunoResponse
+                        select new ProvaRealizadaTodasTurmasAlunoResponse
                         {
                             NomeProva = prova.Nome,
                             NomeTurma = turma.Nome,
