@@ -8,9 +8,9 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 {
     public class ReadRepository : IReadRepository
     {
-        private readonly AnimaContext _context;
+        private readonly IntegradorContext _context;
 
-        public ReadRepository(AnimaContext context)
+        public ReadRepository(IntegradorContext context)
         {
             _context = context;
         }
