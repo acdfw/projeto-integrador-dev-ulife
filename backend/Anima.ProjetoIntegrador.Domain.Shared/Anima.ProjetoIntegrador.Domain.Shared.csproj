@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Anima.ProjetoIntegrador.Application\Anima.ProjetoIntegrador.Application.csproj" />
+  </ItemGroup>
+
 </Project>
