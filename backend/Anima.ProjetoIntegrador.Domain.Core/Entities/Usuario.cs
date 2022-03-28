@@ -1,15 +1,13 @@
 ﻿using Anima.ProjetoIntegrador.Domain.Shared.Entities;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Anima.ProjetoIntegrador.Domain.Core.Entities
 {
+    [ExcludeFromCodeCoverage]
     public class Usuario : Entity
     {
-        public Usuario() : base(Guid.NewGuid())
-        {
-        }
-
-        public string Nome { get; set; }
-        public string Login { get; set; }
-        public string Senha { get; set; }
+        public string? Nome { get; set; }
+        public string? Login { get; set; }
+        public string? Senha { get; set; }
     }
 }

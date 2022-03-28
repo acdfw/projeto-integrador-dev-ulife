@@ -2,15 +2,14 @@
 using Anima.ProjetoIntegrador.Domain.Shared.Interfaces;
 using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 {
     public class WriteRepository : IWriteRepository
     {
-        private readonly AnimaContext _context;
+        private readonly IntegradorContext _context;
 
-        public WriteRepository(AnimaContext context)
+        public WriteRepository(IntegradorContext context)
         {
             _context = context;
         }
