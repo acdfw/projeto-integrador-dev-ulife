@@ -2,12 +2,9 @@
 {
     public abstract class Entity
     {
-        protected Entity() { }
+        protected Entity() {}
 
-        public Entity(Guid id)
-        {
-            Id = id;
-        }
+        protected Entity(Guid id) => Id = id;
 
         public Guid Id { get; private set; }
     }
