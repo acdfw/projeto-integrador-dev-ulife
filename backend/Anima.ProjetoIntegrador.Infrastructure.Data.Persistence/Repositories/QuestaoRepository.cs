@@ -25,5 +25,16 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 
             return query.ToList();
         }
+
+        public QuestaoResponse? ObterPorId(Guid id)
+        {
+            var questao = GetById(id);
+
+            return new QuestaoResponse
+            {
+                Id = questao?.Id.ToString(),
+                Enunciado = questao?.Enunciado,
+            };
+        }
     }
 }

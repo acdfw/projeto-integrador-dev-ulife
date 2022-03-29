@@ -1,9 +1,10 @@
-﻿using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts;
+﻿using Anima.ProjetoIntegrador.Domain.Shared.Entities;
+using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 {
-    public class BaseRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> where TEntity : Entity
     {
         protected readonly IntegradorContext _context;
 
@@ -31,6 +32,11 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         public IQueryable<TEntity> GetQueryable()
         {
             return _context.Set<TEntity>().AsNoTracking();
+        }
+
+        public TEntity? GetById(Guid id)
+        {
+            return _context.Set<TEntity>().FirstOrDefault(t => t.Id == id);
         }
     }
 }

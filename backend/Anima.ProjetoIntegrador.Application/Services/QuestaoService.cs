@@ -13,9 +13,23 @@ namespace Anima.ProjetoIntegrador.Application.Services
             _questaoRepository = questaoRepository;
         }
 
-        public IList<AlternativaResponse> ConsultarAlternativasPorQuestao(Guid id)
+        public QuestaoAlternativaResponse? ConsultarAlternativasPorQuestao(Guid id)
         {
-            return _questaoRepository.ConsultarAlternativasPorQuestao(id);
+            var questao = _questaoRepository.ObterPorId(id);
+
+            if(questao is not null)
+            {
+                var alternativas = _questaoRepository.ConsultarAlternativasPorQuestao(id);
+
+                return new QuestaoAlternativaResponse
+                {
+                    IdQuestao = questao?.Id,
+                    Enunciado = questao?.Enunciado,
+                    Alternativas = alternativas
+                };
+            }
+
+            return null;
         }
     }
 }
