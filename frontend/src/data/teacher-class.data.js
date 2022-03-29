@@ -9,12 +9,12 @@ var tableClassExams = {
       avaliacao: "A2",
     },
     {
-      turma: "Turma B",
-      avaliacao: "A1",
+      turma: "Turma A",
+      avaliacao: "A3",
     },
     {
-      turma: "Turma B",
-      avaliacao: "A1",
+      turma: "Turma A",
+      avaliacao: "A4",
     },
   ],
   colNames: { turma: "Turma", avaliacao: "Avaliação" },
@@ -66,7 +66,7 @@ var tableStudents = {
 };
 
 classTeacherView = {
-  title: "Turma",
+  title: "Turma A",
   subtitles: ["Avaliações", "Alunos"],
   tables: [tableClassExams, tableStudents],
 };
