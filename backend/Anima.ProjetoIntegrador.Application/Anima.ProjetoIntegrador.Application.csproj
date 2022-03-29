@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Requests\" />
+    <ProjectReference Include="..\Anima.ProjetoIntegrador.Domain.Shared\Anima.ProjetoIntegrador.Domain.Shared.csproj" />
   </ItemGroup>
 
 </Project>

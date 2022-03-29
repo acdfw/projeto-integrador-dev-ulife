@@ -1,3 +1,4 @@
+using Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting.IoC;
 using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,9 @@ builder.Services.AddInfrastructureData(configuration);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddRepositories();
+builder.Services.AddServices();
 
 var app = builder.Build();
 

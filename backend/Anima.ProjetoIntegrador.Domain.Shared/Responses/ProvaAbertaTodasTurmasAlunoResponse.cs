@@ -1,6 +1,6 @@
-﻿namespace Anima.ProjetoIntegrador.Application.Responses
+﻿namespace Anima.ProjetoIntegrador.Domain.Shared.Responses
 {
-    public class ProvaRealizadaTodasTurmasAlunoResponse
+    public class ProvaAbertaTodasTurmasAlunoResponse
     {
         public string? NomeProva { get; set; }
         public string? NomeTurma { get; set; }

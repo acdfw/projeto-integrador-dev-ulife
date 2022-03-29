@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Anima.ProjetoIntegrador.Domain.Shared.Responses;
 
 namespace Anima.ProjetoIntegrador.Domain.Shared.Interfaces
 {
     public interface IProvaRepository
     {
+        IList<ProvaResponse> ConsultarQuestoesPorProva(Guid idProva);
     }
 }

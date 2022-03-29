@@ -12,11 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting\Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting.csproj" />
     <ProjectReference Include="..\Anima.ProjetoIntegrador.Infrastructure.Data.Persistence\Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using Anima.ProjetoIntegrador.Domain.Core.Entities;
 using Anima.ProjetoIntegrador.Domain.Shared.Interfaces;
+using Anima.ProjetoIntegrador.Domain.Shared.Responses;
 using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts;
 
 namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
@@ -8,6 +9,32 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
     {
         public QuestaoRepository(IntegradorContext context) : base(context)
         {
+        }
+
+        public IList<AlternativaResponse> ConsultarAlternativasPorQuestao(Guid id)
+        {
+            var query = from questao in _context.Set<Questao>()
+                        join alternativa in _context.Set<Alternativa>()
+                            on questao.Id equals alternativa.QuestaoId
+                        where questao.Id == id
+                        select new AlternativaResponse
+                        {
+                            Id = alternativa.Id.ToString(),
+                            Texto = alternativa.Texto,
+                        };
+
+            return query.ToList();
+        }
+
+        public QuestaoResponse? ObterPorId(Guid id)
+        {
+            var questao = GetById(id);
+
+            return new QuestaoResponse
+            {
+                Id = questao?.Id.ToString(),
+                Enunciado = questao?.Enunciado,
+            };
         }
     }
 }
