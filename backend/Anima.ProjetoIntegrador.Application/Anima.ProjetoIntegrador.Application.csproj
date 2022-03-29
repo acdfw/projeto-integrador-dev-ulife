@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Anima.ProjetoIntegrador.Domain.Shared\Anima.ProjetoIntegrador.Domain.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

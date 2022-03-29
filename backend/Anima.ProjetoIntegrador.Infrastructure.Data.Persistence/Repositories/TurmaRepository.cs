@@ -11,14 +11,14 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         {
         }
 
-        public IList<AvaliacaoTurmaResponse> ConsultarAvaliacoesPorTurma(Guid idTurma)
+        public IList<AvaliacaoTurmaResponse> ConsultarAvaliacoesPorTurma(Guid id)
         {
             var query = from turma in _context.Set<Turma>()
                         join avaliacao in _context.Set<Avaliacao>()
                             on turma.Id equals avaliacao.TurmaId
                         join prova in _context.Set<Prova>()
                             on avaliacao.ProvaId equals prova.Id
-                        where turma.Id == idTurma
+                        where turma.Id == id
                         select new AvaliacaoTurmaResponse
                         {
                             IdAvaliacao = avaliacao.Id.ToString(),
@@ -28,7 +28,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return query.ToList();
         }
 
-        public IList<AlunoMatriculaPorTurmaResponse> ConsultarAlunosMatriculadosPorTurma(Guid idTurma)
+        public IList<AlunoMatriculaPorTurmaResponse> ConsultarAlunosMatriculadosPorTurma(Guid id)
         {
             var query = from turma in _context.Set<Turma>()
                         join matricula in _context.Set<Matricula>()
@@ -37,7 +37,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                             on matricula.AlunoId equals aluno.Id
                         join usuario in _context.Set<Usuario>()
                             on aluno.UsuarioId equals usuario.Id
-                        where turma.Id == idTurma
+                        where turma.Id == id
                         select new AlunoMatriculaPorTurmaResponse
                         {
                             Matricula = matricula.Id.ToString(),

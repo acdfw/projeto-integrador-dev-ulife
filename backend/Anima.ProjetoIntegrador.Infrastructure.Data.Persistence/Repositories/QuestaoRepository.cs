@@ -11,12 +11,12 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         {
         }
 
-        public IList<AlternativaResponse> ConsultarAlternativasPorQuestao(Guid idQuestao)
+        public IList<AlternativaResponse> ConsultarAlternativasPorQuestao(Guid id)
         {
             var query = from questao in _context.Set<Questao>()
                         join alternativa in _context.Set<Alternativa>()
                             on questao.Id equals alternativa.QuestaoId
-                        where questao.Id == idQuestao
+                        where questao.Id == id
                         select new AlternativaResponse
                         {
                             Id = alternativa.Id.ToString(),
