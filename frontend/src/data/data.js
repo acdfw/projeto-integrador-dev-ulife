@@ -68,5 +68,5 @@ var tableStudents = {
 classTeacherView = {
   title: "Turma",
   subtitles: ["Avaliações", "Alunos"],
-  columns: [tableClassExams, tableStudents],
+  tables: [tableClassExams, tableStudents],
 };
