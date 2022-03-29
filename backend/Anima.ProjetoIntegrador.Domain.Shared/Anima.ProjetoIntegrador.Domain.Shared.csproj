@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Anima.ProjetoIntegrador.Application\Anima.ProjetoIntegrador.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Requests\" />
+  </ItemGroup>
+
 </Project>
