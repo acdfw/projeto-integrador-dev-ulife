@@ -4,6 +4,6 @@
     {
         public string? NomeTurma { get; set; }
         public string? NomeProva { get; set; }
-        public Guid ModeloProva { get; set; }
+        public string? ModeloProva { get; set; }
     }
 }
