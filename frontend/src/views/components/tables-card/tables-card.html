@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title text-center">{{content.title}}</h5>
+  </div>
+  <div class="card-body row">
+    <div class="col" ng-repeat="(index, table) in content.tables">
+      <h6 class="text-center" ng-if="content.subtitles[index]">{{content.subtitles[index]}}</h6>
+      <hoverable-table content="table"></hoverable-table>
+    </div>
+  </div>
+</div>
