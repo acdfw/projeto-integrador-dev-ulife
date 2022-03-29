@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody  class="hoverable-table">
-      <tr ng-repeat="(index, row) in content.rows | orderBy: content.orderBy | limitTo: actualPage*resultsPerPage - content.rows.length | limitTo: resultsPerPage">
+      <tr ng-repeat="(index, row) in rows | orderBy: content.orderBy | limitTo: actualPage*resultsPerPage - rows.length | limitTo: resultsPerPage">
         <td>{{index + 1 + actualPage*resultsPerPage}}</td>
         <td ng-repeat="col in content.colOrder">{{row[col]}}</td>
       </tr>  
@@ -23,4 +23,13 @@
       </li>
     </ul>
   </div>
+  <p class="text-center" ng-if="content.search.show">
+    {{content.search.text}}
+    <input
+      type="search"
+      ng-model="query"
+      placeholder="{{content.search.placeholder}}"
+      ng-change="filterTable(query)"
+    />
+  </p>
 </div>
