@@ -13,7 +13,7 @@ namespace Anima.ProjetoIntegrador.Application.Services
             _provaRepository = provaRepository;
         }
 
-        public IList<ProvaResponse> ConsultarQuestoesPorProva(Guid id)
+        public IList<QuestaoResponse> ConsultarQuestoesPorProva(Guid id)
         {
             return _provaRepository.ConsultarQuestoesPorProva(id);
         }

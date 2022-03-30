@@ -6,5 +6,6 @@ namespace Anima.ProjetoIntegrador.Domain.Shared.Interfaces
     {
         IList<AvaliacaoTurmaResponse> ConsultarAvaliacoesPorTurma(Guid idTurma);
         IList<AlunoMatriculaPorTurmaResponse> ConsultarAlunosMatriculadosPorTurma(Guid idTurma);
+        IList<TurmaResponse> ConsultarTurmas();
     }
 }

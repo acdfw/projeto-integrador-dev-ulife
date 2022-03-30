@@ -12,7 +12,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         }
         
 
-        public IList<ProvaResponse> ConsultarQuestoesPorProva(Guid id)
+        public IList<QuestaoResponse> ConsultarQuestoesPorProva(Guid id)
         {
             var query = from prova in _context.Set<Prova>()
                         join provaQuestao in _context.Set<ProvaQuestao>()
@@ -20,9 +20,9 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         join questao in _context.Set<Questao>()
                             on provaQuestao.QuestaoId equals questao.Id
                         where prova.Id == id
-                        select new ProvaResponse
+                        select new QuestaoResponse
                         {
-                            IdQuestao = questao.Id,
+                            Id = questao.Id.ToString(),
                             Enunciado = questao.Enunciado
                         };
 

@@ -25,6 +25,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         where aluno.Id == id
                         select new AvaliacaoPendenteTurmaAlunoResponse
                         {
+                            IdTurma = turma.Id.ToString(),
                             NomeTurma = turma.Nome,
                             NomeProfessor = usuario.Nome
                             // TODO: QtdAnaliacoesPendentes (verificar se conseguimos nesta consulta ou tem que ser em outra)
@@ -33,7 +34,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return query.ToList();
         }
 
-        public IList<TurmaNaoMatriculadaAlunoResponse> ConsultarTurmasNaoMatriculas(Guid id)
+        public IList<TurmaNaoMatriculadaAlunoResponse> ConsultarTurmasNaoMatriculadas(Guid id)
         {
             var queryTodasTurmas = _context.Set<Turma>().AsQueryable();
             var queryTurmasMatriculadas = from aluno in _context.Set<Aluno>()
@@ -58,7 +59,25 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return turmasNaoMatriculadas.ToList();
         }
 
-        public IList<ProvaAbertaPorTurmaAlunoResponse> ConsultarAvaliacoesAbertasDeUmaTurma(Guid id, Guid idTurma)
+        public IList<ProvaAbertaRealizadaPorTurmaAlunoResponse> ConsultarAvaliacoesAbertasRealizadasDeUmaTurma(Guid id, Guid idTurma)
+        {
+            var avaliacoesAbertas = ConsultarAvaliacoesAbertasDeUmaTurma(id, idTurma).Select(p => new ProvaAbertaRealizadaPorTurmaAlunoResponse
+            {
+                NomeProva = p.NomeProva,                
+                Realizada = false
+            });
+
+            var avaliacoesRealizadas = ConsultarAvaliacoesRealizadasDeUmaTurma(id, idTurma).Select(p => new ProvaAbertaRealizadaPorTurmaAlunoResponse
+            {
+                NomeProva = p.NomeProva,
+                Nota = p.Nota,
+                Realizada = true
+            });
+
+            return avaliacoesAbertas.Union(avaliacoesRealizadas).ToList();
+        }
+
+        private IList<ProvaAbertaPorTurmaAlunoResponse> ConsultarAvaliacoesAbertasDeUmaTurma(Guid id, Guid idTurma)
         {
             var queryTodasAvaliacoes = from aluno in _context.Set<Aluno>()
                                         join matricula in _context.Set<Matricula>()
@@ -94,7 +113,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return provasAbertas.ToList();
         }
 
-        public IList<ProvaRealizadaPorTurmaAlunoResponse> ConsultarAvaliacoesRealizadasDeUmaTurma(Guid id, Guid idTurma)
+        private IList<ProvaRealizadaPorTurmaAlunoResponse> ConsultarAvaliacoesRealizadasDeUmaTurma(Guid id, Guid idTurma)
         {
             var query = from aluno in _context.Set<Aluno>()
                         join matricula in _context.Set<Matricula>()
@@ -117,7 +136,16 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return query.ToList();
         }
 
-        public IList<ProvaAbertaTodasTurmasAlunoResponse> ConsultarAvaliacoesAbertasNasTurmaMatriculadas(Guid id)
+        public IList<ProvaAbertaRealizadaTodasTurmasAlunoResponse> ConsultarAvaliacoesAbertasRealizadasDeUmaTurma(Guid id)
+        {
+            var avaliacoesAbertas = ConsultarAvaliacoesAbertasNasTurmasMatriculadas(id);
+
+            var avaliacoesRealizadas = ConsultarAvaliacoesRealizadasNasTurmasMatriculadas(id);
+
+            return avaliacoesAbertas.Union(avaliacoesRealizadas).ToList();
+        }
+
+        private IList<ProvaAbertaRealizadaTodasTurmasAlunoResponse> ConsultarAvaliacoesAbertasNasTurmasMatriculadas(Guid id)
         {
             var queryTodasAvaliacoes = from aluno in _context.Set<Aluno>()
                                        join matricula in _context.Set<Matricula>()
@@ -151,17 +179,19 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                                     on prova.ProfessorId equals professor.Id
                                 join usuario in _context.Set<Usuario>()
                                     on professor.UsuarioId equals usuario.Id
-                                select new ProvaAbertaTodasTurmasAlunoResponse
+                                select new ProvaAbertaRealizadaTodasTurmasAlunoResponse
                                 {
+                                    IdAvaliacao = avaliacao.Id.ToString(),
                                     NomeProva = prova.Nome,
                                     NomeTurma = turma.Nome,
-                                    NomeProfessor = usuario.Nome
+                                    NomeProfessor = usuario.Nome,
+                                    Realizada = false
                                 };
 
             return provasAbertasTurmas.ToList();
-        }        
+        }
 
-        public IList<ProvaRealizadaTodasTurmasAlunoResponse> ConsultarAvaliacoesRealizadasNasTurmaMatriculadas(Guid id)
+        private IList<ProvaAbertaRealizadaTodasTurmasAlunoResponse> ConsultarAvaliacoesRealizadasNasTurmasMatriculadas(Guid id)
         {
             var query = from aluno in _context.Set<Aluno>()
                         join matricula in _context.Set<Matricula>()
@@ -179,11 +209,13 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         join usuario in _context.Set<Usuario>()
                             on professor.UsuarioId equals usuario.Id                        
                         where aluno.Id == id
-                        select new ProvaRealizadaTodasTurmasAlunoResponse
+                        select new ProvaAbertaRealizadaTodasTurmasAlunoResponse
                         {
+                            IdAvaliacao = avaliacao.Id.ToString(),
                             NomeProva = prova.Nome,
                             NomeTurma = turma.Nome,
-                            NomeProfessor = usuario.Nome
+                            NomeProfessor = usuario.Nome,
+                            Realizada = true
                         };
 
             return query.ToList();
