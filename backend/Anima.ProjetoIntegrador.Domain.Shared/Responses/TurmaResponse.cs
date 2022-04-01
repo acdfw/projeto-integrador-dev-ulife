@@ -1,8 +1,8 @@
 ﻿namespace Anima.ProjetoIntegrador.Domain.Shared.Responses
 {
-    public class AvaliacaoPendenteTurmaAlunoResponse
+    public class TurmaResponse
     {
+        public string? Id { get; set; }
         public string? NomeTurma { get; set; }
-        public string? NomeProfessor { get; set; }
     }
 }

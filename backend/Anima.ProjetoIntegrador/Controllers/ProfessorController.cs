@@ -14,10 +14,10 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             _professorService = professorService;
         }
 
-        [HttpGet]
-        public IActionResult ConsultarTurmasQuantidadeInscritos(Guid id)
+        [HttpGet("{id}/matriculas/turmas")]
+        public IActionResult ConsultarTurmasQuantidadeInscritos(string id)
         {
-            var turmasQtdInscritos = _professorService.ConsultarTurmasQuantidadeInscritos(id);
+            var turmasQtdInscritos = _professorService.ConsultarTurmasQuantidadeInscritos(Guid.Parse(id));
 
             if (turmasQtdInscritos.Any())
             {
@@ -27,10 +27,10 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Não existem turmas cadastradas com a quantidade de inscritos para o professor.");
         }
 
-        [HttpGet]
-        public IActionResult ConsultarAvaliacoesDasSuasTurmas(Guid id)
+        [HttpGet("{id}/turmas/avaliacoes")]
+        public IActionResult ConsultarAvaliacoesDasSuasTurmas(string id)
         {
-            var avaliacoesTurmas = _professorService.ConsultarAvaliacoesDasSuasTurmas(id);
+            var avaliacoesTurmas = _professorService.ConsultarAvaliacoesDasSuasTurmas(Guid.Parse(id));
 
             if (avaliacoesTurmas.Any())
             {

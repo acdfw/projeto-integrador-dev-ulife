@@ -14,10 +14,10 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             _provaService = provaService;
         }
 
-        [HttpGet]
-        public IActionResult ConsultarQuestoesPorProva(Guid id)
+        [HttpGet("{id}/questoes")]
+        public IActionResult ConsultarQuestoesPorProva(string id)
         {
-            var questoes = _provaService.ConsultarQuestoesPorProva(id);
+            var questoes = _provaService.ConsultarQuestoesPorProva(Guid.Parse(id));
 
             if (questoes.Any())
             {

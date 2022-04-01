@@ -14,10 +14,10 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             _turmaService = turmaService;
         }
 
-        [HttpGet]
-        public IActionResult ConsultarAvaliacoesPorTurma(Guid id)
+        [HttpGet("{id}/avaliacoes")]
+        public IActionResult ConsultarAvaliacoesPorTurma(string id)
         {
-            var avaliacoes = _turmaService.ConsultarAvaliacoesPorTurma(id);
+            var avaliacoes = _turmaService.ConsultarAvaliacoesPorTurma(Guid.Parse(id));
 
             if (avaliacoes.Any())
             {
@@ -27,10 +27,10 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Não existem avaliações cadastradas para a turma.");
         }
 
-        [HttpGet]
-        public IActionResult ConsultarAlunosMatriculadosPorTurma(Guid id)
+        [HttpGet("alunos/{id}")]
+        public IActionResult ConsultarAlunosMatriculadosPorTurma(string id)
         {
-            var alunosMatriculados = _turmaService.ConsultarAlunosMatriculadosPorTurma(id);
+            var alunosMatriculados = _turmaService.ConsultarAlunosMatriculadosPorTurma(Guid.Parse(id));
 
             if (alunosMatriculados.Any())
             {

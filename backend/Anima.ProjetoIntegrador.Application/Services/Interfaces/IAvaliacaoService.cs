@@ -2,8 +2,8 @@
 
 namespace Anima.ProjetoIntegrador.Application.Services.Interfaces
 {
-    public interface IProvaService
+    public interface IAvaliacaoService
     {
-        IList<QuestaoResponse> ConsultarQuestoesPorProva(Guid id);
+        ProvaTurmaQuestoesResponse? ObterProvaTurmaQuestoesPorAvaliacao(Guid id);
     }
 }
