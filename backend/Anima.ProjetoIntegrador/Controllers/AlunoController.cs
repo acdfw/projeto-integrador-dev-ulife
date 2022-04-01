@@ -14,7 +14,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             _alunoService = alunoService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}/turma/{idTurma}/avaliacoes")]
         public IActionResult ConsultarAvaliacoesDeUmaTurmaMatriculada(Guid id, Guid idTurma)
         {
             var avaliacoes = _alunoService.ConsultarAvaliacoesDeUmaTurmaMatriculada(id, idTurma);
@@ -27,7 +27,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Não existem avaliações pendentes ou realizadas do aluno para a turma");
         }
 
-        [HttpGet]
+        [HttpGet("{id}/turma/avaliacoes")]
         public IActionResult ConsultarAvaliacoesTurmasMatriculadas(Guid id)
         {
             var avaliacoes = _alunoService.ConsultarAvaliacoesTurmasMatriculadas(id);
@@ -40,7 +40,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Não existem avaliações pendentes ou realizadas das turmas em que este aluno está matriculado.");
         }
 
-        [HttpGet]
+        [HttpGet("{id}/todas-turmas")]
         public IActionResult ConsultarTurmasMatriculadasOuNaoDoAluno(Guid id)
         {
             var turmas = _alunoService.ConsultarTurmasMatriculadasOuNaoDoAluno(id);

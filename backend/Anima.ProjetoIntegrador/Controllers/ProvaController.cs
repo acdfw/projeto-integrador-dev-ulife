@@ -14,7 +14,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             _provaService = provaService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}/questoes")]
         public IActionResult ConsultarQuestoesPorProva(Guid id)
         {
             var questoes = _provaService.ConsultarQuestoesPorProva(id);

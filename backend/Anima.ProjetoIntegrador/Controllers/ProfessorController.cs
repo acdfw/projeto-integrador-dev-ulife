@@ -14,7 +14,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             _professorService = professorService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}/matriculas/turmas")]
         public IActionResult ConsultarTurmasQuantidadeInscritos(Guid id)
         {
             var turmasQtdInscritos = _professorService.ConsultarTurmasQuantidadeInscritos(id);
@@ -27,7 +27,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Não existem turmas cadastradas com a quantidade de inscritos para o professor.");
         }
 
-        [HttpGet]
+        [HttpGet("{id}/turmas/avaliacoes")]
         public IActionResult ConsultarAvaliacoesDasSuasTurmas(Guid id)
         {
             var avaliacoesTurmas = _professorService.ConsultarAvaliacoesDasSuasTurmas(id);
