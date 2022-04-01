@@ -15,9 +15,9 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("{id}/alternativas")]
-        public IActionResult ConsultarAlternativasPorQuestao(Guid id)
+        public IActionResult ConsultarAlternativasPorQuestao(string id)
         {
-            var alternativasQuestao = _questaoService.ConsultarAlternativasPorQuestao(id);
+            var alternativasQuestao = _questaoService.ConsultarAlternativasPorQuestao(Guid.Parse(id));
 
             if (alternativasQuestao is not null)
             {

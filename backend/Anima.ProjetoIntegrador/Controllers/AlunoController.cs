@@ -15,9 +15,9 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("{id}/turma/{idTurma}/avaliacoes")]
-        public IActionResult ConsultarAvaliacoesDeUmaTurmaMatriculada(Guid id, Guid idTurma)
+        public IActionResult ConsultarAvaliacoesDeUmaTurmaMatriculada(string id, string idTurma)
         {
-            var avaliacoes = _alunoService.ConsultarAvaliacoesDeUmaTurmaMatriculada(id, idTurma);
+            var avaliacoes = _alunoService.ConsultarAvaliacoesDeUmaTurmaMatriculada(Guid.Parse(id), Guid.Parse(idTurma));
 
             if (avaliacoes.Any())
             {
@@ -28,9 +28,9 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("{id}/turma/avaliacoes")]
-        public IActionResult ConsultarAvaliacoesTurmasMatriculadas(Guid id)
+        public IActionResult ConsultarAvaliacoesTurmasMatriculadas(string id)
         {
-            var avaliacoes = _alunoService.ConsultarAvaliacoesTurmasMatriculadas(id);
+            var avaliacoes = _alunoService.ConsultarAvaliacoesTurmasMatriculadas(Guid.Parse(id));
 
             if (avaliacoes.Any())
             {
@@ -41,9 +41,9 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("{id}/todas-turmas")]
-        public IActionResult ConsultarTurmasMatriculadasOuNaoDoAluno(Guid id)
+        public IActionResult ConsultarTurmasMatriculadasOuNaoDoAluno(string id)
         {
-            var turmas = _alunoService.ConsultarTurmasMatriculadasOuNaoDoAluno(id);
+            var turmas = _alunoService.ConsultarTurmasMatriculadasOuNaoDoAluno(Guid.Parse(id));
 
             if (turmas.Any())
             {

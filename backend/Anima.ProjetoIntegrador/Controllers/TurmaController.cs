@@ -15,9 +15,9 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("{id}/avaliacoes")]
-        public IActionResult ConsultarAvaliacoesPorTurma(Guid id)
+        public IActionResult ConsultarAvaliacoesPorTurma(string id)
         {
-            var avaliacoes = _turmaService.ConsultarAvaliacoesPorTurma(id);
+            var avaliacoes = _turmaService.ConsultarAvaliacoesPorTurma(Guid.Parse(id));
 
             if (avaliacoes.Any())
             {
@@ -28,9 +28,9 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("alunos/{id}")]
-        public IActionResult ConsultarAlunosMatriculadosPorTurma(Guid id)
+        public IActionResult ConsultarAlunosMatriculadosPorTurma(string id)
         {
-            var alunosMatriculados = _turmaService.ConsultarAlunosMatriculadosPorTurma(id);
+            var alunosMatriculados = _turmaService.ConsultarAlunosMatriculadosPorTurma(Guid.Parse(id));
 
             if (alunosMatriculados.Any())
             {

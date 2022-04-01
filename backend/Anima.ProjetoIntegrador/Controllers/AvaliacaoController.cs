@@ -15,9 +15,9 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("turma/{id}/prova/questoes")]
-        public IActionResult ObterProvaTurmaQuestoesPorAvaliacao(Guid id)
+        public IActionResult ObterProvaTurmaQuestoesPorAvaliacao(string id)
         {
-            var provaTurmaComQuestoes = _avaliacaoService.ObterProvaTurmaQuestoesPorAvaliacao(id);
+            var provaTurmaComQuestoes = _avaliacaoService.ObterProvaTurmaQuestoesPorAvaliacao(Guid.Parse(id));
 
             if (provaTurmaComQuestoes is not null)
             {
