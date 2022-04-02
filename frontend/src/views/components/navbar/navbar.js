@@ -1,10 +1,10 @@
-angular.module("website").directive("headersTeste", function () {
+angular.module("website").directive("navbar", function () {
   return {
     replace: true,
     scope: {
       content: "=",
     },
-    templateUrl: "views/components/headers/header.html",
+    templateUrl: "views/components/navbar/navbar.html",
     controller: function ($scope) {
       var me = $scope;
 
