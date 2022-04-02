@@ -1,8 +1,8 @@
-var app = angular.module("website", ["ngRoute"]);
+var app = angular.module("website", ["ngRoute", 'ui.tinymce', 'ngSanitize']);
 
 app.config([
     "$routeProvider",
-    function ($routeProvider) {
+    function ($routeProvider) {      
       $routeProvider
         .when("/", { templateUrl: "views/home.html", controller: "HomeCtrl" })
         .when("/teacher/classes", { templateUrl: "views/teacher/TeacherClass.html", controller: "TeacherClassCtrl" })
