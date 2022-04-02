@@ -1,4 +1,4 @@
-﻿namespace Anima.ProjetoIntegrador.Domain.Shared.Entities
+﻿namespace Anima.ProjetoIntegrador.Domain.Entities
 {
     public abstract class Entity
     {

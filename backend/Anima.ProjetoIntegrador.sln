@@ -17,9 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Tests", "5. Tests", "{8B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anima.ProjetoIntegrador.Application", "Anima.ProjetoIntegrador.Application\Anima.ProjetoIntegrador.Application.csproj", "{584E9C3F-24D7-4FFF-BFD2-2D27004FF6B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anima.ProjetoIntegrador.Domain.Core", "Anima.ProjetoIntegrador.Domain.Core\Anima.ProjetoIntegrador.Domain.Core.csproj", "{39989C99-3169-4DC5-8A16-54479E996B11}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anima.ProjetoIntegrador.Domain.Shared", "Anima.ProjetoIntegrador.Domain.Shared\Anima.ProjetoIntegrador.Domain.Shared.csproj", "{14B18393-F052-49C7-AAD6-AB144ECF929B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anima.ProjetoIntegrador.Domain", "Anima.ProjetoIntegrador.Domain.Shared\Anima.ProjetoIntegrador.Domain.csproj", "{14B18393-F052-49C7-AAD6-AB144ECF929B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 Data", "4.1 Data", "{9EFA047F-E070-4F3F-99B9-F0141B5206B1}"
 EndProject
@@ -29,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anima.ProjetoIntegrador.Inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anima.ProjetoIntegrador.Tests.UnitTests", "Anima.ProjetoIntegrador.Tests.UnitTests\Anima.ProjetoIntegrador.Tests.UnitTests.csproj", "{190A8E3F-7444-4A72-A4A4-812202E12B6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting", "Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting\Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting.csproj", "{73F4B71D-497C-450A-9868-770510566CAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting", "Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting\Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting.csproj", "{73F4B71D-497C-450A-9868-770510566CAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +43,6 @@ Global
 		{584E9C3F-24D7-4FFF-BFD2-2D27004FF6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{584E9C3F-24D7-4FFF-BFD2-2D27004FF6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{584E9C3F-24D7-4FFF-BFD2-2D27004FF6B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39989C99-3169-4DC5-8A16-54479E996B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39989C99-3169-4DC5-8A16-54479E996B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39989C99-3169-4DC5-8A16-54479E996B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39989C99-3169-4DC5-8A16-54479E996B11}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14B18393-F052-49C7-AAD6-AB144ECF929B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14B18393-F052-49C7-AAD6-AB144ECF929B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14B18393-F052-49C7-AAD6-AB144ECF929B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,7 +66,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{160C2140-E6F4-4259-9476-E879BCBBCB7E} = {9DB72EE9-2D7E-4AFC-B091-E69E09F9B96E}
 		{584E9C3F-24D7-4FFF-BFD2-2D27004FF6B7} = {30DEE555-3219-47D7-ACDF-BD56703B6DA7}
-		{39989C99-3169-4DC5-8A16-54479E996B11} = {F7093EFC-72AB-44AB-98CE-FA281256287E}
 		{14B18393-F052-49C7-AAD6-AB144ECF929B} = {F7093EFC-72AB-44AB-98CE-FA281256287E}
 		{9EFA047F-E070-4F3F-99B9-F0141B5206B1} = {F31546AF-5A67-4A4A-BD0B-3FF819C47E1D}
 		{CCD22622-5F74-4381-9464-451941279D2D} = {F31546AF-5A67-4A4A-BD0B-3FF819C47E1D}

@@ -1,4 +1,4 @@
-﻿using Anima.ProjetoIntegrador.Domain.Shared.Interfaces;
+﻿using Anima.ProjetoIntegrador.Domain.Interfaces;
 using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 

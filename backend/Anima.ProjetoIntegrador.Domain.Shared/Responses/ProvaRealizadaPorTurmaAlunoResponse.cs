@@ -1,4 +1,4 @@
-﻿namespace Anima.ProjetoIntegrador.Domain.Shared.Responses
+﻿namespace Anima.ProjetoIntegrador.Domain.Responses
 {
     public class ProvaRealizadaPorTurmaAlunoResponse
     {

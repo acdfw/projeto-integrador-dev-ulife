@@ -1,4 +1,4 @@
-﻿using Anima.ProjetoIntegrador.Domain.Core.Entities;
+﻿using Anima.ProjetoIntegrador.Domain.Entities;
 using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 
