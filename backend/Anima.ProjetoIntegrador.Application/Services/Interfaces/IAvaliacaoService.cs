@@ -1,4 +1,4 @@
-﻿using Anima.ProjetoIntegrador.Domain.Shared.Responses;
+﻿using Anima.ProjetoIntegrador.Domain.Responses;
 
 namespace Anima.ProjetoIntegrador.Application.Services.Interfaces
 {

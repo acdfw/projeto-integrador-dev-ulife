@@ -1,4 +1,4 @@
-﻿namespace Anima.ProjetoIntegrador.Domain.Shared.Interfaces
+﻿namespace Anima.ProjetoIntegrador.Domain.Interfaces
 {
     public interface IUsuarioRepository
     {

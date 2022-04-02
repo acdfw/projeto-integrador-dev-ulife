@@ -1,11 +1,6 @@
-﻿using Anima.ProjetoIntegrador.Domain.Core.Entities;
+﻿using Anima.ProjetoIntegrador.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Configurations
 {

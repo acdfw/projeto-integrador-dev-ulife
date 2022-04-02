@@ -1,6 +1,6 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
-using Anima.ProjetoIntegrador.Domain.Shared.Interfaces;
-using Anima.ProjetoIntegrador.Domain.Shared.Responses;
+using Anima.ProjetoIntegrador.Domain.Interfaces;
+using Anima.ProjetoIntegrador.Domain.Responses;
 
 namespace Anima.ProjetoIntegrador.Application.Services
 {

@@ -1,6 +1,6 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
-using Anima.ProjetoIntegrador.Domain.Shared.Interfaces;
-using Anima.ProjetoIntegrador.Domain.Shared.Responses;
+using Anima.ProjetoIntegrador.Domain.Interfaces;
+using Anima.ProjetoIntegrador.Domain.Responses;
 
 namespace Anima.ProjetoIntegrador.Application.Services
 {
@@ -16,6 +16,11 @@ namespace Anima.ProjetoIntegrador.Application.Services
         public IList<QuestaoResponse> ConsultarQuestoesPorProva(Guid id)
         {
             return _provaRepository.ConsultarQuestoesPorProva(id);
+        }
+
+        public void Inserir()
+        {
+
         }
     }
 }

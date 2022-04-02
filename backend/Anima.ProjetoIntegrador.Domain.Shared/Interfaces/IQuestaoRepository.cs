@@ -1,6 +1,6 @@
-﻿using Anima.ProjetoIntegrador.Domain.Shared.Responses;
+﻿using Anima.ProjetoIntegrador.Domain.Responses;
 
-namespace Anima.ProjetoIntegrador.Domain.Shared.Interfaces
+namespace Anima.ProjetoIntegrador.Domain.Interfaces
 {
     public interface IQuestaoRepository
     {

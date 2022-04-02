@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Anima.ProjetoIntegrador.Domain.Shared.Responses
+﻿namespace Anima.ProjetoIntegrador.Domain.Responses
 {
     public class ProvaTurmaQuestoesResponse
     {
