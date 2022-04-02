@@ -1,12 +1,14 @@
 ﻿using Anima.ProjetoIntegrador.Domain.Core.Entities;
 using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts
 {
 #nullable disable
     public class IntegradorContext : DbContext
     {
+        private readonly IConfiguration _configuration;
         public DbSet<Alternativa> Alternativas{ get; set; }
         public DbSet<Aluno> Alunos{ get; set; }
         public DbSet<Avaliacao> Avaliacoes{ get; set; }
@@ -19,9 +21,12 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts
         public DbSet<Turma> Turmas{ get; set; }
         public DbSet<Usuario> Usuarios{ get; set; }
 
-        public IntegradorContext()
+        public IntegradorContext(IConfiguration configuration)
         {
+            _configuration = configuration;
+#if DEBUG
             Database.EnsureCreated();
+#endif
         }
 
         public IntegradorContext(DbContextOptionsBuilder builder) 
@@ -33,7 +38,17 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts
             : base(new DbContextOptionsBuilder().UseSqlServer(connectionString).Options)
         {
             Database.EnsureCreated();
-        }        
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {            
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connectionString = _configuration.GetConnectionString("IntegradorDb");
+
+                optionsBuilder.UseSqlServer(connectionString);
+
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
