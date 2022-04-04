@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="website">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Whiteboard</title>
+    <title>{{brandname}}</title>
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
@@ -40,7 +40,9 @@
     <!-- Middleware -->
     <script src="js/config/midlewareConfig.js"></script>
     <!-- Data -->
-    <script src="data/teacher-class.data.js"></script>
+    <script src="data/teacher-classA.data.js"></script>
+    <script src="data/teacher-classes.data.js"></script>
+    <script src="data/teacher-assignments.data.js"></script>
     <!-- Component - loading-modal -->
     <link rel="stylesheet" href="views/components/loading-modal/loading-modal.css">
     <script src="views/components/loading-modal/loading-modal.js"></script>
@@ -55,13 +57,20 @@
     <!-- Component - hoverable-table -->
     <link rel="stylesheet" href="views/components/hoverable-table/hoverable-table.css">
     <script src="views/components/hoverable-table/hoverable-table.js"></script>
+    <!-- Component - editable-question -->
+    <link rel="stylesheet" href="views/components/editable-question/editable-question.css">
+    <script src="views/components/editable-question/editable-question.js"></script>
     <!-- Controllers -->
     <script src="controllers/HomeController.js"></script>
     <script src="controllers/teacher/TeacherClassController.js"></script>
+    <script src="controllers/teacher/TeacherClassesController.js"></script>
+    <script src="controllers/teacher/TeacherAssignmentsController.js"></script>
+
+
 
   </head>
 
-  <body ng-app="website">    
+  <body>    
     <loading-modal ng-show="loading"></loading-modal>
     <navbar ng-if="!loading"></navbar>
     <div class="container" ng-view="conteudo" ng-hide="loading"></div>
