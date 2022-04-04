@@ -1,6 +1,6 @@
-app.controller("TeacherClassCtrl", function ($scope, $location) {
+app.controller("TeacherClassCtrl", function ($scope) {
   var me = $scope;
 
-  me.content = classTeacherView;
+  me.content = TeacherClassAContent;
 
 });
