@@ -1,5 +1,5 @@
 html {
-  font-size: 6.25%;  
+  font-size: 6.25%;
 }
 
 * {
@@ -14,7 +14,7 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  -o-background-size: cover; 
+  -o-background-size: cover;
 }
 
 h1,
@@ -31,15 +31,15 @@ h6 {
 }
 
 h1{
-    font-size: 24rem;
+  font-size: 24rem;
 }
 
 h2{
-    font-size: 18rem;
+  font-size: 18rem;
 }
 
 h3{
-    font-size: 14rem;
+  font-size: 14rem;
 }
 
 .box {
@@ -49,14 +49,14 @@ h3{
 }
 
 .oops-img{
-    max-height: 50vh;
-    max-width: 90vw;
+  max-height: 50vh;
+  max-width: 90vw;
 }
 
 .btn{
-    font-size: 15rem;
-    border-radius: 5rem;
-    padding: 2rem 5rem;
+  font-size: 15rem;
+  border-radius: 5rem;
+  padding: 2rem 5rem;
 }
 
 .card{
@@ -66,6 +66,7 @@ h3{
 .card-header{
   padding: 5rem;
   display: flex;
+  justify-content: center;
 }
 
 .card-body{
