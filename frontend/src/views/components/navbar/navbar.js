@@ -1,4 +1,4 @@
-angular.module("website").directive("navbar", function () {
+angular.module("website").directive("navbar", function (MenuService) {
   return {
     replace: true,
     scope: {
@@ -10,11 +10,7 @@ angular.module("website").directive("navbar", function () {
 
       me.brandname = "Whiteboard";
 
-      me.menu = [
-        { text: "Home", link: "#/" },
-        { text: "Equipe", link: "#/equipe" },
-        { text: "Sobre", link: "#/sobre" },
-      ];
+      me.menu = MenuService.getMenu()
     },
   };
 });

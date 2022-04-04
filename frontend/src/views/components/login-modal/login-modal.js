@@ -1,4 +1,4 @@
-angular.module("website").directive("loginModal", function () {
+app.directive("loginModal", function (UserModel) {
   return {
     replace: true,
     scope: {
@@ -9,33 +9,36 @@ angular.module("website").directive("loginModal", function () {
       var me = $scope;
 
       teacherLogin = {
-        role : "Professor",  
-        action: "teste"        
-      }
+        role: "Professor",
+        action: "teste",
+      };
 
       studentLogin = {
-        role : "Aluno",  
-        action: "teste"        
-      }
+        role: "Aluno",
+        action: "teste",
+      };
 
-      if (!me.settings){
+      if (!me.settings) {
         me.settings = {
-          type: 'S'
-        }
+          type: "S",
+        };
       }
 
-
-      me.$watch("settings", ()=>{
-        if(me.settings.type == 'T'){
-          me.content = teacherLogin
-        } else if(me.settings.type == 'S'){
-          me.content = studentLogin
+      me.$watch("settings", () => {
+        if (me.settings.type == "T") {
+          me.content = teacherLogin;
+        } else if (me.settings.type == "S") {
+          me.content = studentLogin;
         }
-      })
+      });
 
-      me.hideModal = function(){
+      me.hideModal = function () {
         me.settings.isVisible = false;
-      }      
+      };
+
+      me.login = () => {
+        UserModel.login(me.settings.type);
+      };
     },
   };
 });
