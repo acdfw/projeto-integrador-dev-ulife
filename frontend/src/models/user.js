@@ -1,4 +1,4 @@
-app.factory("UserModel", function ($http, AuthTokenService) {
+app.factory("UserModel", function ($http, AuthTokenService, $location, $rootScope) {
   return {
     login: function (data) {
       // $http({
@@ -13,12 +13,14 @@ app.factory("UserModel", function ($http, AuthTokenService) {
       //     });
 
       AuthTokenService.setToken(data);
-      AuthTokenService.setRole(data);
+      AuthTokenService.setRole(data)
+      $rootScope.Role = data;
       return true;
     },
     logout: function () {
         AuthTokenService.reset();
-
+        delete $rootScope.Role;
+        $location.path('/');
     },
     register: function (data) {
       $http.post("api/signup", data);
