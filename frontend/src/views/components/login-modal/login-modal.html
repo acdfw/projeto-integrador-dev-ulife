@@ -7,7 +7,7 @@
             </button>
       </div>
       <div class="card-body">
-        <form action="{{content.action}}" method="POST" class="login-form">
+        <form class="login-form">
           <div class="form-group">
             <label for="login">Login: </label>
             <input
@@ -29,7 +29,7 @@
           </div>
           <br />
           <div>
-            <button class="btn btn-success w-100">Entrar</button>
+            <button class="btn btn-success w-100" ng-click="login()">Entrar</button>
           </div>
         </form>
       </div>
