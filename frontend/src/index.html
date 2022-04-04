@@ -18,13 +18,32 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.3.14/angular-sanitize.min.js" integrity="sha512-Mn+SJtJZvGeecrU2+gybkyTwrAs+eWdxdhLbNdr2Y/5QznarFQp6pkBpZzB8jDV9vxiw4L7Mze+/ObMfyeLJtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <!-- Tinymce -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js" integrity="sha512-/uxeq6VcJ+do+PtGgWZwRL/Z63r53cK6yek3NzvQwce6aCeheKRD59IuRsEFuNU8b0B/lZ6fUx1fncf0wMIm5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Tinymce -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.5/tinymce.min.js"></script>
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-tinymce/0.0.19/tinymce.js'></script>
     <!-- App -->
     <script src="app.js"></script>
+    <!-- Routes -->
+    <script src="js/config/routeConfig.js"></script>
+    <!-- Models -->
+    <script src="models/user.js"></script>
+    <!-- Services -->
+    <script src="js/services/authTokenService.js"></script>
+    <script src="js/services/menuService.js"></script>
+    <!-- Interceptors -->
+    <script src="js/interceptors/timestampInterceptor.js"></script>
+    <script src="js/interceptors/errorInterceptor.js"></script>
+    <script src="js/interceptors/loadingInterceptor.js"></script>
+    <script src="js/interceptors/authInterceptor.js"></script>
+    <script src="js/config/interceptorsConfig.js"></script>
+    <!-- Middleware -->
+    <script src="js/config/midlewareConfig.js"></script>
     <!-- Data -->
     <script src="data/teacher-class.data.js"></script>
+    <!-- Component - loading-modal -->
+    <link rel="stylesheet" href="views/components/loading-modal/loading-modal.css">
+    <script src="views/components/loading-modal/loading-modal.js"></script>
     <!-- Component - navbar -->
     <link rel="stylesheet" href="views/components/navbar/navbar.css"></link>
     <script src="views/components/navbar/navbar.js"></script>
@@ -42,9 +61,10 @@
 
   </head>
 
-  <body ng-app="website">
-    <navbar></navbar>  
-    <div class="container" ng-view="conteudo"></div>
+  <body ng-app="website">    
+    <loading-modal ng-show="loading"></loading-modal>
+    <navbar ng-if="!loading"></navbar>
+    <div class="container" ng-view="conteudo" ng-hide="loading"></div>
   </body>
 
 </html>
