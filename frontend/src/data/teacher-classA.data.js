@@ -1,4 +1,4 @@
-var tableClassExams = {
+var tableTeacherClassExams = {
   rows: [
     {
       turma: "Turma A",
@@ -23,7 +23,7 @@ var tableClassExams = {
   search: { show: false },
 };
 
-var tableStudents = {
+var tableTeacherClassStudents = {
   rows: [
     {
       matricula: "A102B3",
@@ -58,15 +58,12 @@ var tableStudents = {
   colOrder: ["matricula", "nome"],
   showHeader: true,
   search: {
-    show: true,
-    text: "Pesquisar aluno por nome",
-    placeholder: "nome do aluno",
-    sourceColumn: "nome",
-  },
+    show: true
+  }
 };
 
-classTeacherView = {
+TeacherClassAContent = {
   title: "Turma A",
   subtitles: ["Avaliações", "Alunos"],
-  tables: [tableClassExams, tableStudents],
+  tables: [tableTeacherClassExams, tableTeacherClassStudents],
 };
