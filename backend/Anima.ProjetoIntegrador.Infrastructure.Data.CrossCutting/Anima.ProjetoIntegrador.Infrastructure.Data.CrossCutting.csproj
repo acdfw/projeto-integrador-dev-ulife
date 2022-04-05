@@ -6,11 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup>    
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Anima.ProjetoIntegrador.Application\Anima.ProjetoIntegrador.Application.csproj" />
     <ProjectReference Include="..\Anima.ProjetoIntegrador.Infrastructure.Data.Persistence\Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Anima.ProjetoIntegrador.API.Controllers
@@ -14,6 +15,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             _professorService = professorService;
         }
 
+        [Authorize(Roles = "professor")]
         [HttpGet("{id}/matriculas/turmas")]
         public IActionResult ConsultarTurmasQuantidadeInscritos(string id)
         {
@@ -27,6 +29,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Não existem turmas cadastradas com a quantidade de inscritos para o professor.");
         }
 
+        [Authorize(Roles = "professor")]
         [HttpGet("{id}/turmas/avaliacoes")]
         public IActionResult ConsultarAvaliacoesDasSuasTurmas(string id)
         {

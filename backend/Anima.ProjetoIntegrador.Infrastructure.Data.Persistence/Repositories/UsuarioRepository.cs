@@ -9,5 +9,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         public UsuarioRepository(IntegradorContext context) : base(context)
         {
         }
+
+        public Usuario? ObterPorLoginSenha(string? login, string? senha)
+        {
+            return _context.Set<Usuario>().FirstOrDefault(u => u.Login == login && u.Senha == senha);
+        }
     }
 }
