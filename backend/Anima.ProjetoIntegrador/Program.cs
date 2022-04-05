@@ -9,11 +9,13 @@ ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddInfrastructureData(configuration);
 
 builder.Services.AddControllers();
+builder.Services.AddAuthConfig();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRepositories();
 builder.Services.AddServices();
+builder.Services.AddTokenGenerator();
 
 var app = builder.Build();
 
@@ -26,10 +28,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-
 
 app.Run();

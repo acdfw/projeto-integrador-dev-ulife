@@ -1,6 +1,6 @@
 ﻿namespace Anima.ProjetoIntegrador.Domain.Responses
 {
-    public class ProvaAbertaRealizadaTodasTurmasAlunoResponse
+    public class ProvaAbertaRealizadaTodasTurmasAlunoResponse : BaseResponse
     {
         public string? IdAvaliacao { get; set; }
         public string? NomeProva { get; set; }

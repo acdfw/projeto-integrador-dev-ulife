@@ -1,6 +1,6 @@
 ﻿namespace Anima.ProjetoIntegrador.Domain.Responses
 {
-    public class QuestaoAlternativaResponse
+    public class QuestaoAlternativaResponse : BaseResponse
     {
         public string? IdQuestao { get; set; }
         public string? Enunciado { get; set; }

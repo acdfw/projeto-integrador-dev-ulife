@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Anima.ProjetoIntegrador.API.Controllers
@@ -15,6 +16,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("{id}/questoes")]
+        [Authorize(Roles = "professor")]
         public IActionResult ConsultarQuestoesPorProva(string id)
         {
             var questoes = _provaService.ConsultarQuestoesPorProva(Guid.Parse(id));

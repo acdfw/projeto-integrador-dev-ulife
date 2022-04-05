@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Anima.ProjetoIntegrador.API.Controllers
@@ -15,6 +16,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("{id}/avaliacoes")]
+        [Authorize(Roles = "professor")]
         public IActionResult ConsultarAvaliacoesPorTurma(string id)
         {
             var avaliacoes = _turmaService.ConsultarAvaliacoesPorTurma(Guid.Parse(id));
@@ -28,6 +30,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("alunos/{id}")]
+        [Authorize(Roles = "professor")]
         public IActionResult ConsultarAlunosMatriculadosPorTurma(string id)
         {
             var alunosMatriculados = _turmaService.ConsultarAlunosMatriculadosPorTurma(Guid.Parse(id));
