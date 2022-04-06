@@ -5,7 +5,7 @@ angular.module("website").directive("hoverableTable", function () {
       content: "=",
     },
     templateUrl: "views/components/hoverable-table/hoverable-table.html",
-    controller: function ($scope) {
+    controller: function ($scope, $location) {
       var me = $scope;
 
       me.actualPage = 0;
@@ -30,16 +30,27 @@ angular.module("website").directive("hoverableTable", function () {
 
       me.rows = me.content.rows;
 
-      me.filterTable = function (search) {
+      me.filterTable = (search) => {
         var tempRows = me.content.rows;
-        tempRows = tempRows.filter((row) =>
-          row[me.content.search.sourceColumn]
-            .toUpperCase()
-            .includes(search.toUpperCase())
-        );
+        tempRows = tempRows.filter((row) => {
+          var find = false;
+          me.content.colOrder.forEach(col => {
+            if(row[col].toUpperCase().includes(search.toUpperCase())){
+              find = true;
+              return
+            }
+          })
+          return find;            
+        });
         me.rows = tempRows;
         me.actualPage = 0;
       };
+
+      me.goTo = (url) => {
+        if(url)
+          $location.path(url)
+      }
+
     },
   };
 });

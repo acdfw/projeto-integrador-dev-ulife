@@ -1,16 +1,16 @@
 angular.module("website").directive("navbar", function (MenuService) {
   return {
     replace: true,
-    scope: {
-      content: "=",
-    },
     templateUrl: "views/components/navbar/navbar.html",
-    controller: function ($scope) {
+    controller: function ($scope, $rootScope) {
       var me = $scope;
+      var root = $rootScope;
 
-      me.brandname = "Whiteboard";
+      root.brandname = "Whiteboard";
 
-      me.menu = MenuService.getMenu()
+      root.$watch("Role", () => {
+        me.menu = MenuService.getMenu();
+      });
     },
   };
 });

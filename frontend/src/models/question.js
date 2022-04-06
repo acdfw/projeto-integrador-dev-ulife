@@ -1,6 +1,6 @@
-app.factory("UserModel", function ($http, AuthTokenService, $location, $rootScope) {
+app.factory("QuestionModel", function ($http) {
   return {
-    login: function (data) {
+    getQuestionById: function (id) {
       // $http({
       //     method: 'GET',
       //     url: '/someUrl'
@@ -11,19 +11,14 @@ app.factory("UserModel", function ($http, AuthTokenService, $location, $rootScop
       //       // called asynchronously if an error occurs
       //       // or server returns response with an error status.
       //     });
-
-      AuthTokenService.setToken(data);
-      AuthTokenService.setRole(data)
-      $rootScope.Role = data;
+      
       return true;
     },
-    logout: function () {
-        AuthTokenService.reset();
-        delete $rootScope.Role;
-        $location.path('/');
+    getQuestions: function () {
+        return questions;
     },
-    register: function (data) {
-      $http.post("api/signup", data);
-    },
+    registerQuestion: function () {
+        return questions;
+    }
   };
 });

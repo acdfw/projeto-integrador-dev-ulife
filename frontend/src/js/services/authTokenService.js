@@ -12,7 +12,7 @@ app.factory('AuthTokenService', function ($localStorage) {
     setRole: function (role) {
       $localStorage.whiteboardRole = role;
     },
-    reset : function () {
+    reset : function () {    
       if($localStorage.whiteboardToken)
         delete $localStorage.whiteboardToken;  
       if($localStorage.whiteboardRole)

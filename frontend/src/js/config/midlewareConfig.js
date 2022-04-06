@@ -9,7 +9,6 @@ app.run(function ($rootScope, $location, AuthTokenService) {
 
   $rootScope.$on("$routeChangeStart", function (event, next, current) {
     if (next.authorize) {
-      console.log(AuthTokenService.getRole())
       if (!isLogged() || !CheckRole(next)) {
         $rootScope.$evalAsync(function () {
           $location.path("/");

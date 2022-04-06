@@ -1,6 +1,6 @@
-app.factory("UserModel", function ($http, AuthTokenService, $location, $rootScope) {
+app.factory("ExamModel", function ($http) {
   return {
-    login: function (data) {
+    getExamById: function (id) {
       // $http({
       //     method: 'GET',
       //     url: '/someUrl'
@@ -12,18 +12,13 @@ app.factory("UserModel", function ($http, AuthTokenService, $location, $rootScop
       //       // or server returns response with an error status.
       //     });
 
-      AuthTokenService.setToken(data);
-      AuthTokenService.setRole(data)
-      $rootScope.Role = data;
       return true;
     },
-    logout: function () {
-        AuthTokenService.reset();
-        delete $rootScope.Role;
-        $location.path('/');
+    getExams: function () {
+      return exams;
     },
-    register: function (data) {
-      $http.post("api/signup", data);
-    },
+    registerExam: function () {
+      return true;
+    }
   };
 });

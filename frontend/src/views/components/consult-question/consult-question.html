@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Título: {{content.title}}</h2>
+  </div>
+  <div class="card-body">
+    <br />
+    <div class="question-statment">{{content.statement}}</div>
+    <br />
+
+    <table class="table-borderless options-table">
+      <tbody>
+        <tr ng-repeat="(index, option) in content.options">
+          <td class="answer-col">
+            <input
+              type="radio"
+              ng-model="answer"
+              name="answer"
+              ng-value="option.id"
+              ng-change="updateAnswer(index)"
+            />
+          </td>
+          <th scope="row">{{alternativeIdentifier[index]}})</th>
+          <td class="option-col">{{option.statement}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+  </div>
+</div>
