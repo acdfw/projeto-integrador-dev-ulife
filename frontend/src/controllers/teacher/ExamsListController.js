@@ -9,7 +9,7 @@ app.controller("ExamsListCtrl", function ($scope, ExamModel) {
     rows: exams,
     colNames: { title: "Titulo", numQuestions: "Número de Questões", id: "Identificador" },
     colOrder: ["id", "title", "numQuestions"],
-    showHeader: false,
+    showHeader: true,
     search: { show: true },
   };  
   
