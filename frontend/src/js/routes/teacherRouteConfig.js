@@ -37,6 +37,18 @@ app.config([
           controller: "ExamViewCtrl",
           authorize: true,
           role: "T",
-        })        
+        })  
+        .when("/teacher/questions", {
+          templateUrl: 'views/teacher/QuestionsList.html',
+          controller: "QuestionsListCtrl",
+          authorize: true,
+          role: "T",
+        })       
+        .when("/teacher/question/:id", {
+          templateUrl: 'views/teacher/QuestionView.html',
+          controller: "QuestionViewCtrl",
+          authorize: true,
+          role: "T",
+        }) 
     },
   ]);
