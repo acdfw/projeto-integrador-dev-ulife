@@ -3,21 +3,39 @@ app.config([
   function ($routeProvider) {
     $routeProvider
       .when("/", { templateUrl: "views/home.html", controller: "HomeCtrl" })
-      .when("/teacher/class/:id", {
-        templateUrl: "views/teacher/TeacherClass.html",
-        controller: "TeacherClassCtrl",
+      .when("/teacher/classes", {
+        templateUrl: "views/teacher/TeacherAllClasses.html",
+        controller: "TeacherAllClassesCtrl",
         authorize: true,
         role: "T",
       })
-      .when("/teacher/classes", {
-        templateUrl: "views/teacher/TeacherClasses.html",
-        controller: "TeacherClassesCtrl",
+      .when("/teacher/class/:id", {
+        templateUrl: "views/teacher/TeacherOneClass.html",
+        controller: "TeacherOneClassCtrl",
         authorize: true,
         role: "T",
       })
       .when("/teacher/assignments", {
-        templateUrl: "views/teacher/TeacherAssignments.html",
-        controller: "TeacherAssignmentsCtrl",
+        templateUrl: "views/teacher/TeacherAllAssignments.html",
+        controller: "TeacherAllAssignmentsCtrl",
+        authorize: true,
+        role: "T",
+      })
+      .when("/teacher/assignment", {
+        templateUrl: "views/teacher/TeacherOneAssignment.html",
+        controller: "TeacherAssignmentCtrl",
+        authorize: true,
+        role: "T",
+      })
+      .when("/teacher/exams", {
+        templateUrl: "views/teacher/TeacherAllExams.html",
+        controller: "TeacherAllExamsCtrl",
+        authorize: true,
+        role: "T",
+      })
+      .when("/teacher/exam/:id", {
+        templateUrl: "views/teacher/TeacherOneExam.html",
+        controller: "TeacherOneExamCtrl",
         authorize: true,
         role: "T",
       })
