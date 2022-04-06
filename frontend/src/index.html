@@ -22,12 +22,19 @@
     <!-- Tinymce -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.5/tinymce.min.js"></script>
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-tinymce/0.0.19/tinymce.js'></script>
+     <!-- Data -->
+     <script src="data/teacher-classA.data.js"></script>
+     <script src="data/teacher-classes.data.js"></script>
+     <script src="data/teacher-assignments.data.js"></script>
+     <script src="data/questions.data.js"></script>
+     <script src="data/exam.data.js"></script>
     <!-- App -->
     <script src="app.js"></script>
     <!-- Routes -->
     <script src="js/config/routeConfig.js"></script>
     <!-- Models -->
     <script src="models/user.js"></script>
+    <script src="models/question.js"></script>
     <!-- Services -->
     <script src="js/services/authTokenService.js"></script>
     <script src="js/services/menuService.js"></script>
@@ -39,10 +46,6 @@
     <script src="js/config/interceptorsConfig.js"></script>
     <!-- Middleware -->
     <script src="js/config/midlewareConfig.js"></script>
-    <!-- Data -->
-    <script src="data/teacher-classA.data.js"></script>
-    <script src="data/teacher-classes.data.js"></script>
-    <script src="data/teacher-assignments.data.js"></script>
     <!-- Component - loading-modal -->
     <link rel="stylesheet" href="views/components/loading-modal/loading-modal.css">
     <script src="views/components/loading-modal/loading-modal.js"></script>
@@ -60,11 +63,22 @@
     <!-- Component - editable-question -->
     <link rel="stylesheet" href="views/components/editable-question/editable-question.css">
     <script src="views/components/editable-question/editable-question.js"></script>
+    <!-- Component - consult-question -->
+    <script src="views/components/consult-question/consult-question.js"></script>
+    <!-- Component - exam-box -->
+    <script src="views/components/exam-box/exam-box.js"></script>
+     <!-- Component - answer-sheet -->
+     <link rel="stylesheet" href="views/components/answer-sheet/answer-sheet.css">
+     <script src="views/components/answer-sheet/answer-sheet.js"></script>
     <!-- Controllers -->
     <script src="controllers/HomeController.js"></script>
-    <script src="controllers/teacher/TeacherClassController.js"></script>
-    <script src="controllers/teacher/TeacherClassesController.js"></script>
-    <script src="controllers/teacher/TeacherAssignmentsController.js"></script>
+    <script src="controllers/teacher/TeacherAllClassesController.js"></script>
+    <script src="controllers/teacher/TeacherOneClassController.js"></script>
+    <script src="controllers/teacher/TeacherAllAssignmentsController.js"></script>
+    <script src="controllers/teacher/TeacherAllExamsController.js"></script>
+    <script src="controllers/teacher/TeacherOneExamController.js"></script>
+
+
 
 
 

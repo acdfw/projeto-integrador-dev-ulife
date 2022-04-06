@@ -73,3 +73,6 @@ h3{
   padding: 10rem;
 }
 
+.noHover{
+  pointer-events: none;
+}
