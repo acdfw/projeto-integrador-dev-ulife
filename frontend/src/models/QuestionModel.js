@@ -12,10 +12,10 @@ app.factory("QuestionModel", function ($http) {
       //       // or server returns response with an error status.
       //     });
       
-      return true;
+      return examQuestions[0];
     },
     getQuestions: function () {
-        return questions;
+        return questionsList;
     },
     registerQuestion: function () {
         return questions;

@@ -1,4 +1,4 @@
-questions = [
+examQuestions = [
   {
     title: "Proin at neque id mi gravida dignissim?",
     statement:
@@ -211,9 +211,53 @@ questions = [
   },
 ];
 
-scripts = [
-  "controllers/HomeController.js",
-  "controllers/teacher/TeacherClassController.js",
-  "controllers/teacher/TeacherClassesController.js",
-  "controllers/teacher/TeacherAssignmentsController.js"
+var questionsList = [
+  {
+    id: 'djasjkdajsdjds',
+    title: 'Lorem ipsum dolor sit amet'
+  },
+  {
+    id: 'vsdfsdcxcvxcv',
+    title: 'Nullam sed nisl volutpat'
+  },
+  {
+    id: 'fdsaefer3f3q4c',
+    title: 'Duis nulla libero'
+  },
+  {
+    id: 'x23xer4vwr34v',
+    title: 'Nullam at orci volutpat'
+  },
+  {
+    id: 'ddx4cr4v3c23xr23',
+    title: 'Morbi facilisis sit amet ligula at euismod'
+  },
+  {
+    id: 'fwerc2tc54bv4',
+    title: 'Suspendisse tempus tortor erat'
+  },
+  {
+    id: 'fv6by45v43c',
+    title: 'Nulla pharetra arcu sit amet lorem'
+  },
+  {
+    id: 'dc3243r3453v5',
+    title: 'Nulla pharetra arcu sit amet lorem'
+  },
+  {
+    id: 'f3vt43cc23z234x',
+    title: 'Vestibulum dignissim tellus enim'
+  },
+  {
+    id: 'fv4ewc43t6345b',
+    title: ' Phasellus sit amet tempus ante'
+  },
+  {
+    id: 'v234c643v6c544',
+    title: 'Nam interdum arcu id semper aliquam'
+  },
+  {
+    id: 'fv342rfc542t4v3',
+    title: ' Ut consequat ullamcorper nisl a blandit'
+  },
 ]
