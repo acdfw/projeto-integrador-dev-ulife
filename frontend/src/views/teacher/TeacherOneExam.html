@@ -1,0 +1,7 @@
+<div class="box container">
+  <h1 class="text-center">{{content.title}}</h1>
+  <div ng-repeat="question in content.questions">
+    <br>
+    <consult-question content="{question: question, hideRadioButtons: hideRadioButtons}"></consult-question>
+  </div>
+</div>
