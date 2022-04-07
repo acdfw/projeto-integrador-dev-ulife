@@ -10,8 +10,7 @@ builder.Services.AddInfrastructureData(configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddAuthConfig();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwagger();
 
 builder.Services.AddRepositories();
 builder.Services.AddServices();
