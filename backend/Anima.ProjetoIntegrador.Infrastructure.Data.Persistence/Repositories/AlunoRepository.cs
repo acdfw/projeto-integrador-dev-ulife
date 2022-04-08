@@ -37,7 +37,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                             IdTurma = turma.Id.ToString(),
                             NomeTurma = turma.Nome,
                             NomeProfessor = usuario.Nome,
-                            Matriculado = false
+                            Matriculado = true
                         };
 
             return query.ToList();
@@ -64,7 +64,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                                             IdTurma = turma.Id.ToString(),
                                             NomeTurma = turma.Nome,
                                             NomeProfessor = usuario.Nome,
-                                            Matriculado = true
+                                            Matriculado = false
                                         };
 
             return turmasNaoMatriculadas.ToList();

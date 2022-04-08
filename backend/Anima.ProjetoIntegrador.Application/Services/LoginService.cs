@@ -1,5 +1,4 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
-using Anima.ProjetoIntegrador.Domain.Entities;
 using Anima.ProjetoIntegrador.Domain.Interfaces;
 using Anima.ProjetoIntegrador.Domain.Requests;
 using Anima.ProjetoIntegrador.Domain.Responses;
@@ -29,6 +28,7 @@ namespace Anima.ProjetoIntegrador.Application.Services
             if (usuario is null)
             {
                 response.AddError(StatusCodes.Status401Unauthorized, "Usuário ou senha inválidos!");
+                return response;
             }
 
             var token = _tokenService.GenerateToken(usuario);

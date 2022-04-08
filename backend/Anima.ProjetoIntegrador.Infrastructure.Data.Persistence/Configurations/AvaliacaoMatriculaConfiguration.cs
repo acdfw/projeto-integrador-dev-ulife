@@ -21,9 +21,13 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Configurations
                 .Property(x => x.MatriculaId)
                 .HasColumnName("matricula_id");
 
-           builder
-                .Property(x => x.AvaliacaoId)
-                .HasColumnName("avaliacao_id");
+            builder
+                 .Property(x => x.AvaliacaoId)
+                 .HasColumnName("avaliacao_id");
+
+            builder
+                 .Property(x => x.Nota)
+                 .HasColumnName("nota");
 
             builder
                 .HasMany<Avaliacao>();

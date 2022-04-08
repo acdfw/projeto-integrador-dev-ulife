@@ -32,6 +32,11 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Configurations
                 .Property(x => x.Senha)
                 .IsRequired()
                 .HasColumnName("senha");
+
+            builder
+                .Property(x => x.Role)
+                .IsRequired()
+                .HasColumnName("role");
         }
     }
 }
