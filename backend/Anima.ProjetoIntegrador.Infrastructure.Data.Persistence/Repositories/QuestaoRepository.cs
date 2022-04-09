@@ -36,5 +36,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                 Enunciado = questao?.Enunciado,
             };
         }
+
+        public Guid Criar(Questao questao)
+        {
+            return Add(questao).Id;
+        }
     }
 }

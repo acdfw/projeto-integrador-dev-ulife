@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Anima.ProjetoIntegrador.Domain.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +28,21 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             }
 
             return NotFound("Não existem questões cadastradas para a prova.");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "professor")]
+        public IActionResult CriarProva([FromBody] NovaProvaRequest request)
+        {
+            var response = _provaService.Criar(request);
+
+            if (response.Errors.Any(e => e.Key == StatusCodes.Status404NotFound))
+            {
+                var notFoundErrors = string.Join(" ", response.Errors[StatusCodes.Status404NotFound]);
+                return NotFound(notFoundErrors);
+            }
+
+            return Created(string.Empty, $"Alternativa criada: {response.Id}");
         }
     }    
 }

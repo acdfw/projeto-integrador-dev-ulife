@@ -1,8 +1,8 @@
 ﻿namespace Anima.ProjetoIntegrador.Domain.Requests
 {
-    public class NovaProvaRequest
+    public class NovaQuestaoRequest
     {
-        public string? Nome { get; set; }
+        public string? Enunciado { get; set; }
         public string? ProfessorId { get; set; }
     }
 }

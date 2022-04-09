@@ -1,4 +1,5 @@
-﻿using Anima.ProjetoIntegrador.Domain.Responses;
+﻿using Anima.ProjetoIntegrador.Domain.Entities;
+using Anima.ProjetoIntegrador.Domain.Responses;
 
 namespace Anima.ProjetoIntegrador.Domain.Interfaces
 {
@@ -7,5 +8,6 @@ namespace Anima.ProjetoIntegrador.Domain.Interfaces
         IList<AvaliacaoTurmaResponse> ConsultarAvaliacoesPorTurma(Guid idTurma);
         IList<AlunoMatriculaPorTurmaResponse> ConsultarAlunosMatriculadosPorTurma(Guid idTurma);
         IList<TurmaResponse> ConsultarTurmas();
+        Guid Criar(Turma turma);
     }
 }

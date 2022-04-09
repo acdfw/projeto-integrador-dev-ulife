@@ -1,9 +1,10 @@
 ﻿using Anima.ProjetoIntegrador.Domain.Requests;
+using Anima.ProjetoIntegrador.Domain.Responses;
 
 namespace Anima.ProjetoIntegrador.Application.Services.Interfaces
 {
     public interface IAlternativaService
     {
-        string Criar(NovaAlternativaRequest request);
+        NovaAlternativaResponse Criar(NovaAlternativaRequest request);
     }
 }

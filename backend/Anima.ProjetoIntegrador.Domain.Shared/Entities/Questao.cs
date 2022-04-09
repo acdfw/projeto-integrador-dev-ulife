@@ -5,6 +5,11 @@ namespace Anima.ProjetoIntegrador.Domain.Entities
     [ExcludeFromCodeCoverage]
     public class Questao : Entity
     {
+        public Questao() : base(Guid.NewGuid())
+        {
+
+        }
+
         public string? Enunciado { get; set; }
         public Guid ProfessorId { get; set; }
         public virtual Professor? Professor { get; set; }
