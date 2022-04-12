@@ -10,10 +10,10 @@ app.directive("consultQuestion", function () {
 
       me.alternativeIdentifier = ["A", "B", "C", "D", "E"];
 
-      me.answer = !me.content.answer ? '' : me.content.answer.id
+      me.answer = !me.content.question.answer ? '' : me.content.question.answer.id
 
       me.updateAnswer = (index) => {
-        me.content.answer = {id: me.content.options[index].id, alternative: me.alternativeIdentifier[index]}
+        me.content.question.answer = {id: me.content.question.options[index].id, alternative: me.alternativeIdentifier[index]}
       }
     },
   };

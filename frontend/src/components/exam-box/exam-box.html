@@ -1,5 +1,5 @@
 <div class="box container">
-<consult-question ng-repeat="question in content | limitTo: actualQuestion*questionsPerPage - content.length | limitTo: questionsPerPage" content="question"></consult-question>
+<consult-question ng-repeat="question in content | limitTo: actualQuestion*questionsPerPage - content.length | limitTo: questionsPerPage" content="{question: question}"></consult-question>
 <div ng-if="content.length > 1">
   <ul class="pagination justify-content-center">
     <li class="page-item">
