@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{brandname}}</title>
+    <link rel="shortcut icon" href="../public/img/favicon.ico" type="image/x-icon" />
     
+
     <!-- BOOTSTRAP -->
 
     <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
@@ -42,6 +44,7 @@
     <!-- ROUTES -->
      
     <script src="js/routes/teacherRouteConfig.js"></script>
+    <script src="js/routes/studentRouteConfig.js"></script>
     <script src="js/routes/commonRouteConfig.js"></script>
    
 
@@ -49,8 +52,10 @@
 
     <script src="models/UserModel.js"></script>
     <script src="models/QuestionModel.js"></script>
-    <script src="models/ExamModel.js"></script>
-    <script src="models/ClassModel.js"></script>
+    <script src="models/TeacherQuestionnaireModel.js"></script>
+    <script src="models/TeacherClassModel.js"></script>
+    <script src="models/StudentClassModel.js"></script>
+    <script src="models/StudentAssignmentModel.js"></script>
 
     <!-- SERVICES -->
 
@@ -65,8 +70,7 @@
     <script src="js/interceptors/authInterceptor.js"></script>
 
     <script src="js/interceptors/interceptorsConfig.js"></script>
-    
-    
+        
     <!-- MIDDLEWARE -->
 
     <script src="js/middlewares/midlewareConfig.js"></script>
@@ -103,15 +107,17 @@
 
     <script src="controllers/HomeController.js"></script>
     
-    <script src="controllers/teacher/ClassesListController.js"></script>
-    <script src="controllers/teacher/ClassViewController.js"></script>
-    <script src="controllers/teacher/AssignmentsListController.js"></script>
-    <script src="controllers/teacher/ExamsListController.js"></script>
-    <script src="controllers/teacher/ExamViewController.js"></script>
-    <script src="controllers/teacher/QuestionsListController.js"></script>
-    <script src="controllers/teacher/QuestionViewController.js"></script>
+    <script src="controllers/teacher/TeacherClassesListController.js"></script>
+    <script src="controllers/teacher/TeacherClassViewController.js"></script>
+    <script src="controllers/teacher/TeacherAssignmentsListController.js"></script>
+    <script src="controllers/teacher/TeacherQuestionnairesListController.js"></script>
+    <script src="controllers/teacher/TeacherQuestionnaireViewController.js"></script>
+    <script src="controllers/teacher/TeacherQuestionsListController.js"></script>
+    <script src="controllers/teacher/TeacherQuestionViewController.js"></script>
+    <script src="controllers/teacher/TeacherQuestionNewController.js"></script>
  
-
+    <script src="controllers/student/StudentAssignmentToDoController.js"></script>
+    <script src="controllers/student/StudentClassesListController.js"></script>
 
 
     </head>
