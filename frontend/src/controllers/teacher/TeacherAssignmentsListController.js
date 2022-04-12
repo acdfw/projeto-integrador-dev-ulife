@@ -1,4 +1,4 @@
-app.controller("AssignmentsListCtrl", function ($scope) {
+app.controller("TeacherAssignmentsListCtrl", function ($scope) {
   var me = $scope;
 
   me.content = TeacherAssignmentsContent;

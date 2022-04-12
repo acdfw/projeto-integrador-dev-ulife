@@ -1,14 +1,14 @@
-app.controller("ClassViewCtrl", function ($scope, ClassModel, $routeParams) {
+app.controller("TeacherClassViewCtrl", function ($scope, TeacherClassModel, $routeParams) {
   var me = $scope;
 
-  var teacherClass = ClassModel.getClassById($routeParams.id)
+  var teacherClass = TeacherClassModel.getClassById($routeParams.id)
 
   var tableAssignments = {
     rows: teacherClass.assignments,
     colNames: { id: "Identificador" ,title: "Apelido" },
     colOrder: ["id", "title"],
     showHeader: true,
-    search: { show: false },
+    search: { show: true },
   };
   
   var tableStudents = {

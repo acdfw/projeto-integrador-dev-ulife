@@ -1,4 +1,4 @@
-app.controller("QuestionsListCtrl", function ($scope, QuestionModel) {
+app.controller("TeacherQuestionsListCtrl", function ($scope, QuestionModel, $location) {
   var me = $scope;
 
   var questions = QuestionModel.getQuestions();
@@ -18,5 +18,9 @@ app.controller("QuestionsListCtrl", function ($scope, QuestionModel) {
     subtitles: [""],
     tables: [tableQuestions],
   };
+
+  me.createQuestion = () => {
+    $location.path('/teacher/new-question')
+  }
 
 });

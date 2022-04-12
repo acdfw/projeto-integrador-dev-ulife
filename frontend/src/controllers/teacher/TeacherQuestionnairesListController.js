@@ -1,9 +1,9 @@
-app.controller("ExamsListCtrl", function ($scope, ExamModel) {
+app.controller("TeacherQuestionnairesListCtrl", function ($scope, TeacherQuestionnaireModel) {
   var me = $scope;
 
-  var exams = ExamModel.getExams();
+  var exams = TeacherQuestionnaireModel.getQuestionnaires();
 
-  exams = exams.map(obj=> ({ ...obj, link: `teacher/exam/${obj.id}`}))
+  exams = exams.map(obj=> ({ ...obj, link: `teacher/questionnaire/${obj.id}`}))
   
   var tableTeacherExams = {
     rows: exams,

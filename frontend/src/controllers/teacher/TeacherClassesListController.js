@@ -1,7 +1,7 @@
-app.controller("ClassesListCtrl", function ($scope, ClassModel) {
+app.controller("TeacherClassesListCtrl", function ($scope, TeacherClassModel) {
   var me = $scope;
 
-  classes = ClassModel.getClasses();
+  classes = TeacherClassModel.getClasses();
 
   classes = classes.map(obj=> ({ ...obj, link: `teacher/class/${obj.id}`}))
 
