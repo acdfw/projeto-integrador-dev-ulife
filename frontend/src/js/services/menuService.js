@@ -6,7 +6,7 @@ app.factory("MenuService", function (AuthTokenService) {
           return [
             { text: "Turmas", link: "#/teacher/classes" },
             { text: "Avaliações", link: "#/teacher/assignments" },
-            { text: "Provas", link: "#/teacher/exams" },
+            { text: "Questionários", link: "#/teacher/questionnaires" },
             { text: "Questões", link: "#/teacher/questions" },
             { text: "Sair", link: "#/logout" },
           ];
