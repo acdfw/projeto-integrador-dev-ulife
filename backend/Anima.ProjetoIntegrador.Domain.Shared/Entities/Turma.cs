@@ -5,6 +5,11 @@ namespace Anima.ProjetoIntegrador.Domain.Entities
     [ExcludeFromCodeCoverage]
     public class Turma : Entity
     {
+        public Turma() : base(Guid.NewGuid())
+        {
+
+        }
+
         public string? Nome { get; set; }
         public Guid ProfessorId { get; set; }
         public virtual Professor? Professor { get; set; }

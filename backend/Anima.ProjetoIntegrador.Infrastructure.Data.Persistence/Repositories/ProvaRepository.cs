@@ -28,5 +28,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 
             return query.ToList();
         }
+
+        public Guid Criar(Prova prova)
+        {
+            return Add(prova).Id;
+        }
     }
 }

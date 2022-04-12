@@ -27,5 +27,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 
             return query.FirstOrDefault();
         }
+
+        public Guid Criar(Avaliacao avaliacao)
+        {
+            return Add(avaliacao).Id;
+        }
     }
 }

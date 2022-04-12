@@ -5,6 +5,11 @@ namespace Anima.ProjetoIntegrador.Domain.Entities
     [ExcludeFromCodeCoverage]
     public class Matricula : Entity
     {
+        public Matricula() : base(Guid.NewGuid())
+        {
+
+        }
+
         public Guid AlunoId { get; set; }
         public virtual Aluno? Aluno { get; set; }
         public Guid? TurmaId { get; set; }

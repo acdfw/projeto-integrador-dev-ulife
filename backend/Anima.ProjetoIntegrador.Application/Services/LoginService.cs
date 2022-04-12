@@ -27,7 +27,10 @@ namespace Anima.ProjetoIntegrador.Application.Services
 
             if (usuario is null)
             {
-                response.AddError(StatusCodes.Status401Unauthorized, "Usuário ou senha inválidos!");
+                response.AddError(StatusCodes.Status401Unauthorized, new List<string>
+                {
+                    "Usuário ou senha inválidos!"
+                });
                 return response;
             }
 

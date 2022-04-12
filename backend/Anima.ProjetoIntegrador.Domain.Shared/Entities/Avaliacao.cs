@@ -5,6 +5,11 @@ namespace Anima.ProjetoIntegrador.Domain.Entities
     [ExcludeFromCodeCoverage]
     public class Avaliacao : Entity
     {
+        public Avaliacao() : base(Guid.NewGuid())
+        {
+
+        }
+
         public Guid? TurmaId { get; set; }
         public virtual Turma? Turma { get; set; }
         public Guid? ProvaId { get; set; }

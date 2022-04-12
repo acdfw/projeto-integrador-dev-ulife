@@ -1,6 +1,9 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Anima.ProjetoIntegrador.Domain.Entities;
 using Anima.ProjetoIntegrador.Domain.Interfaces;
+using Anima.ProjetoIntegrador.Domain.Requests;
 using Anima.ProjetoIntegrador.Domain.Responses;
+using Microsoft.AspNetCore.Http;
 
 namespace Anima.ProjetoIntegrador.Application.Services
 {
@@ -18,9 +21,40 @@ namespace Anima.ProjetoIntegrador.Application.Services
             return _provaRepository.ConsultarQuestoesPorProva(id);
         }
 
-        public void Inserir()
+        public NovaProvaResponse Criar(NovaProvaRequest request)
         {
+            var response = new NovaProvaResponse();
+            var notFoundErros = new List<string>();
 
+            if (string.IsNullOrEmpty(request.Nome))
+            {
+                notFoundErros.Add("É necessário um nome para a prova.");
+            }
+
+            if (string.IsNullOrEmpty(request.ProfessorId))
+            {
+                notFoundErros.Add("É necessário um professor para a prova.");
+            }
+
+            if (notFoundErros.Any())
+            {
+                response.AddError(StatusCodes.Status404NotFound, notFoundErros);
+            }
+
+            if (response.Errors.Any())
+            {
+                return response;
+            }
+
+            var prova = new Prova
+            {
+                Nome = request.Nome,
+                ProfessorId = Guid.Parse(request.ProfessorId)
+            };
+
+            response.Id = _provaRepository.Criar(prova).ToString();
+
+            return response;
         }
     }
 }

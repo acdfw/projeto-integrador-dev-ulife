@@ -55,5 +55,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                 NomeTurma = q.Nome
             }).ToList();
         }
+
+        public Guid Criar(Turma turma)
+        {
+            return Add(turma).Id;
+        }
     }
 }
