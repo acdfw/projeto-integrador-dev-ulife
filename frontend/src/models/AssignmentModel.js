@@ -17,7 +17,7 @@ app.factory("AssignmentModel", function ($http) {
     getAssignments: function () {
       return true;
     },
-    registerAssignment: function () {
+    createAssignment: function () {
       return true;
     },
     submitAssignment: function () {

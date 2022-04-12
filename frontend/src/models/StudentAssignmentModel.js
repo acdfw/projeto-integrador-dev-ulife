@@ -1,6 +1,6 @@
-app.factory("QuestionModel", function ($http) {
+app.factory("StudentAssignmentModel", function ($http) {
   return {
-    getQuestionById: function (id) {
+    getAssignmentById: function (id) {
       // $http({
       //     method: 'GET',
       //     url: '/someUrl'
@@ -11,14 +11,28 @@ app.factory("QuestionModel", function ($http) {
       //       // called asynchronously if an error occurs
       //       // or server returns response with an error status.
       //     });
-      
-      return examQuestions[0];
+
+      return true;
     },
-    getQuestions: function () {
-        return questionsList;
+    getAssignments: function () {
+
+      studentAssignments = [
+        {
+          id: 'hdkahdakjds',
+          class_id: 'ajhksdhaskjdhkajsd',
+          title: 'A1',
+          teacherName
+        }
+      ]
+
+
+      return true;
     },
-    createQuestion: function () {
-        return questions;
+    createAssignment: function () {
+      return true;
+    },
+    submitAssignment: function () {
+      return true;
     }
   };
 });

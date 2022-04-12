@@ -1,6 +1,6 @@
-app.factory("ExamModel", function ($http) {
+app.factory("TeacherQuestionnaireModel", function ($http) {
   return {
-    getExamById: function (id) {
+    getQuestionnaireById: function (id) {
       // $http({
       //     method: 'GET',
       //     url: '/someUrl'
@@ -15,12 +15,12 @@ app.factory("ExamModel", function ($http) {
       let exam = {
         id: "fasjkdhajkshjkndasjhd",
         title: "prova de teste",
-        questions: questions,
+        questions: examQuestions,
       };
 
       return exam;
     },
-    getExams: function () {
+    getQuestionnaires: function () {
       
       let exams = [
         {
@@ -47,7 +47,7 @@ app.factory("ExamModel", function ($http) {
 
       return exams;
     },
-    registerExam: function () {
+    createQuestionnaire: function () {
       return true;
     },
   };

@@ -1,4 +1,4 @@
-app.factory("ClassModel", function ($http) {
+app.factory("TeacherClassModel", function ($http) {
   return {
     getClassById: function (id) {
       // $http({
@@ -12,7 +12,7 @@ app.factory("ClassModel", function ($http) {
       //       // or server returns response with an error status.
       //     });
 
-      let teacherClass = {
+      let teacherClass = {            
         id: 'asdhaskjdhjkad',
         title: 'Turma A',
         assignments : [
@@ -94,7 +94,7 @@ app.factory("ClassModel", function ($http) {
 
       return teacherClasses;
     },
-    registerClass: function () {
+    createClass: function () {
       return true;
     }
   };
