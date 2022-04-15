@@ -1,52 +1,27 @@
-app.controller("StudentClassesListCtrl", function ($scope, StudentClassModel) {
+app.controller("StudentClassesListCtrl", function ($scope, ClassModel) {
   var me = $scope;
 
-  classes = StudentClassModel.getClasses();
+  classes = ClassModel.getStudentClasses();
 
-  subscribedClasses = classes.filter((obj) => obj.registration != null);
-  unsubscribedClasses = classes.filter((obj) => obj.registration == null);
+  classes = classes.map( obj => ({
+    className : obj.name,
+    teacherName : obj.teacher.name,
+    pendingAssignments : obj.assignments.filter(ass => !ass.grade).length,
+    doneAssignments : obj.assignments.filter(ass => ass.grade).length,
+    link: `/student/class/${obj.id}`
+  }))
 
-  subscribedClasses = subscribedClasses.map((obj) => ({
-    className: obj.className,
-    teacherName: obj.teacherName,
-    pendingAssignments: obj.assignments.filter((ass) => ass.grade == null).length,
-    link: `student/class/${obj.id}`,
-  }));
-
-  var tableSubscribedClasses = {
-    rows: subscribedClasses,
+  me.table = {
+    rows: classes,
     colNames: {
       className: "Turma",
       teacherName: "Instrutor(a)",
       pendingAssignments: "Avaliações Pendentes",
+      doneAssignments: "Avaliações Realizadas",
     },
-    colOrder: ["className", "teacherName", "pendingAssignments"],
+    colOrder: ["className", "teacherName", "doneAssignments", "pendingAssignments"],
     showHeader: true,
     search: { show: false },
   };
   
-  me.subscribedClasses = {
-    title: "Matriculado",
-    subtitles: [""],
-    tables: [tableSubscribedClasses],
-  };
-
-  var tableUnsubscribedClasses = {
-    rows: unsubscribedClasses,
-    colNames: {
-      className: "Turma",
-      teacherName: "Instrutor(a)",
-      pendingAssignments: "Avaliações Pendentes",
-    },
-    colOrder: ["className", "teacherName", "pendingAssignments"],
-    showHeader: true,
-    search: { show: false },
-  };
-
-  me.unsubscribedClasses = {
-    title: "Outras turmas",
-    subtitles: [""],
-    tables: [tableUnsubscribedClasses],
-  };
-
 });

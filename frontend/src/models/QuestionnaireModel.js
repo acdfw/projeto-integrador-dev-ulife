@@ -1,4 +1,4 @@
-app.factory("TeacherQuestionnaireModel", function ($http) {
+app.factory("QuestionnaireModel", function ($http) {
   return {
     getQuestionnaireById: function (id) {
       // $http({
@@ -14,7 +14,7 @@ app.factory("TeacherQuestionnaireModel", function ($http) {
 
       let exam = {
         id: "fasjkdhajkshjkndasjhd",
-        title: "prova de teste",
+        name: "prova de teste",
         questions: examQuestions,
       };
 
@@ -25,30 +25,30 @@ app.factory("TeacherQuestionnaireModel", function ($http) {
       let exams = [
         {
           id: "eqwdjlaklmckzc",
-          title: "prova de teste 1",
-          numQuestions: "10",
+          name: "prova de teste 1",
+          questions: examQuestions
         },
         {
           id: "ggfhdgretfdsgrt",
-          title: "prova de teste 2",
-          numQuestions: "15",
+          name: "prova de teste 2",
+          questions: examQuestions
         },
         {
           id: "hgfbvsfgergfdsg",
-          title: "prova de teste 3",
-          numQuestions: "12",
+          name: "prova de teste 3",
+          questions: examQuestions
         },
         {
           id: "sdbdnbyregbhdf",
-          title: "prova de teste 4",
-          numQuestions: "20",
+          name: "prova de teste 4",
+          questions: examQuestions
         },
       ];
 
       return exams;
     },
-    createQuestionnaire: function () {
-      return true;
+    create: function (obj) {
+      console.log(obj);
     },
   };
 });

@@ -1,5 +1,5 @@
 <div class="hoverable-table">
-  <table class="table table-hover">
+  <table class="table table-hover text-center">
     <thead>
       <tr ng-if="content.showHeader">
         <th scope="col">#</th>
@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody class="hoverable-table">
-      <tr ng-repeat="(index, row) in rows | orderBy: content.orderBy | limitTo: actualPage*resultsPerPage - rows.length | limitTo: resultsPerPage" ng-class="{pointer : row.link}" ng-click="goTo(row.link)">
+      <tr ng-repeat="(index, row) in rows | orderBy: content.orderBy | limitTo: actualPage*resultsPerPage - rows.length | limitTo: resultsPerPage" ng-click="resolveClick(row)" ng-class="{selected: row.selected, pointer : row.link || content.selectable}">
         <td>{{index + 1 + actualPage*resultsPerPage}}</td>
         <td ng-repeat="col in content.colOrder">{{row[col]}}</td>
       </tr>  

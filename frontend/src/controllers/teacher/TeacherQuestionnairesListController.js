@@ -1,22 +1,20 @@
-app.controller("TeacherQuestionnairesListCtrl", function ($scope, TeacherQuestionnaireModel) {
+app.controller("TeacherQuestionnairesListCtrl", function ($scope, QuestionnaireModel, $location) {
   var me = $scope;
 
-  var exams = TeacherQuestionnaireModel.getQuestionnaires();
+  var exams = QuestionnaireModel.getQuestionnaires();
 
-  exams = exams.map(obj=> ({ ...obj, link: `teacher/questionnaire/${obj.id}`}))
+  exams = exams.map(obj=> ({ id: obj.id, name: obj.name, numQuestions: obj.questions.length, link: `teacher/questionnaire/${obj.id}`}))
   
-  var tableTeacherExams = {
+  me.table = {
     rows: exams,
-    colNames: { title: "Titulo", numQuestions: "Número de Questões", id: "Identificador" },
-    colOrder: ["id", "title", "numQuestions"],
+    colNames: { name: "Titulo", numQuestions: "Número de Questões", id: "Identificador" },
+    colOrder: ["id", "name", "numQuestions"],
     showHeader: true,
     search: { show: true },
   };  
   
-  me.content = {
-    title: "Suas Provas",
-    subtitles: [""],
-    tables: [tableTeacherExams],
-  };
+me.redirectToQuestions = () => {
+  $location.path("/teacher/questions")
+}
 
 });

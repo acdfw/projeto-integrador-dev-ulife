@@ -14,7 +14,6 @@ app.factory("MenuService", function (AuthTokenService) {
           return [
             { text: "Turmas", link: "#/student/classes" },
             { text: "Avaliações", link: "#/student/assignments" },
-            { text: "Notas", link: "#/student/assignments" },
             { text: "Sair", link: "#/logout" },
           ];
         default:

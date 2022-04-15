@@ -1,12 +1,12 @@
-app.controller("TeacherClassViewCtrl", function ($scope, TeacherClassModel, $routeParams) {
+app.controller("TeacherClassViewCtrl", function ($scope, ClassModel, $routeParams, QuestionnaireModel) {
   var me = $scope;
 
-  var teacherClass = TeacherClassModel.getClassById($routeParams.id)
+  var teacherClass = ClassModel.getTeacherClassById($routeParams.id)
 
   var tableAssignments = {
-    rows: teacherClass.assignments,
-    colNames: { id: "Identificador" ,title: "Apelido" },
-    colOrder: ["id", "title"],
+    rows: teacherClass.assignments.map(obj => ({...obj, link: `/teacher/assignment/${obj.id}`})),
+    colNames: { id: "Identificador" ,name: "Apelido" },
+    colOrder: ["id", "name"],
     showHeader: true,
     search: { show: true },
   };
@@ -27,6 +27,10 @@ app.controller("TeacherClassViewCtrl", function ($scope, TeacherClassModel, $rou
     tables: [tableAssignments, tableStudents],
   };
   
+  me.questionnaires = QuestionnaireModel.getQuestionnaires();
 
+me.CreateNewAssignment = () => {
+  console.log({name: me.newAssignmentName, questionnaire: me.questionnaireBase})  
+}
 
 });

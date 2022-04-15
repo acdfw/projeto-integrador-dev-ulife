@@ -1,7 +1,7 @@
-app.controller("TeacherQuestionViewCtrl", function ($scope, QuestionModel, $routeParams) {
+app.controller("TeacherQuestionViewCtrl", function ($scope, TeacherQuestionModel, $routeParams) {
   var me = $scope;
 
-  me.question = QuestionModel.getQuestionById($routeParams.id);
+  me.question = TeacherQuestionModel.getQuestionById($routeParams.id);
   me.hideRadioButtons = true; 
 
 });

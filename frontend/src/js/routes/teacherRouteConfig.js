@@ -26,6 +26,18 @@ app.config([
           authorize: true,
           role: "T",
         })
+        .when("/teacher/assignment/:id", {
+          templateUrl: 'views/teacher/TeacherAssignmentView.html',
+          controller: "TeacherAssignmentViewCtrl",
+          authorize: true,
+          role: "T",
+        })
+        .when("/teacher/assignment-done/:id", {
+          templateUrl: "views/teacher/TeacherAssignmentDone.html",
+          controller: "TeacherAssignmentDoneCtrl",
+          authorize: true,
+          role: "T",
+        })
         .when("/teacher/questionnaires", {
           templateUrl: 'views/teacher/TeacherQuestionnairesList.html',
           controller: "TeacherQuestionnairesListCtrl",

@@ -15,10 +15,10 @@ app.factory("QuestionModel", function ($http) {
       return examQuestions[0];
     },
     getQuestions: function () {
-        return questionsList;
+        return examQuestions;
     },
-    createQuestion: function () {
-        return questions;
+    create: function (obj) {
+        console.log(obj)
     }
   };
 });

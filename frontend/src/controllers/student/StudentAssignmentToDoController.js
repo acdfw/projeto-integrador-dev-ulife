@@ -1,14 +1,21 @@
-app.controller("StudentAssignmentToDoCtrl", function ($scope, ExamModel, $routeParams) {
+app.controller("StudentAssignmentToDoCtrl", function ($scope, AssignmentModel, $routeParams) {
   var me = $scope;
 
-  me.content = ExamModel.getExamById($routeParams.id);
+  var assignment = AssignmentModel.getStudentAssignmentById($routeParams.id);
  
+  me.assignmentName = assignment.name;
+  me.className = assignment.class.name;
+  me.teacherName = assignment.teacher.name;
+
+  me.questionnaire = assignment.questionnaire.questions;
+
   function getAnswers(){
     var answers = []
     var answer
-    me.content.questions.forEach(question => {
+
+    assignment.questionnaire.questions.forEach(question => {
       if(!question.answer){
-        answer = ''
+        answer = null
       }else{
         answer = question.answer.id
       }
@@ -20,10 +27,13 @@ app.controller("StudentAssignmentToDoCtrl", function ($scope, ExamModel, $routeP
   me.submitExam = () => {
     var answers = getAnswers();
 
-    if(answers.filter(answer => answer == '').length > 0){
-      alert("Você não respondeu todas as perguntas")
-    }else{
-      console.log(answers)
+    if(answers.filter(answer => answer == null).length > 0){
+      if(confirm("Você não respondeu todas as perguntas. Deseja prosseguir?")){
+        AssignmentModel.submit({
+          assignment: assignment.id,
+          answers: answers
+        })
+      }
     }
   }
 

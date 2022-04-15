@@ -6,16 +6,15 @@
       <h3>Turma: {{className}}</h3>
     </div>
     <div class="col">
-      <h3>Prof: {{teacherName}}
+      <h3>Aluno: {{studentName}}
     
   </div>
   </div>
   
   <br>
   
-  <answer-sheet content="questionnaire"></answer-sheet>
+  <answer-sheet-review-mode content="answers"></answer-sheet-review-mode>
   <br />
-  <exam-box content="{questions: questionnaire}"></exam-box>
+  <exam-box content="{questions: questionnaire, hideRadioButtons: true, answers: answers}"></exam-box>
   <br />
-  <button class="btn btn-primary w-100" ng-click="submitExam()">Entregar prova</button>
 </div>

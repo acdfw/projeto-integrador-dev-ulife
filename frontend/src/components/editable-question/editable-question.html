@@ -6,12 +6,12 @@
     <form class="question-form">
       <div class="form-group">
         <label for="title" class="question-form-label">Título: </label>
-        <input type="text" ng-model="title" id="title" class="question-form-input"/>
+        <input type="text" ng-model="newQuestionName" id="title" class="question-form-input"/>
       </div>
       <br />
       <div class="form-group">
         <label for="statement">Enunciado : </label>
-        <textarea ng-model="texto" ui-tinymce="tinymceOptions" id="statement"></textarea>
+        <textarea ng-model="newQuestionStatement" ui-tinymce="tinymceOptions" id="statement"></textarea>
       </div>
       <br />
 
@@ -27,17 +27,17 @@
           <tr ng-repeat="(index, option) in options">
             <th scope="row">{{index+1}}</th>
             <td class="option-col">
-              <input type="text" ng-model="option.text" class="option-input" required/>
+              <input type="text" ng-model="option.statement" class="option-input" required/>
             </td>
             <td class="answer-col">
-              <input type="radio" ng-model="option.isAnswer" name="answer" />
+              <input type="radio" ng-model="$parent.answer" name="answer" ng-value="index" />
             </td>
           </tr>
         </tbody>
       </table>
     </form>
     <br>
-<button class="btn btn-success w-100">Salvar questão</button>
+<button class="btn btn-success w-100" ng-click="saveQuestion()">Salvar questão</button>
 
   </div>
 </div>

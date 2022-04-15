@@ -1,3 +1,40 @@
-<div tables-card content="content"></div>
+<div class="card">
+  <div class="card-header">
+    <h1 class="card-title text-center">Suas Avaliações</h1>
+  </div>
+  <div class="card-body row">
+    <div class="col">
+      <hoverable-table content="assignmentsTable"></hoverable-table>
+    </div>
+  </div>
+</div>
 <br>
-<button class="btn btn-success w-100">Criar avaliação</button>
+<div class="card">
+    <div class="card-header">
+      <h3>Nova avaliação para esta turma</h3>
+    </div>
+    <div class="card-body">
+      <input
+        type="text"
+        id="new-class"
+        class="w-100"
+        placeholder="Nome da avaliação"
+        ng-model="newAssignmentName"
+      />
+      <br>
+      <br>
+      <input list="questionnaires"placeholder="Selecione o questionário" class='w-100' ng-model="questionnaireBase"/>
+      <datalist id="questionnaires">
+        <option value="{{questionnaire.id}}" ng-repeat="questionnaire in questionnaires">{{questionnaire.title}}</option>
+      </datalist>
+      <br />
+      <br />
+      <input list="classes"placeholder="Selecione a turma" class='w-100' ng-model="targetClass"/>
+      <datalist id="classes">
+        <option value="{{c.id}}" ng-repeat="c in classes">{{c.title}}</option>
+      </datalist>
+      <br />
+      <br />
+      <button class="btn btn-success w-100" ng-disabled="!questionnaireBase || !newAssignmentName || !targetClass" ng-click="CreateNewAssignment()">Criar avaliação</button>
+    </div>
+  </div>

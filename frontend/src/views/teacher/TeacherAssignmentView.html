@@ -1,0 +1,45 @@
+<div class="box container">
+  <h1 class="text-center">{{assignmentName}}</h1>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h3>Questionário base: {{questionnaireName}}</h3>
+    </div>
+  </div>
+  <exam-box content="{questions: questionnaire, hideRadioButtons: true}"></exam-box>
+  <div class="row text-center">
+    <div class="col">
+      <h3>Turma: {{className}}
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-header">
+      <h2>Diário da Turma</h2>
+    </div>
+    <div class="card-body">
+      <hoverable-table content="studentsResults"></hoverable-table>
+    </div>
+  </div>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h3>Feito: {{numDoneAssignments}}
+    </div>
+    <div class="col">
+      <h3>Pendente: {{numPendingAssignments}}
+    </div>
+  </div>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h3>Menor nota: {{minGrade}}
+    </div>
+    <div class="col">
+      <h3>Maior nota: {{maxGrade}}
+    </div>
+    <div class="col">
+      <h3>Média: {{averageGrade}}
+    </div>
+  </div>
+</div>
