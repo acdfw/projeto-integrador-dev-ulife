@@ -1,0 +1,14 @@
+<div class="answer-sheet">
+  <table class="border text-center" ng-repeat="(index, question) in content">
+    <tr>
+      <th class="answer-sheet-column">
+        {{index + 1}}
+      </th>
+    </tr>
+    <tr>
+      <th>
+        {{question.studentAnswer == question.correctAnswer ? '✔️' : '❌' }}
+      </th>
+    </tr>
+  </table>
+</div>

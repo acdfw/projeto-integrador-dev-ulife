@@ -1,6 +1,6 @@
-app.factory("ExamModel", function ($http) {
+app.factory("QuestionnaireModel", function ($http) {
   return {
-    getExamById: function (id) {
+    getQuestionnaireById: function (id) {
       // $http({
       //     method: 'GET',
       //     url: '/someUrl'
@@ -14,41 +14,41 @@ app.factory("ExamModel", function ($http) {
 
       let exam = {
         id: "fasjkdhajkshjkndasjhd",
-        title: "prova de teste",
-        questions: questions,
+        name: "prova de teste",
+        questions: examQuestions,
       };
 
       return exam;
     },
-    getExams: function () {
+    getQuestionnaires: function () {
       
       let exams = [
         {
           id: "eqwdjlaklmckzc",
-          title: "prova de teste 1",
-          numQuestions: "10",
+          name: "prova de teste 1",
+          questions: examQuestions
         },
         {
           id: "ggfhdgretfdsgrt",
-          title: "prova de teste 2",
-          numQuestions: "15",
+          name: "prova de teste 2",
+          questions: examQuestions
         },
         {
           id: "hgfbvsfgergfdsg",
-          title: "prova de teste 3",
-          numQuestions: "12",
+          name: "prova de teste 3",
+          questions: examQuestions
         },
         {
           id: "sdbdnbyregbhdf",
-          title: "prova de teste 4",
-          numQuestions: "20",
+          name: "prova de teste 4",
+          questions: examQuestions
         },
       ];
 
       return exams;
     },
-    registerExam: function () {
-      return true;
+    create: function (obj) {
+      console.log(obj);
     },
   };
 });

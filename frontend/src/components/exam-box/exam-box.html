@@ -1,12 +1,12 @@
 <div class="box container">
-<consult-question ng-repeat="question in content | limitTo: actualQuestion*questionsPerPage - content.length | limitTo: questionsPerPage" content="question"></consult-question>
-<div ng-if="content.length > 1">
+<consult-question ng-repeat="question in content.questions | limitTo: actualQuestion*questionsPerPage - content.questions.length | limitTo: questionsPerPage" content="{question: question, num: actualQuestion + 1, hideRadioButtons: content.hideRadioButtons, review: content.answers}"></consult-question>
+<div ng-if="content.questions.length > 1">
   <ul class="pagination justify-content-center">
     <li class="page-item">
       <a class="page-link pointer" ng-click="previousPage()">&#60</a>
     </li>  
     <li class="noHover">
-      <span>{{actualQuestion+1}} / {{content.length}}</span>
+      <span>{{actualQuestion+1}} / {{content.questions.length}}</span>
     </li>    
     <li class="page-item">
       <a class="page-link pointer" ng-click="nextPage()">&#62</a>

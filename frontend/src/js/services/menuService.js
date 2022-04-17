@@ -6,7 +6,7 @@ app.factory("MenuService", function (AuthTokenService) {
           return [
             { text: "Turmas", link: "#/teacher/classes" },
             { text: "Avaliações", link: "#/teacher/assignments" },
-            { text: "Provas", link: "#/teacher/exams" },
+            { text: "Questionários", link: "#/teacher/questionnaires" },
             { text: "Questões", link: "#/teacher/questions" },
             { text: "Sair", link: "#/logout" },
           ];
@@ -14,7 +14,6 @@ app.factory("MenuService", function (AuthTokenService) {
           return [
             { text: "Turmas", link: "#/student/classes" },
             { text: "Avaliações", link: "#/student/assignments" },
-            { text: "Notas", link: "#/student/assignments" },
             { text: "Sair", link: "#/logout" },
           ];
         default:

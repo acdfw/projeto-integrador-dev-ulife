@@ -10,10 +10,16 @@ app.directive("consultQuestion", function () {
 
       me.alternativeIdentifier = ["A", "B", "C", "D", "E"];
 
-      me.answer = !me.content.answer ? '' : me.content.answer.id
+      me.answer = !me.content.question.answer ? '' : me.content.question.answer.id
+
+      me.review = me.content.review ? me.content.review.find(obj => obj.id == me.content.question.id) : null
+
+      me.studentIsCorrect = () => {
+        return me.review.studentAnswer == me.review.correctAnswer  
+      }
 
       me.updateAnswer = (index) => {
-        me.content.answer = {id: me.content.options[index].id, alternative: me.alternativeIdentifier[index]}
+        me.content.question.answer = {id: me.content.question.options[index].id, alternative: me.alternativeIdentifier[index]}
       }
     },
   };

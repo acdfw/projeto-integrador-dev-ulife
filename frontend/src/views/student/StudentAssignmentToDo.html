@@ -1,0 +1,21 @@
+<div class="box container">
+  <h1 class="text-center">{{assignmentName}}</h1>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h3>Turma: {{className}}</h3>
+    </div>
+    <div class="col">
+      <h3>Prof: {{teacherName}}
+    
+  </div>
+  </div>
+  
+  <br>
+  
+  <answer-sheet content="questionnaire"></answer-sheet>
+  <br />
+  <exam-box content="{questions: questionnaire}"></exam-box>
+  <br />
+  <button class="btn btn-primary w-100" ng-click="submitExam()">Entregar prova</button>
+</div>

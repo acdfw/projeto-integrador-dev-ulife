@@ -1,0 +1,51 @@
+<button class="btn btn-success w-100" ng-click="createQuestion()">
+  Criar nova questão
+</button>
+<br />
+<br />
+<div class="card">
+  <div class="card-header">
+    <h1 class="card-title text-center">Suas questões</h1>
+  </div>
+  <div class="card-body row">
+    <div class="col">
+      <hoverable-table content="questionsTable"></hoverable-table>
+    </div>
+  </div>
+</div>
+
+<div ng-if="questionsTable.selectedItems.length>0">
+  <br />
+  <button class="btn btn-success w-100" ng-click="cleanSelection()">
+    Limpar seleção
+  </button>
+  <br />
+</div>
+
+<br />
+<div class="card">
+  <div class="card-header">
+    <h3>Criar questionário</h3>
+  </div>
+  <div class="card-body">
+    <div ng-if="questionsTable.selectedItems.length==0">
+      Nenhuma questão selecionada
+    </div>
+    <div ng-if="questionsTable.selectedItems.length>0">
+      <exam-box
+        content="{questions: questionsTable.selectedItems, hideRadioButtons: true}"
+      ></exam-box>
+      <input
+        type="text"
+        placeholder="Nome do questionário"
+        ng-model="$parent.newQuestionnaireName"
+        class="w-100"
+      />
+      <br />
+      <br />
+      <button class="btn btn-success w-100" ng-click="createQuestionnaire()" ng-disabled="!$parent.newQuestionnaireName">
+        Criar questionário
+      </button>
+    </div>
+  </div>
+</div>

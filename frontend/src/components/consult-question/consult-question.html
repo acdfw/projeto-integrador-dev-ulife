@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h2>Título: {{content.question.title}}</h2>
+    <h2>{{content.num}} ) {{content.question.title}}</h2>
   </div>
   <div class="card-body">
     <br />
@@ -19,8 +19,18 @@
               ng-change="updateAnswer(index)"
             />
           </td>
-          <th scope="row">{{alternativeIdentifier[index]}})</th>
-          <td class="option-col">{{option.statement}}</td>
+          <th scope="row">{{alternativeIdentifier[index]}} )</th>
+          <td class="option-col">
+            {{option.statement}}
+            <span ng-if="review">
+              <span ng-if="review.studentAnswer == option.id">
+                <b>(Resposta do Estudante)</b>
+                <span ng-if="studentIsCorrect()">✔️</span>
+                <span ng-if="!studentIsCorrect()">❌</span>
+              </span> 
+              <span ng-if="!studentIsCorrect() && review.correctAnswer == option.id"><b>(Resposta correta)</b></span>         
+            </span>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -46,9 +46,12 @@ app.directive("hoverableTable", function () {
         me.actualPage = 0;
       };
 
-      me.goTo = (url) => {
-        if(url)
-          $location.path(url)
+      me.resolveClick = (row) => {
+        if(row.link)
+          $location.path(row.link)
+        if(me.content.selectable)
+          row.selected = !row.selected
+          me.content.selectedItems = me.rows.filter(row => row.selected)
       }
 
     },

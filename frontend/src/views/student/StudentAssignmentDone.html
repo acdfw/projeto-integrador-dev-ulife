@@ -1,0 +1,20 @@
+<div class="box container">
+  <h1 class="text-center">{{assignmentName}}</h1>
+  <br>
+  <div class="row text-center">
+    <div class="col">
+      <h3>Turma: {{className}}</h3>
+    </div>
+    <div class="col">
+      <h3>Prof: {{teacherName}}
+    
+  </div>
+  </div>
+  
+  <br>
+  
+  <answer-sheet-review-mode content="answers"></answer-sheet-review-mode>
+  <br />
+  <exam-box content="{questions: questionnaire, hideRadioButtons: true, answers: answers}"></exam-box>
+  <br />
+</div>
