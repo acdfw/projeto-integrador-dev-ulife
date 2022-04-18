@@ -30,23 +30,9 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Não existem avaliações cadastradas para a turma.");
         }
 
-        [HttpGet("{id}/alunos")]
-        [Authorize(Roles = "professor")]
-        public IActionResult ConsultarAlunosMatriculadosPorTurma(string id)
-        {
-            var alunosMatriculados = _turmaService.ConsultarAlunosMatriculadosPorTurma(Guid.Parse(id));
-
-            if (alunosMatriculados.Any())
-            {
-                return Ok(alunosMatriculados);
-            }
-
-            return NotFound("Não existem alunos matriculados para a turma.");
-        }
-
         [HttpPost]
         [Authorize(Roles = "professor")]
-        public IActionResult CriarQuestao([FromBody] NovaTurmaRequest request)
+        public IActionResult CriarTurma([FromBody] NovaTurmaRequest request)
         {
             var response = _turmaService.Criar(request);
 
@@ -56,7 +42,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
                 return NotFound(notFoundErrors);
             }
 
-            return Created(string.Empty, $"Alternativa criada: {response.Id}");
+            return Created(string.Empty, $"Turma criada: {response.Id}");
         }
     }
 }

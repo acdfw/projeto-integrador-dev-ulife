@@ -14,6 +14,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting.IoC
             services.AddScoped<IMatriculaRepository, MatriculaRepository>();
             services.AddScoped<IProfessorRepository, ProfessorRepository>();
             services.AddScoped<IProvaRepository,ProvaRepository>();
+            services.AddScoped<IProvaQuestaoRepository,ProvaQuestaoRepository>();
             services.AddScoped<IQuestaoRepository, QuestaoRepository>();
             services.AddScoped<ITurmaRepository, TurmaRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();

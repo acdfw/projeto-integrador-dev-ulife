@@ -3,6 +3,7 @@
     public class NovaAvaliacaoRequest
     {
         public string? TurmaId { get; set; }
-        public string? ProvaId { get; set; }
+        public string? ProfessorId { get; set; }
+        public string? NomeProva { get; set; }
     }
 }

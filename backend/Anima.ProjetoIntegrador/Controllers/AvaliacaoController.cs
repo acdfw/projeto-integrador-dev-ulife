@@ -30,11 +30,25 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Avaliação não encontrada.");
         }
 
+        [HttpGet("{id}/avaliacao/turma/alunos-matriculados-notas")]
+        [Authorize(Roles = "professor")]
+        public IActionResult ConsultarTurmaInscritosPorAvaliacao(string id)
+        {
+            var alunosMatriculados = _avaliacaoService.ConsultarTurmaInscritosPorAvaliacao(Guid.Parse(id));
+
+            if (alunosMatriculados.Any())
+            {
+                return Ok(alunosMatriculados);
+            }
+
+            return NotFound("Não existem alunos matriculados para a turma.");
+        }
+
         [HttpPost]
         [Authorize(Roles = "professor")]
-        public IActionResult CriarAvaliacao([FromBody] NovaAvaliacaoRequest request)
+        public IActionResult CriarComProva([FromBody] NovaAvaliacaoRequest request)
         {
-            var response = _avaliacaoService.Criar(request);
+            var response = _avaliacaoService.CriarComProva(request);
 
             if (response.Errors.Any(e => e.Key == StatusCodes.Status404NotFound))
             {

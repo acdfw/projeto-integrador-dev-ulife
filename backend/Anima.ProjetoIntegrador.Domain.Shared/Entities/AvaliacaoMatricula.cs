@@ -14,6 +14,6 @@ namespace Anima.ProjetoIntegrador.Domain.Entities
         public virtual Avaliacao? Avaliacao { get; set; }
         public Guid? MatriculaId { get; set; }
         public virtual Matricula? Matricula { get; set; }
-        public double Nota { get; set; }
+        public double? Nota { get; set; }
     }
 }

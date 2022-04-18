@@ -6,6 +6,7 @@ namespace Anima.ProjetoIntegrador.Application.Services.Interfaces
     public interface IAvaliacaoService
     {
         ProvaTurmaQuestoesResponse? ObterProvaTurmaQuestoesPorAvaliacao(Guid id);
-        NovaAvaliacaoResponse Criar(NovaAvaliacaoRequest request);
+        IList<AlunoMatriculadoTurmaResponse> ConsultarTurmaInscritosPorAvaliacao(Guid id);
+        NovaAvaliacaoResponse CriarComProva(NovaAvaliacaoRequest request);
     }
 }

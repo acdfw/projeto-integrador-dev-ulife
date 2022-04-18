@@ -12,10 +12,15 @@ namespace Anima.ProjetoIntegrador.Application.Services
         private readonly IAvaliacaoRepository _avaliacaoRepository;
         private readonly IProvaRepository _provaRepository;
 
-        public AvaliacaoService(IAvaliacaoRepository avaliacaoRepository, IProvaRepository provaRepository)
+        private readonly IProvaService _provaService;
+
+        public AvaliacaoService(IAvaliacaoRepository avaliacaoRepository, IProvaRepository provaRepository,
+            IProvaService provaService)
         {
             _avaliacaoRepository = avaliacaoRepository;
             _provaRepository = provaRepository;
+
+            _provaService = provaService;
         }
 
         public ProvaTurmaQuestoesResponse? ObterProvaTurmaQuestoesPorAvaliacao(Guid id)
@@ -37,40 +42,55 @@ namespace Anima.ProjetoIntegrador.Application.Services
             return null;
         }
 
-        public NovaAvaliacaoResponse Criar(NovaAvaliacaoRequest request)
+        public IList<AlunoMatriculadoTurmaResponse> ConsultarTurmaInscritosPorAvaliacao(Guid id)
+        {
+            return _avaliacaoRepository.ConsultarTurmaInscritosPorAvaliacao(id);
+        }
+
+        public NovaAvaliacaoResponse CriarComProva(NovaAvaliacaoRequest request)
         {
             var response = new NovaAvaliacaoResponse();
             var notFoundErros = new List<string>();
 
-            if (string.IsNullOrEmpty(request.ProvaId))
+            var novaProvaRequest = new NovaProvaRequest
             {
-                notFoundErros.Add("É necessário uma prova para criar a avaliação.");
-            }
-
-            if (string.IsNullOrEmpty(request.TurmaId))
-            {
-                notFoundErros.Add("É necessário uma turma para criar a avaliação.");
-            }
-
-            if (notFoundErros.Any())
-            {
-                response.AddError(StatusCodes.Status404NotFound, notFoundErros);
-            }
-
-            if (response.Errors.Any())
-            {
-                return response;
-            }
-
-            var avaliacao = new Avaliacao
-            {
-                TurmaId = Guid.Parse(request.TurmaId),
-                ProvaId = Guid.Parse(request.ProvaId)
+                Nome = request.NomeProva,
+                ProfessorId = request.ProfessorId
             };
+            var novaProvaResponse = _provaService.Criar(novaProvaRequest);
 
-            response.Id = _avaliacaoRepository.Criar(avaliacao).ToString();
+            if (novaProvaResponse.IsSuccess)
+            {
+                if (string.IsNullOrEmpty(request.ProfessorId))
+                {
+                    notFoundErros.Add("É necessário uma prova para criar a avaliação.");
+                }
 
+                if (string.IsNullOrEmpty(request.TurmaId))
+                {
+                    notFoundErros.Add("É necessário uma turma para criar a avaliação.");
+                }
+
+                if (notFoundErros.Any())
+                {
+                    response.AddError(StatusCodes.Status404NotFound, notFoundErros);
+                }
+
+                if (response.Errors.Any())
+                {
+                    return response;
+                }
+
+                var avaliacao = new Avaliacao
+                {
+                    TurmaId = Guid.Parse(request.TurmaId),
+                    ProvaId = Guid.Parse(novaProvaResponse.Id)
+                };
+
+                response.Id = _avaliacaoRepository.Criar(avaliacao).ToString();
+            }
+           
             return response;
-        }
+        }        
     }
 }

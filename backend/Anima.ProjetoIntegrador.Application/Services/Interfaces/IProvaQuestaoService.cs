@@ -3,9 +3,8 @@ using Anima.ProjetoIntegrador.Domain.Responses;
 
 namespace Anima.ProjetoIntegrador.Application.Services.Interfaces
 {
-    public interface ITurmaService
+    public interface IProvaQuestaoService
     {
-        IList<AvaliacaoTurmaResponse> ConsultarAvaliacoesPorTurma(Guid id);        
-        NovaTurmaResponse Criar(NovaTurmaRequest request);
+        NovaProvaQuestaoResponse Criar(NovaProvaQuestaoRequest request);
     }
 }

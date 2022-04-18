@@ -28,25 +28,6 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return query.ToList();
         }
 
-        public IList<AlunoMatriculaPorTurmaResponse> ConsultarAlunosMatriculadosPorTurma(Guid id)
-        {
-            var query = from turma in _context.Set<Turma>()
-                        join matricula in _context.Set<Matricula>()
-                            on turma.Id equals matricula.TurmaId
-                        join aluno in _context.Set<Aluno>()
-                            on matricula.AlunoId equals aluno.Id
-                        join usuario in _context.Set<Usuario>()
-                            on aluno.UsuarioId equals usuario.Id
-                        where turma.Id == id
-                        select new AlunoMatriculaPorTurmaResponse
-                        {
-                            Matricula = matricula.Id.ToString(),
-                            NomeAluno = usuario.Nome
-                        };
-
-            return query.ToList();
-        }
-
         public IList<TurmaResponse> ConsultarTurmas()
         {
             return GetQueryable().Select(q => new TurmaResponse
