@@ -49,7 +49,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return query.ToList();
         }
 
-        public IList<AvaliacaoDisponivelTurmaProfessorResponse> ConsultarAvaliacoesDasSuasTurmas(Guid id)
+        public IList<AvaliacaoProfessorResponse> ConsultarAvaliacoesDasSuasTurmas(Guid id)
         {
             var query = from professor in _context.Set<Professor>()
                         join turma in _context.Set<Turma>()
@@ -59,12 +59,13 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         join prova in _context.Set<Prova>()
                             on avaliacao.ProvaId equals prova.Id
                         where professor.Id == id
-                        select new AvaliacaoDisponivelTurmaProfessorResponse
+                        select new AvaliacaoProfessorResponse
                         {
                             IdTurma = turma.Id.ToString(),
+                            IdAvaliacao = avaliacao.Id.ToString(),
                             NomeTurma = turma.Nome,
                             NomeProva = prova.Nome,
-                            ModeloProva = prova.Id.ToString()
+                            NomeAvaliacao = avaliacao.Nome
                         };
 
             return query.ToList();
