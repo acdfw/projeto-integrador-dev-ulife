@@ -2,7 +2,7 @@
 {
     public class AvaliacaoTurmaResponse : BaseResponse
     {
-        public string? IdAvaliacao { get; set; }
-        public string? NomeProva { get; set; }
+        public string? Identificador { get; set; }
+        public string? NomeAvaliacao { get; set; }
     }
 }

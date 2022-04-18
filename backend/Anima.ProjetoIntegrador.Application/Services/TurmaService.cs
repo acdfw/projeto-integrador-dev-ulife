@@ -21,6 +21,11 @@ namespace Anima.ProjetoIntegrador.Application.Services
             return _turmaRepository.ConsultarAvaliacoesPorTurma(id);
         }
 
+        public IList<TurmaAlunoMatriculaResponse> ConsultarInscritosPorTurma(Guid id)
+        {
+            return _turmaRepository.ConsultarInscritosPorTurma(id);
+        }
+
         public NovaTurmaResponse Criar(NovaTurmaRequest request)
         {
             var response = new NovaTurmaResponse();

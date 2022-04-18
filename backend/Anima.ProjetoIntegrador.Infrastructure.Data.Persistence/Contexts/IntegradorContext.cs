@@ -20,6 +20,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts
         public DbSet<Questao> Questoes{ get; set; }
         public DbSet<Turma> Turmas{ get; set; }
         public DbSet<Usuario> Usuarios{ get; set; }
+        public DbSet<FolhaResposta> FolhaRespostas{ get; set; }
 
         public IntegradorContext(IConfiguration configuration)
         {
@@ -63,6 +64,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts
             modelBuilder.ApplyConfiguration(new QuestaoConfiguration());
             modelBuilder.ApplyConfiguration(new TurmaConfiguration());
             modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+            modelBuilder.ApplyConfiguration(new FolhaRespostaConfiguration());
             
             base.OnModelCreating(modelBuilder);
         }

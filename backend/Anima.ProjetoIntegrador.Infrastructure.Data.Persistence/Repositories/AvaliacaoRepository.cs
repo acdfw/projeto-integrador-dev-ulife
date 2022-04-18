@@ -11,7 +11,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         {
         }
 
-        public ProvaTurmaResponse? ObterProvaTurmaPorAvaliacao(Guid id)
+        public AvaliacaoProvaResponse? ObterProvaTurmaPorAvaliacao(Guid id)
         {
             var query = from avaliacao in _context.Set<Avaliacao>()
                         join turma in _context.Set<Turma>()
@@ -19,10 +19,11 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         join prova in _context.Set<Prova>()
                             on avaliacao.ProvaId equals prova.Id
                         where avaliacao.Id == id
-                        select new ProvaTurmaResponse
+                        select new AvaliacaoProvaResponse
                         {
-                            IdentificadorProva = prova.Id.ToString(),
-                            NomeTurma = turma.Nome
+                            ProvaId = prova.Id.ToString(),
+                            NomeProva = prova.Nome,
+                            NomeAvaliacao = avaliacao.Nome
                         };
 
             return query.FirstOrDefault();

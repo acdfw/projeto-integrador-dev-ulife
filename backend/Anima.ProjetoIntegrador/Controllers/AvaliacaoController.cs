@@ -46,9 +46,9 @@ namespace Anima.ProjetoIntegrador.API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "professor")]
-        public IActionResult CriarComProva([FromBody] NovaAvaliacaoRequest request)
+        public IActionResult Criar([FromBody] NovaAvaliacaoRequest request)
         {
-            var response = _avaliacaoService.CriarComProva(request);
+            var response = _avaliacaoService.Criar(request);
 
             if (response.Errors.Any(e => e.Key == StatusCodes.Status404NotFound))
             {
