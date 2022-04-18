@@ -10,6 +10,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.CrossCutting.IoC
         {
             services.AddScoped<IProfessorService, ProfessorService>();
             services.AddScoped<IProvaService, ProvaService>();
+            services.AddScoped<IProvaQuestaoService, ProvaQuestaoService>();
             services.AddScoped<IQuestaoService, QuestaoService>();
             services.AddScoped<ITurmaService, TurmaService>();
             services.AddScoped<IAlunoService, AlunoService>();

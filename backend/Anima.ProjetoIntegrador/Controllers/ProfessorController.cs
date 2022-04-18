@@ -16,17 +16,17 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [Authorize(Roles = "professor")]
-        [HttpGet("{id}/matriculas/turmas")]
-        public IActionResult ConsultarTurmasQuantidadeInscritos(string id)
+        [HttpGet("{id}/matriculas/turmas-inscritos-avaliacoes")]
+        public IActionResult ConsultarTurmasQuantidadeInscritosAvaliacoes(string id)
         {
-            var turmasQtdInscritos = _professorService.ConsultarTurmasQuantidadeInscritos(Guid.Parse(id));
+            var turmasQtdInscritos = _professorService.ConsultarTurmasQuantidadeInscritosAvaliacoes(Guid.Parse(id));
 
             if (turmasQtdInscritos.Any())
             {
                 return Ok(turmasQtdInscritos);
             }
 
-            return NotFound("Não existem turmas cadastradas com a quantidade de inscritos para o professor.");
+            return NotFound("Não existem turmas cadastradas com a quantidade de inscritos e avaliações para o professor.");
         }
 
         [Authorize(Roles = "professor")]

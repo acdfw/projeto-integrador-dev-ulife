@@ -42,7 +42,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
                 return NotFound(notFoundErrors);
             }
 
-            return Created(string.Empty, $"Alternativa criada: {response.Id}");
+            return Created(string.Empty, $"Prova criada: {response.Id}");
         }
     }    
 }

@@ -9,5 +9,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         public ProvaQuestaoRepository(IntegradorContext context) : base(context)
         {
         }
+
+        public Guid Criar(ProvaQuestao provaQuestao)
+        {
+            return Add(provaQuestao).Id;
+        }
     }
 }
