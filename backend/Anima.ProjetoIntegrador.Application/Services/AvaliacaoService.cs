@@ -63,7 +63,7 @@ namespace Anima.ProjetoIntegrador.Application.Services
             {
                 if (string.IsNullOrEmpty(request.ProfessorId))
                 {
-                    notFoundErros.Add("É necessário uma prova para criar a avaliação.");
+                    notFoundErros.Add("É necessário um professor para criar a avaliação.");
                 }
 
                 if (string.IsNullOrEmpty(request.TurmaId))
