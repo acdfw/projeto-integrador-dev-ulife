@@ -42,5 +42,19 @@ namespace Anima.ProjetoIntegrador.API.Controllers
 
             return NotFound("Não existem avaliações de quaisquer turmas para o professor.");
         }
+
+        [HttpGet("{id}/provas")]
+        [Authorize(Roles = "professor")]
+        public IActionResult ConsultarProvasDoProfessor(string id)
+        {
+            var provas = _professorService.ConsultarProvasDoProfessor(Guid.Parse(id));
+
+            if (provas.Any())
+            {
+                return Ok(provas);
+            }
+
+            return NotFound("Não existem questionários para o professor.");
+        }
     }
 }

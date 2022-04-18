@@ -8,11 +8,14 @@ namespace Anima.ProjetoIntegrador.Application.Services
     {
         private readonly IProfessorRepository _professorRepository;
         private readonly IAvaliacaoMatriculaRepository _avaliacaoMatriculaRepository;
+        private readonly IProvaQuestaoRepository _provaQuestaoRepository;
 
-        public ProfessorService(IProfessorRepository professorRepository, IAvaliacaoMatriculaRepository avaliacaoMatriculaRepository)
+        public ProfessorService(IProfessorRepository professorRepository, IAvaliacaoMatriculaRepository avaliacaoMatriculaRepository,
+            IProvaQuestaoRepository provaQuestaoRepository)
         {
             _professorRepository = professorRepository;
             _avaliacaoMatriculaRepository = avaliacaoMatriculaRepository;
+            _provaQuestaoRepository = provaQuestaoRepository;
         }
 
         public IList<TurmaQuantidadeInscritosAvaliacoesProfessorResponse> ConsultarTurmasQuantidadeInscritosAvaliacoes(Guid id)
@@ -71,6 +74,27 @@ namespace Anima.ProjetoIntegrador.Application.Services
             }
 
             return avaliacoesProfessor;
+        }
+
+        public IList<ProvaProfessorResponse> ConsultarProvasDoProfessor(Guid id)
+        {
+            var provas = _professorRepository.ConsultarProvasDoProfessor(id);
+            var provasQuestoes = _provaQuestaoRepository.ConsultarProvaQuestaoDoProfessor(id);
+            var provasQuestoesAgrupadas = provasQuestoes.GroupBy(p => p.IdProva).ToDictionary(p => p.Key, p => p.Count());
+
+            if(provas.Any() && provasQuestoes.Any())
+            {
+                foreach (var prova in provas)
+                {
+                    var existeQtdQuestoes = provasQuestoesAgrupadas.TryGetValue(prova.Identificador, out var qtdQuestoes);
+                    if (existeQtdQuestoes)
+                    {
+                        prova.QtdQuestoes = qtdQuestoes;
+                    }
+                }
+            }
+
+            return provas;
         }
     }
 }

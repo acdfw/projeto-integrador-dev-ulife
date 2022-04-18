@@ -70,5 +70,20 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 
             return query.ToList();
         }
+
+        public IList<ProvaProfessorResponse> ConsultarProvasDoProfessor(Guid id)
+        {
+            var query = from professor in _context.Set<Professor>()
+                        join prova in _context.Set<Prova>()
+                            on professor.Id equals prova.ProfessorId
+                        where professor.Id == id
+                        select new ProvaProfessorResponse
+                        {
+                            Identificador = prova.Id.ToString(),
+                            NomeProva = prova.Nome
+                        };
+
+            return query.ToList();
+        }
     }
 }
