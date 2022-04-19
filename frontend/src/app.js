@@ -5,4 +5,4 @@ var app = angular.module("website", [
   "ngStorage",
 ]);
 
-const API_URL = 'https://localhost:7067/api'
+const API_URL = 'https://localhost:7067/'
