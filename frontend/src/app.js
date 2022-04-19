@@ -4,3 +4,5 @@ var app = angular.module("website", [
   "ngSanitize",
   "ngStorage",
 ]);
+
+const API_URL = 'https://localhost:7067/api'

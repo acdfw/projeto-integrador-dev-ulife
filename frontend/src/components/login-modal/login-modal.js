@@ -36,8 +36,9 @@ app.directive("loginModal", function (UserModel) {
         me.settings.isVisible = false;
       };
 
-      me.login = () => {
-        UserModel.login(me.settings.type);
+      me.userLogin = () => {
+        var data =  {login: me.login, senha: me.password}
+        UserModel.login(data);
       };
     },
   };

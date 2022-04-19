@@ -11,7 +11,7 @@ app.factory("loadingInterceptor", function ($q, $rootScope, $timeout) {
     response: function (response) {
       $timeout(function () {
         $rootScope.loading = false;
-      }, 1000);
+      }, 350);
       return response;
     },
     responseError: function (rejection) {
