@@ -18,6 +18,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                             on professor.Id equals prova.ProfessorId
                         join provaQuestao in _context.Set<ProvaQuestao>()
                             on prova.Id equals provaQuestao.ProvaId
+                        where professor.UsuarioId == idProfessor
                         select new ProvaQuestaoResponse
                         {
                             IdProva = prova.Id.ToString(),

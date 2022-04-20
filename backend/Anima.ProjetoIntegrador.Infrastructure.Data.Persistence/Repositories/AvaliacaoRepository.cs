@@ -34,10 +34,12 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             var query = from avaliacao in _context.Set<Avaliacao>()
                         join turma in _context.Set<Turma>()
                             on avaliacao.TurmaId equals turma.Id
-                        join avaliacaoMatricula in _context.Set<AvaliacaoMatricula>()
-                            on avaliacao.Id equals avaliacaoMatricula.AvaliacaoId
                         join matricula in _context.Set<Matricula>()
                             on turma.Id equals matricula.TurmaId
+                        join avaliacaoMatricula in _context.Set<AvaliacaoMatricula>()
+                            on matricula.Id equals avaliacaoMatricula.MatriculaId
+                        into avaliacaoMatriculaLeft
+                        from avaliacaoMatriculaLefted in avaliacaoMatriculaLeft.DefaultIfEmpty()
                         join aluno in _context.Set<Aluno>()
                             on matricula.AlunoId equals aluno.Id
                         join usuario in _context.Set<Usuario>()
@@ -48,7 +50,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                             Matricula = matricula.Id.ToString(),
                             NomeAluno = usuario.Nome,
                             NomeTurma = turma.Nome,
-                            Nota = avaliacaoMatricula.Nota
+                            Nota = avaliacaoMatriculaLefted.Nota
                         };
 
             return query.ToList();

@@ -10,13 +10,14 @@ namespace Anima.ProjetoIntegrador.Application.Services
     public class AvaliacaoService : IAvaliacaoService
     {
         private readonly IAvaliacaoRepository _avaliacaoRepository;
-        private readonly IProvaRepository _provaRepository;
 
+        private readonly IProvaService _provaService;
 
-        public AvaliacaoService(IAvaliacaoRepository avaliacaoRepository, IProvaRepository provaRepository)
+        public AvaliacaoService(IAvaliacaoRepository avaliacaoRepository, IProvaService provaService)
         {
             _avaliacaoRepository = avaliacaoRepository;
-            _provaRepository = provaRepository;
+
+            _provaService = provaService;
         }
 
         public AvaliacaoProvaQuestoesAlternativasResponse? ObterProvaTurmaQuestoesPorAvaliacao(Guid id)
@@ -25,7 +26,7 @@ namespace Anima.ProjetoIntegrador.Application.Services
 
             if (avaliacaoProva is not null)
             {
-                var questoes = _provaRepository.ConsultarQuestoesPorProva(Guid.Parse(avaliacaoProva.ProvaId));
+                var questoes = _provaService.ConsultarQuestoesPorProva(Guid.Parse(avaliacaoProva.ProvaId));
 
                 return new AvaliacaoProvaQuestoesAlternativasResponse
                 {

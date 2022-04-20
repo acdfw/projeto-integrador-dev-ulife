@@ -2,8 +2,8 @@
 {
     public class AvaliacaoProvaQuestoesAlternativasResponse : BaseResponse
     {
-        public string? NomeProva { get; set; }
         public string? NomeAvaliacao { get; set; }
+        public string? NomeProva { get; set; }
         public IList<QuestaoResponse> Questoes { get; set; }
     }
 }

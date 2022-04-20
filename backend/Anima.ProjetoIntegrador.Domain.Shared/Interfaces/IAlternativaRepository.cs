@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Domain.Entities;
+using Anima.ProjetoIntegrador.Domain.Responses;
 
 namespace Anima.ProjetoIntegrador.Domain.Interfaces
 {
@@ -7,5 +8,7 @@ namespace Anima.ProjetoIntegrador.Domain.Interfaces
         Guid Criar(Alternativa alternativa);
 
         Guid Alterar(Alternativa alternativa);
+        
+        IList<AlternativaResponse> ConsultarPorQuestoes(IEnumerable<Guid> questoesId);
     }
 }

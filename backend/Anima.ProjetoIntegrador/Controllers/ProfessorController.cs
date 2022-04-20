@@ -16,7 +16,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [Authorize(Roles = "professor")]
-        [HttpGet("{id}/matriculas/turmas-inscritos-avaliacoes")]
+        [HttpGet("{id}/turmas-inscritos-avaliacoes")]
         public IActionResult ConsultarTurmasQuantidadeInscritosAvaliacoes(string id)
         {
             var turmasQtdInscritos = _professorService.ConsultarTurmasQuantidadeInscritosAvaliacoes(Guid.Parse(id));

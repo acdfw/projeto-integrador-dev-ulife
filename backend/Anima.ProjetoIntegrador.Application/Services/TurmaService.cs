@@ -10,10 +10,12 @@ namespace Anima.ProjetoIntegrador.Application.Services
     public class TurmaService : ITurmaService
     {
         private readonly ITurmaRepository _turmaRepository;
+        private readonly IProfessorRepository _professorRepository;
 
-        public TurmaService(ITurmaRepository turmaRepository)
+        public TurmaService(ITurmaRepository turmaRepository, IProfessorRepository professorRepository)
         {
             _turmaRepository = turmaRepository;
+            _professorRepository = professorRepository;
         }
 
         public IList<AvaliacaoTurmaResponse> ConsultarAvaliacoesPorTurma(Guid id)
@@ -36,7 +38,7 @@ namespace Anima.ProjetoIntegrador.Application.Services
                 notFoundErros.Add("É necessário um nome para criar a turma.");
             }
 
-            if (string.IsNullOrEmpty(request.ProfessorId))
+            if (string.IsNullOrEmpty(request.UsuarioId))
             {
                 notFoundErros.Add("É necessário um professor para criar a turma.");
             }
@@ -51,10 +53,11 @@ namespace Anima.ProjetoIntegrador.Application.Services
                 return response;
             }
 
+            var professorId = _professorRepository.ObterProfessorPorUsuario(Guid.Parse(request.UsuarioId));
             var turma = new Turma
             {
                 Nome = request.Nome,
-                ProfessorId = Guid.Parse(request.ProfessorId)
+                ProfessorId = professorId
             };
 
             response.Id = _turmaRepository.Criar(turma).ToString();

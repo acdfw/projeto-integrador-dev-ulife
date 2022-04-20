@@ -4,5 +4,6 @@
     {
         public string? Id { get; set; }
         public string? Texto { get; set; }
+        public string? QuestaoId { get; set; }
     }
 }
