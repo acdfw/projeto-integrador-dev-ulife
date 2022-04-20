@@ -5,4 +5,4 @@ var app = angular.module("website", [
   "ngStorage",
 ]);
 
-const API_URL = 'https://localhost:7067/'
+const API_URL = 'https://c69d-45-234-103-42.sa.ngrok.io/api'

@@ -3,20 +3,18 @@ app.factory("UserModel", function ($http, AuthTokenService, $location, $rootScop
     login: function (data) {
       $http({
           method: 'POST',
-          url: '/login',
+          url: `${API_URL}/login`,
           data: data
         }).then(function successCallback(response) {
           AuthTokenService.setRole(response.data.usuario.role)
           AuthTokenService.setToken(response.data.token)
+          AuthTokenService.setUserId(response.data.usuario.id)
           if(response.data.usuario.role == "professor"){
             $location.path('/student/classes');
           }else if(response.data.usuario.role == "professor"){
             $location.path('/teacher/classes');
           }
           console.log(response)
-          }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
           });
             
       return true;

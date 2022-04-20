@@ -435,5 +435,19 @@ app.factory("AssignmentModel", function ($http) {
     submit: function (obj) {
       console.log(obj)
     },
+    getTeacherAssignmentsByClassId: async function (id) {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "GET",
+          url: `${API_URL}/Turma/${id}/avaliacoes`,
+        }).then(function successCallback(response) {
+          let teacherAssignmentsByClass = response.data.map((obj) => ({
+            id: obj.identificador,
+            name: obj.nomeAvaliacao
+          }));
+          resolve(teacherAssignmentsByClass);
+        });
+      });
+    },
   };
 });

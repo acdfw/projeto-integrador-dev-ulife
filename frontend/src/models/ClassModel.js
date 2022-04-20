@@ -1,244 +1,37 @@
-app.factory("ClassModel", function ($http) {
+app.factory("ClassModel", function ($http, AuthTokenService) {
   return {
     getTeacherClassById: function (id) {
-      // $http({
-      //     method: 'GET',
-      //     url: '/someUrl'
-      //   }).then(function successCallback(response) {
-      //       // this callback will be called asynchronously
-      //       // when the response is available
-      //     }, function errorCallback(response) {
-      //       // called asynchronously if an error occurs
-      //       // or server returns response with an error status.
-      //     });
-
-      let teacherClass = {            
-        id: 'asdhaskjdhjkad',
-        name: 'Turma A',
-        assignments : [
-          {
-            id: "bdgsdfgfd",
-            name: "A1",
-          },
-          {
-            id: "sgfgsdfg",
-            name: "A2",
-          },
-          {
-            id: "twtertA",
-            name: "A3",
-          },
-          {
-            id: "bgdfgsdfg",
-            name: "A4",
-          },
-        ],
-        students: [
-          {
-            id: "A102B3",
-            name: "João",
-          },
-          {
-            id: "A10GH4",
-            name: "Maria",
-          },
-          {
-            id: "A234DR",
-            name: "Pedro",
-          },
-          {
-            id: "SDA343",
-            name: "José",
-          },
-          {
-            id: "2133SA",
-            name: "Augusto",
-          },
-          {
-            id: "AS2343",
-            name: "Fernanda",
-          },
-          {
-            id: "FD3423",
-            name: "Gabriela",
-          },
-        ],
-      }
-
+      
       return teacherClass;
     },
-    getTeacherClasses: function () {
-
-      let teacherClasses = [
-        {
-          id: 'ajhksdhaskjdhkajsd',
-          name: "Turma A",
-          assignments : [
-            {
-              id: "bdgsdfgfd",
-              name: "A1",
-            },
-            {
-              id: "sgfgsdfg",
-              name: "A2",
-            },
-            {
-              id: "twtertA",
-              name: "A3",
-            },
-            {
-              id: "bgdfgsdfg",
-              name: "A4",
-            },
-          ],
-          students: [
-            {
-              id: "A102B3",
-              name: "João",
-            },
-            {
-              id: "A10GH4",
-              name: "Maria",
-            },
-            {
-              id: "A234DR",
-              name: "Pedro",
-            },
-            {
-              id: "SDA343",
-              name: "José",
-            },
-            {
-              id: "2133SA",
-              name: "Augusto",
-            },
-            {
-              id: "AS2343",
-              name: "Fernanda",
-            }
-          ],
-        },
-        {
-          id: 'fsdfsdfsdfsdf',
-          name: "Turma B",
-          assignments : [
-            {
-              id: "bdgsdfgfd",
-              name: "A1",
-            },
-            {
-              id: "sgfgsdfg",
-              name: "A2",
-            },
-            {
-              id: "twtertA",
-              name: "A3",
-            },
-            {
-              id: "bgdfgsdfg",
-              name: "A4",
-            },
-          ],
-          students: [
-            {
-              id: "A102B3",
-              name: "João",
-            },
-            {
-              id: "A10GH4",
-              name: "Maria",
-            },
-            {
-              id: "A234DR",
-              name: "Pedro",
-            },
-            {
-              id: "SDA343",
-              name: "José",
-            },
-            {
-              id: "2133SA",
-              name: "Augusto",
-            },
-            {
-              id: "AS2343",
-              name: "Fernanda",
-            },
-            {
-              id: "FD3423",
-              name: "Gabriela",
-            },
-          ],
-        },
-        {
-          id: 'sdftgerdfgvd',
-          name: "Turma D",
-          assignments : [
-            {
-              id: "bdgsdfgfd",
-              name: "A1",
-            }
-          ],
-          students: [
-            {
-              id: "2133SA",
-              name: "Augusto",
-            },
-            {
-              id: "AS2343",
-              name: "Fernanda",
-            },          
-          ],
-        },
-        {
-          id: 'gfgsdtgrevgdsfsg',
-          name: "Turma F",
-          assignments : [
-            {
-              id: "bdgsdfgfd",
-              name: "A1",
-            },
-            {
-              id: "sgfgsdfg",
-              name: "A2",
-            }
-          ],
-          students: [
-            {
-              id: "A102B3",
-              name: "João",
-            },
-            {
-              id: "A10GH4",
-              name: "Maria",
-            },
-            {
-              id: "A234DR",
-              name: "Pedro",
-            },
-            {
-              id: "SDA343",
-              name: "José",
-            }
-          ],
-        },
-      ];
-
-      return teacherClasses;
+    getTeacherClasses: async function () {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "GET",
+          url: `${API_URL}/Professor/${AuthTokenService.getUserId()}/turmas-inscritos-avaliacoes`,
+        }).then(function successCallback(response) {
+          let teacherClasses = response.data.map((obj) => ({
+            id: obj.idTurma,
+            name: obj.nomeTurma,
+            members: obj.quantidadeInscritos.toString(),
+            assignments: obj.quantidadeAvaliacoes.toString(),
+          }));
+          resolve(teacherClasses);
+        });
+      });
     },
 
     create: function (name) {
-      console.log(name)      
+      console.log(name);
     },
 
     getStudentClassById: function (id) {
-     
       let studentClass = {
         id: "asdhaskjdhjkad",
         name: "Turma A",
         teacherName: {
-          id: 'dahjkshdkjad',
-          name: "Ricardo"
+          id: "dahjkshdkjad",
+          name: "Ricardo",
         },
         assignments: [
           {
@@ -267,8 +60,8 @@ app.factory("ClassModel", function ($http) {
           id: "ajhksdhaskjdhkajsd",
           name: "Turma A",
           teacher: {
-            id: 'dahjkshdkjad',
-            name: "Ricardo"
+            id: "dahjkshdkjad",
+            name: "Ricardo",
           },
           assignments: [
             {
@@ -292,8 +85,8 @@ app.factory("ClassModel", function ($http) {
           id: "fsdfsdfsdfsdf",
           name: "Turma B",
           teacher: {
-            id: 'dahjkshdkjad',
-            name: "Marcos"
+            id: "dahjkshdkjad",
+            name: "Marcos",
           },
           assignments: [
             {
@@ -317,8 +110,8 @@ app.factory("ClassModel", function ($http) {
           id: "sdftgerdfgvd",
           name: "Turma C",
           teacher: {
-            id: 'dahjkshdkjad',
-            name: "Marcos"
+            id: "dahjkshdkjad",
+            name: "Marcos",
           },
           assignments: [
             {
@@ -342,8 +135,8 @@ app.factory("ClassModel", function ($http) {
           id: "sfsdsdcasfdsc",
           name: "Turma D",
           teacher: {
-            id: 'dahjkshdkjad',
-            name: "Claudio"
+            id: "dahjkshdkjad",
+            name: "Claudio",
           },
           assignments: [
             {
@@ -367,8 +160,8 @@ app.factory("ClassModel", function ($http) {
           id: "sfsdsdcasfdsc",
           name: "Turma E",
           teacher: {
-            id: 'dahjkshdkjad',
-            name: "Carlos"
+            id: "dahjkshdkjad",
+            name: "Carlos",
           },
           assignments: [
             {
