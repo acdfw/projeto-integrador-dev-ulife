@@ -15,6 +15,7 @@ builder.Services.AddSwagger();
 builder.Services.AddRepositories();
 builder.Services.AddServices();
 builder.Services.AddTokenGenerator();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -25,7 +26,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+app.UseRouting();
+
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseAuthentication();
 app.UseAuthorization();

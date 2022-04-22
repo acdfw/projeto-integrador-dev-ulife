@@ -14,6 +14,7 @@ namespace Anima.ProjetoIntegrador.Domain.Entities
         public virtual Turma? Turma { get; set; }
         public Guid? ProvaId { get; set; }
         public virtual Prova? Prova { get; set; }
+        public string? Nome { get; set; }
         public virtual ICollection<AvaliacaoMatricula>? AvaliacoesMatriculas { get; set; }
     }
 }

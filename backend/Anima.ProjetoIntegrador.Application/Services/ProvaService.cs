@@ -10,15 +10,35 @@ namespace Anima.ProjetoIntegrador.Application.Services
     public class ProvaService : IProvaService
     {
         private readonly IProvaRepository _provaRepository;
+        private readonly IAlternativaRepository _alternativaRepository;
 
-        public ProvaService(IProvaRepository provaRepository)
+        public ProvaService(IProvaRepository provaRepository, IAlternativaRepository alternativaRepository)
         {
             _provaRepository = provaRepository;
+            _alternativaRepository = alternativaRepository;
         }
 
         public IList<QuestaoResponse> ConsultarQuestoesPorProva(Guid id)
         {
-            return _provaRepository.ConsultarQuestoesPorProva(id);
+            var questoes = _provaRepository.ConsultarQuestoesPorProva(id);
+
+            if (questoes.Any())
+            {
+                var questoesId = questoes.Select(x => Guid.Parse(x.Id));
+                var alternativas = _alternativaRepository.ConsultarPorQuestoes(questoesId);
+
+                if (alternativas.Any())
+                {
+                    var alternativasAgrupadas = alternativas.GroupBy(x => x.QuestaoId).ToDictionary(x => x.Key, x => x.ToList());
+
+                    foreach (var questao in questoes)
+                    {
+                        questao.Alternativas = alternativasAgrupadas[questao.Id];
+                    }
+                }
+            }            
+
+            return questoes;
         }
 
         public NovaProvaResponse Criar(NovaProvaRequest request)

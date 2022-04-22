@@ -24,11 +24,13 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Configurations
             builder
                 .Property(x => x.ProvaId)
                 .HasColumnName("prova_id");
+            
+            builder
+                .Property(x => x.Nome)
+                .HasColumnName("nome");
 
             builder
                 .HasMany<Turma>();
-
-
         }
     }
 }

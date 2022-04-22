@@ -5,7 +5,7 @@ namespace Anima.ProjetoIntegrador.Domain.Interfaces
 {
     public interface IAvaliacaoRepository
     {
-        ProvaTurmaResponse? ObterProvaTurmaPorAvaliacao(Guid id);
+        AvaliacaoProvaResponse? ObterProvaTurmaPorAvaliacao(Guid id);
         IList<AlunoMatriculadoTurmaResponse> ConsultarTurmaInscritosPorAvaliacao(Guid id);
         Guid Criar(Avaliacao avaliacao);
     }

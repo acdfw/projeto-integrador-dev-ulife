@@ -3,6 +3,6 @@
     public class NovaTurmaRequest
     {
         public string? Nome { get; set; }
-        public string? ProfessorId { get; set; }
+        public string? UsuarioId { get; set; }
     }
 }

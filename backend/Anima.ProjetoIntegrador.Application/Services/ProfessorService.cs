@@ -7,10 +7,15 @@ namespace Anima.ProjetoIntegrador.Application.Services
     public class ProfessorService : IProfessorService
     {
         private readonly IProfessorRepository _professorRepository;
+        private readonly IAvaliacaoMatriculaRepository _avaliacaoMatriculaRepository;
+        private readonly IProvaQuestaoRepository _provaQuestaoRepository;
 
-        public ProfessorService(IProfessorRepository professorRepository)
+        public ProfessorService(IProfessorRepository professorRepository, IAvaliacaoMatriculaRepository avaliacaoMatriculaRepository,
+            IProvaQuestaoRepository provaQuestaoRepository)
         {
             _professorRepository = professorRepository;
+            _avaliacaoMatriculaRepository = avaliacaoMatriculaRepository;
+            _provaQuestaoRepository = provaQuestaoRepository;
         }
 
         public IList<TurmaQuantidadeInscritosAvaliacoesProfessorResponse> ConsultarTurmasQuantidadeInscritosAvaliacoes(Guid id)
@@ -48,9 +53,48 @@ namespace Anima.ProjetoIntegrador.Application.Services
             return turmasInscritosAvaliacoes;
         }
 
-        public IList<AvaliacaoDisponivelTurmaProfessorResponse> ConsultarAvaliacoesDasSuasTurmas(Guid id)
+        public IList<AvaliacaoProfessorResponse> ConsultarAvaliacoesDasSuasTurmas(Guid id)
         {
-            return _professorRepository.ConsultarAvaliacoesDasSuasTurmas(id);
+            var avaliacoesProfessor = _professorRepository.ConsultarAvaliacoesDasSuasTurmas(id);
+            var avaliacoesRealizadas = _avaliacaoMatriculaRepository.ConsultarAvaliacoesTurmas();
+            
+            if(avaliacoesProfessor.Any() && avaliacoesRealizadas.Any())
+            {
+                var avaliacoesProfessorAgrupadas = avaliacoesProfessor.GroupBy(a => (a.IdTurma, a.IdAvaliacao)).ToDictionary(a => a.Key, a => a.Single());
+                var avaliacoesRealizadasAgrupadas = avaliacoesRealizadas.GroupBy(a => (a.IdTurma, a.IdAvaliacao)).ToDictionary(a => a.Key, a => a.Count());
+                foreach (var avaliacao in avaliacoesProfessorAgrupadas)
+                {
+                    var existeQtdRealizadas = avaliacoesRealizadasAgrupadas
+                        .TryGetValue((avaliacao.Key.IdTurma, avaliacao.Key.IdAvaliacao), out var qtdRealizadas);
+                    if (existeQtdRealizadas)
+                    {
+                        avaliacao.Value.QtdRealizadas = qtdRealizadas;
+                    }
+                }
+            }
+
+            return avaliacoesProfessor;
+        }
+
+        public IList<ProvaProfessorResponse> ConsultarProvasDoProfessor(Guid id)
+        {
+            var provas = _professorRepository.ConsultarProvasDoProfessor(id);
+            var provasQuestoes = _provaQuestaoRepository.ConsultarProvaQuestaoDoProfessor(id);
+            var provasQuestoesAgrupadas = provasQuestoes.GroupBy(p => p.IdProva).ToDictionary(p => p.Key, p => p.Count());
+
+            if(provas.Any() && provasQuestoes.Any())
+            {
+                foreach (var prova in provas)
+                {
+                    var existeQtdQuestoes = provasQuestoesAgrupadas.TryGetValue(prova.Identificador, out var qtdQuestoes);
+                    if (existeQtdQuestoes)
+                    {
+                        prova.QtdQuestoes = qtdQuestoes;
+                    }
+                }
+            }
+
+            return provas;
         }
     }
 }

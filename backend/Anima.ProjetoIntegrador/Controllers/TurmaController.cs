@@ -30,6 +30,20 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Não existem avaliações cadastradas para a turma.");
         }
 
+        [HttpGet("{id}/alunos-matriculados")]
+        [Authorize(Roles = "professor")]
+        public IActionResult ConsultarInscritosPorTurma(string id)
+        {
+            var avaliacoes = _turmaService.ConsultarInscritosPorTurma(Guid.Parse(id));
+
+            if (avaliacoes.Any())
+            {
+                return Ok(avaliacoes);
+            }
+
+            return NotFound("Não existem alunos matriculados para a turma.");
+        }
+
         [HttpPost]
         [Authorize(Roles = "professor")]
         public IActionResult CriarTurma([FromBody] NovaTurmaRequest request)
