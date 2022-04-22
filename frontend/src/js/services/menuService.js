@@ -2,7 +2,7 @@ app.factory("MenuService", function (AuthTokenService) {
   return {
     getMenu: function () {
       switch (AuthTokenService.getRole()) {
-        case "T":
+        case "professor":
           return [
             { text: "Turmas", link: "#/teacher/classes" },
             { text: "Avaliações", link: "#/teacher/assignments" },
@@ -10,7 +10,7 @@ app.factory("MenuService", function (AuthTokenService) {
             { text: "Questões", link: "#/teacher/questions" },
             { text: "Sair", link: "#/logout" },
           ];
-        case "S":
+        case "aluno":
           return [
             { text: "Turmas", link: "#/student/classes" },
             { text: "Avaliações", link: "#/student/assignments" },

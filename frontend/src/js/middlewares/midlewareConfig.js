@@ -4,7 +4,7 @@ app.run(function ($rootScope, $location, AuthTokenService) {
   }
 
   function CheckRole(data) {
-    return AuthTokenService.getToken() == data.role;
+    return AuthTokenService.getRole() == data.role;
   }
 
   $rootScope.$on("$routeChangeStart", function (event, next, current) {
