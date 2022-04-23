@@ -1,8 +1,10 @@
-app.controller("TeacherClassesListCtrl", function ($scope, getTeacherClasses) {
+app.controller("TeacherClassesListCtrl", function ($scope, $route, getTeacherClasses, AuthTokenService, ClassModel) {
   var me = $scope; 
 
+  me.classes = getTeacherClasses;
+
   me.classesTable = {
-    rows: getTeacherClasses.map((obj) => ({...obj, link: `teacher/class/${obj.id}`})),
+    rows: me.classes.map((obj) => ({...obj, link: `teacher/class/${obj.id}`})),
     colNames: {
       name: "Turma",
       members: "Inscritos",
@@ -15,8 +17,15 @@ app.controller("TeacherClassesListCtrl", function ($scope, getTeacherClasses) {
 
   me.newClassName = "";
 
-  me.NewClass = () => {
-    ClassModel.create(me.newClassName);
+  me.NewClass = async() => {
+    var data = {nome: me.newClassName, usuarioId: AuthTokenService.getUserId()}
+    try{
+      response = await ClassModel.create(data);
+      alert(response.msg)
+    }catch(err){
+      alert(err.err)
+    }
+    $route.reload();
   };
 
 });

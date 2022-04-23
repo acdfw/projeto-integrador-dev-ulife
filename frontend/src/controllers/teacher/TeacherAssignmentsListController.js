@@ -1,16 +1,16 @@
 app.controller(
   "TeacherAssignmentsListCtrl",
-  function ($scope, AssignmentModel, QuestionnaireModel, ClassModel) {
+  function ($scope, getAssignments, QuestionnaireModel, ClassModel) {
     var me = $scope;
 
-    var assignments = AssignmentModel.getTeacherAssignments();
+    var assignments = getAssignments;
 
     me.assignmentsTable = {
       rows: assignments.map((obj) => ({
         class: obj.class.name,
         assignment: obj.name,
         questionnaire: obj.questionnaire.name,
-        done: obj.done.length.toString(),
+        done: obj.done.toString(),
         link: `teacher/assignment/${obj.id}`,
       })),
       colNames: { class: "Turma", assignment: "Avaliação", questionnaire: "Questionário", done: "Realizadas" },

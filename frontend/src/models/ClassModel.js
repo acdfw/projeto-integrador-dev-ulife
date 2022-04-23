@@ -21,8 +21,18 @@ app.factory("ClassModel", function ($http, AuthTokenService) {
       });
     },
 
-    create: function (name) {
-      console.log(name);
+    create: function (data) {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "POST",
+          url: `${API_URL}/Turma`,
+          data: data
+        }).then(response => {
+          resolve({msg: response.data})
+        }).catch(err => {
+          reject({msg: err.data})
+        });
+      });
     },
 
     getStudentClassById: function (id) {
