@@ -15,6 +15,8 @@ app.controller("TeacherClassesListCtrl", function ($scope, $route, getTeacherCla
     search: { show: true },
   };
 
+  // tetetet
+  
   me.newClassName = "";
 
   me.NewClass = async() => {
