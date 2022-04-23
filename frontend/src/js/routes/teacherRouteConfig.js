@@ -19,13 +19,20 @@ app.config([
         authorize: true,
         role: "professor",
         resolve: {
-          getTeacherClassInfo: function (AssignmentModel,StudentModel, $route, $q) {
+          getTeacherClassInfo: function (
+            AssignmentModel,
+            StudentModel,
+            $route,
+            $q
+          ) {
             return $q.all({
-              assignments: AssignmentModel.getTeacherAssignmentsByClassId($route.current.params.id),
-              students: StudentModel.getTeacherStudentsByClassId($route.current.params.id)
-      });
-            
-            
+              assignments: AssignmentModel.getTeacherAssignmentsByClassId(
+                $route.current.params.id
+              ),
+              students: StudentModel.getTeacherStudentsByClassId(
+                $route.current.params.id
+              ),
+            });
           },
         },
       })
@@ -34,18 +41,33 @@ app.config([
         controller: "TeacherAssignmentsListCtrl",
         authorize: true,
         role: "professor",
+        resolve: {
+          getAssignments: function(AssignmentModel, AuthTokenService){
+            return AssignmentModel.getTeacherAssignments(AuthTokenService.getUserId());
+          }
+        }
       })
       .when("/teacher/assignment/:id", {
         templateUrl: "views/teacher/TeacherAssignmentView.html",
         controller: "TeacherAssignmentViewCtrl",
         authorize: true,
         role: "professor",
-      })
-      .when("/teacher/assignment/:id", {
-        templateUrl: "views/teacher/TeacherAssignmentView.html",
-        controller: "TeacherAssignmentViewCtrl",
-        authorize: true,
-        role: "professor",
+        resolve: {
+          getTeacherAssignmentInfo: function (
+            AssignmentModel,
+            $route,
+            $q
+          ) {
+            return $q.all({
+              assignment: AssignmentModel.getTeacherAssignmentById(
+                $route.current.params.id
+              ),
+              studentsResults: AssignmentModel.getTeacherGradesByAssignmentId(
+                $route.current.params.id
+              ),
+            });
+          },
+        },
       })
       .when("/teacher/assignment-done/:id", {
         templateUrl: "views/teacher/TeacherAssignmentDone.html",
