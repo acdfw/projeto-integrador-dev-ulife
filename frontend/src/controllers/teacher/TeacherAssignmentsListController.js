@@ -1,9 +1,9 @@
 app.controller(
   "TeacherAssignmentsListCtrl",
-  function ($scope, getAssignments, QuestionnaireModel, ClassModel) {
+  function ($scope, getInfo, $route) {
     var me = $scope;
 
-    var assignments = getAssignments;
+    var assignments = getInfo.assignments;
 
     me.assignmentsTable = {
       rows: assignments.map((obj) => ({
@@ -19,8 +19,23 @@ app.controller(
       search: { show: true },
     };
 
-    me.questionnaires = QuestionnaireModel.getQuestionnaires();
+    me.questionnaires = getInfo.questionnaires;
 
-    me.classes = ClassModel.getTeacherClasses();
+    me.classes = getInfo.classes
+
+    me.CreateNewAssignment = async () => {
+      var data = {
+        nomeAvaliacao: me.newAssignmentName,
+        provaId: me.questionnaireBase,
+        turmaId: me.targetClass,
+      };
+      try {
+        response = await AssignmentModel.create(data);
+        alert(response.msg);
+      } catch (err) {
+        alert(err.err);
+      }
+      $route.reload();
+    };
   }
 );

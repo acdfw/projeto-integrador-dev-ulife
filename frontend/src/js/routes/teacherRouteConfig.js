@@ -8,8 +8,8 @@ app.config([
         authorize: true,
         role: "professor",
         resolve: {
-          getTeacherClasses: function (ClassModel) {
-            return ClassModel.getTeacherClasses();
+          getTeacherClasses: function (ClassModel, AuthTokenService) {
+            return ClassModel.getTeacherClasses(AuthTokenService.getUserId());
           },
         },
       })
@@ -21,10 +21,14 @@ app.config([
         resolve: {
           getTeacherClassInfo: function (
             AssignmentModel,
+            QuestionnaireModel,
             StudentModel,
+            ClassModel,
+            AuthTokenService,
             $route,
             $q
-          ) {
+          ) {            
+            let userId = AuthTokenService.getUserId();
             return $q.all({
               assignments: AssignmentModel.getTeacherAssignmentsByClassId(
                 $route.current.params.id
@@ -32,6 +36,8 @@ app.config([
               students: StudentModel.getTeacherStudentsByClassId(
                 $route.current.params.id
               ),
+              questionnaires: QuestionnaireModel.getQuestionnaires(userId),
+              class: ClassModel.getTeacherClassById($route.current.params.id),
             });
           },
         },
@@ -42,10 +48,21 @@ app.config([
         authorize: true,
         role: "professor",
         resolve: {
-          getAssignments: function(AssignmentModel, AuthTokenService){
-            return AssignmentModel.getTeacherAssignments(AuthTokenService.getUserId());
-          }
-        }
+          getInfo: function (
+            AssignmentModel,
+            ClassModel,
+            AuthTokenService,
+            QuestionnaireModel,
+            $q
+          ) {
+            let userId = AuthTokenService.getUserId();
+            return $q.all({
+              assignments: AssignmentModel.getTeacherAssignments(userId),
+              classes: ClassModel.getTeacherClasses(userId),
+              questionnaires: QuestionnaireModel.getQuestionnaires(userId),
+            });
+          },
+        },
       })
       .when("/teacher/assignment/:id", {
         templateUrl: "views/teacher/TeacherAssignmentView.html",
@@ -53,11 +70,7 @@ app.config([
         authorize: true,
         role: "professor",
         resolve: {
-          getTeacherAssignmentInfo: function (
-            AssignmentModel,
-            $route,
-            $q
-          ) {
+          getTeacherAssignmentInfo: function (AssignmentModel, $route, $q) {
             return $q.all({
               assignment: AssignmentModel.getTeacherAssignmentById(
                 $route.current.params.id
@@ -80,6 +93,13 @@ app.config([
         controller: "TeacherQuestionnairesListCtrl",
         authorize: true,
         role: "professor",
+        resolve: {
+          getQuestionnaires: function (QuestionnaireModel, AuthTokenService) {
+            return QuestionnaireModel.getQuestionnaires(
+              AuthTokenService.getUserId()
+            );
+          },
+        },
       })
       .when("/teacher/questionnaire/:id", {
         templateUrl: "views/teacher/TeacherQuestionnaireView.html",
@@ -92,6 +112,13 @@ app.config([
         controller: "TeacherQuestionsListCtrl",
         authorize: true,
         role: "professor",
+        resolve: {
+          getQuestions: function (QuestionModel, AuthTokenService) {
+            return QuestionModel.getQuestions(
+              AuthTokenService.getUserId()
+            );
+          },
+        },
       })
       .when("/teacher/question/:id", {
         templateUrl: "views/teacher/TeacherQuestionView.html",

@@ -17,8 +17,18 @@ app.factory("AssignmentModel", function ($http) {
         });
       });     
     },
-    create: function () {
-      return true;
+    create: function (data) {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "POST",
+          url: `${API_URL}/Avaliacao`,
+          data: data
+        }).then(response => {
+          resolve({msg: response.data})
+        }).catch(err => {
+          reject({msg: err.data})
+        });
+      });   
     },
     getStudentAssignmentById: function (id) {
        assignment = {
@@ -201,7 +211,6 @@ app.factory("AssignmentModel", function ($http) {
           url: `${API_URL}/Avaliacao/${id}/prova/questoes`,
         }).then(function successCallback(response) {
           let obj = response.data;
-          console.log(obj)
           let assignment = {
             name: obj.nomeAvaliacao,
             class: {name: obj.nomeTurma},

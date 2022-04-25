@@ -14,8 +14,21 @@ app.factory("QuestionModel", function ($http) {
       
       return examQuestions[0];
     },
-    getQuestions: function () {
-        return examQuestions;
+    getQuestions: function (id) {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "GET",
+          url: `${API_URL}/Professor/${id}/questoes`,
+        }).then(function successCallback(response) {
+          let questions = response.data.map((obj) => ({
+            id: obj.id,
+            title: obj.nomeQuestao,
+            statement: obj.enunciado,
+            options: obj.alternativas.map(opt => ({id: opt.id, statement: opt.texto}))
+          }));
+          resolve(questions);
+        });
+      });
     },
     create: function (obj) {
         console.log(obj)

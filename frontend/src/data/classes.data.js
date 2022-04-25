@@ -449,3 +449,26 @@ teacherAssignments = [
     ]
   }
 ]
+
+let exams = [
+  {
+    id: "eqwdjlaklmckzc",
+    name: "prova de teste 1",
+    questions: examQuestions,
+  },
+  {
+    id: "ggfhdgretfdsgrt",
+    name: "prova de teste 2",
+    questions: examQuestions,
+  },
+  {
+    id: "hgfbvsfgergfdsg",
+    name: "prova de teste 3",
+    questions: examQuestions,
+  },
+  {
+    id: "sdbdnbyregbhdf",
+    name: "prova de teste 4",
+    questions: examQuestions,
+  },
+];

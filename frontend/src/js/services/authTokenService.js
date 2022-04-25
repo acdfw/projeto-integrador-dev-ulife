@@ -12,7 +12,7 @@ app.factory('AuthTokenService', function ($localStorage) {
     setRole: function (role) {
       $localStorage.whiteboardRole = role;
     },
-    getUserId: function (id) {
+    getUserId: function () {
       return $localStorage.whiteboardUserId;
     },
     setUserId: function (id) {
