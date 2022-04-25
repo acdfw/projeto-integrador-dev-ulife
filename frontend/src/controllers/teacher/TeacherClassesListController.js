@@ -1,16 +1,15 @@
-app.controller("TeacherClassesListCtrl", function ($scope, ClassModel) {
-  var me = $scope;
+app.controller("TeacherClassesListCtrl", function ($scope, $route, getTeacherClasses, AuthTokenService, ClassModel) {
+  var me = $scope; 
 
-  classes = ClassModel.getTeacherClasses();
+  me.classes = getTeacherClasses;
 
   me.classesTable = {
-    rows: classes.map((obj) => ({
-      name: obj.name,
-      assignments: obj.assignments.length.toString(),
-      members: obj.students.length.toString(),
-      link: `teacher/class/${obj.id}`,
-    })),
-    colNames: { name: "Turma", members: "Inscritos", assignments: "Avaliações" },
+    rows: me.classes.map((obj) => ({...obj, link: `teacher/class/${obj.id}`})),
+    colNames: {
+      name: "Turma",
+      members: "Inscritos",
+      assignments: "Avaliações",
+    },
     colOrder: ["name", "members", "assignments"],
     showHeader: true,
     search: { show: true },
@@ -18,7 +17,15 @@ app.controller("TeacherClassesListCtrl", function ($scope, ClassModel) {
 
   me.newClassName = "";
 
-  me.NewClass = () => {
-    ClassModel.create(me.newClassName);
+  me.NewClass = async() => {
+    var data = {nome: me.newClassName, usuarioId: AuthTokenService.getUserId()}
+    try{
+      response = await ClassModel.create(data);
+      alert(response.msg)
+    }catch(err){
+      alert(err.err)
+    }
+    $route.reload();
   };
+
 });

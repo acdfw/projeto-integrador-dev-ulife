@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Anima.ProjetoIntegrador.Application.Services.Validators;
 using Anima.ProjetoIntegrador.Domain.Entities;
 using Anima.ProjetoIntegrador.Domain.Interfaces;
 using Anima.ProjetoIntegrador.Domain.Requests;
@@ -48,29 +49,13 @@ namespace Anima.ProjetoIntegrador.Application.Services
         {
             var response = new NovaAvaliacaoResponse();
             var notFoundErros = new List<string>();
-                        
-            if (string.IsNullOrEmpty(request.ProvaId))
-            {
-                notFoundErros.Add("É necessário um professor para criar a avaliação.");
-            }
 
-            if (string.IsNullOrEmpty(request.TurmaId))
-            {
-                notFoundErros.Add("É necessário uma turma para criar a avaliação.");
-            }
+            var ValidateResult = AvaliacaoValidate.Validate(request, new AvaliacaoValidator());
 
-            if (string.IsNullOrEmpty(request.NomeAvaliacao))
+            if (!ValidateResult.IsValid)
             {
-                notFoundErros.Add("É necessário um nome para criar a avaliação.");
-            }
-
-            if (notFoundErros.Any())
-            {
-                response.AddError(StatusCodes.Status400BadRequest, notFoundErros);
-            }
-
-            if (response.Errors.Any())
-            {
+                notFoundErros = ValidateErrors.ListErrors(notFoundErros ,ValidateResult);
+                response.AddError(StatusCodes.Status404NotFound, notFoundErros);
                 return response;
             }
 

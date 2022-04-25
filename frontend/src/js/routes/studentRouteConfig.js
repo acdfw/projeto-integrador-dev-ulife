@@ -6,31 +6,31 @@ app.config([
       templateUrl: "views/student/StudentAssignmentToDo.html",
       controller: "StudentAssignmentToDoCtrl",
       authorize: true,
-      role: "S",
+      role: "aluno",
     })
     .when("/student/assignment-done/:id", {
       templateUrl: "views/student/StudentAssignmentDone.html",
       controller: "StudentAssignmentDoneCtrl",
       authorize: true,
-      role: "S",
+      role: "aluno",
     })
     .when("/student/assignments", {
       templateUrl: "views/student/StudentAssignmentsList.html",
       controller: "StudentAssignmentsListCtrl",
       authorize: true,
-      role: "S",
+      role: "aluno",
     })
     .when("/student/classes", {
       templateUrl: "views/student/StudentClassesList.html",
       controller: "StudentClassesListCtrl",
       authorize: true,
-      role: "S",
+      role: "aluno",
     })
     .when("/student/class/:id", {
       templateUrl: "views/student/StudentClassView.html",
       controller: "StudentClassViewCtrl",
       authorize: true,
-      role: "S",
+      role: "aluno",
     });
   },
 ]);

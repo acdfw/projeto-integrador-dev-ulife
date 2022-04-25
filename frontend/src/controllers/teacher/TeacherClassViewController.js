@@ -1,10 +1,8 @@
-app.controller("TeacherClassViewCtrl", function ($scope, ClassModel, $routeParams, QuestionnaireModel) {
+app.controller("TeacherClassViewCtrl", function ($scope, QuestionnaireModel, getTeacherClassInfo) {
   var me = $scope;
 
-  var teacherClass = ClassModel.getTeacherClassById($routeParams.id)
-
   var tableAssignments = {
-    rows: teacherClass.assignments.map(obj => ({...obj, link: `/teacher/assignment/${obj.id}`})),
+    rows: getTeacherClassInfo.assignments.map(obj => ({...obj, link: `/teacher/assignment/${obj.id}`})),
     colNames: { id: "Identificador" ,name: "Apelido" },
     colOrder: ["id", "name"],
     showHeader: true,
@@ -12,7 +10,7 @@ app.controller("TeacherClassViewCtrl", function ($scope, ClassModel, $routeParam
   };
   
   var tableStudents = {
-    rows: teacherClass.students,
+    rows: getTeacherClassInfo.students,
     colNames: { id: "Matrícula", name: "Nome" },
     colOrder: ["id", "name"],
     showHeader: true,

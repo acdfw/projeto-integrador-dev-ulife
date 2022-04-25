@@ -21,27 +21,26 @@ app.factory("QuestionnaireModel", function ($http) {
       return exam;
     },
     getQuestionnaires: function () {
-      
       let exams = [
         {
           id: "eqwdjlaklmckzc",
           name: "prova de teste 1",
-          questions: examQuestions
+          questions: examQuestions,
         },
         {
           id: "ggfhdgretfdsgrt",
           name: "prova de teste 2",
-          questions: examQuestions
+          questions: examQuestions,
         },
         {
           id: "hgfbvsfgergfdsg",
           name: "prova de teste 3",
-          questions: examQuestions
+          questions: examQuestions,
         },
         {
           id: "sdbdnbyregbhdf",
           name: "prova de teste 4",
-          questions: examQuestions
+          questions: examQuestions,
         },
       ];
 
@@ -50,5 +49,6 @@ app.factory("QuestionnaireModel", function ($http) {
     create: function (obj) {
       console.log(obj);
     },
+    
   };
 });

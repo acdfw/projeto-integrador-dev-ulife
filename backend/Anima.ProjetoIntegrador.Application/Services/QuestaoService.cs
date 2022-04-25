@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Anima.ProjetoIntegrador.Application.Services.Validators;
 using Anima.ProjetoIntegrador.Domain.Entities;
 using Anima.ProjetoIntegrador.Domain.Interfaces;
 using Anima.ProjetoIntegrador.Domain.Requests;
@@ -45,40 +46,12 @@ namespace Anima.ProjetoIntegrador.Application.Services
             var response = new NovaQuestaoResponse();
             var badRequestErros = new List<string>();
 
-            if (string.IsNullOrEmpty(request.Enunciado))
-            {
-                badRequestErros.Add("É necessário um enunciado para criar a questão.");
-            }
+            var ValidateResult = QuestaoValidate.Validate(request, new QuestaoValidator());
 
-            if (string.IsNullOrEmpty(request.Nome))
+            if (!ValidateResult.IsValid)
             {
-                badRequestErros.Add("É necessário um título para criar a questão.");
-            }
-
-            if (string.IsNullOrEmpty(request.UsuarioId))
-            {
-                badRequestErros.Add("É necessário um professor para criar a questão.");
-            }
-
-            if (!request.Alternativas.Any())
-            {
-                badRequestErros.Add("É necessário alternativas para criar a questão.");
-            } 
-            else
-            {
-                if(request.Alternativas.Any(a => string.IsNullOrEmpty(a.Texto)))
-                {
-                    badRequestErros.Add("É necessário texto para as alternativas da questão.");
-                }
-            }
-
-            if (badRequestErros.Any())
-            {
-                response.AddError(StatusCodes.Status400BadRequest, badRequestErros);
-            }
-
-            if (response.Errors.Any())
-            {
+                notFoundErros = ValidateErrors.ListErrors(notFoundErros, ValidateResult);
+                response.AddError(StatusCodes.Status404NotFound, notFoundErros);
                 return response;
             }
 

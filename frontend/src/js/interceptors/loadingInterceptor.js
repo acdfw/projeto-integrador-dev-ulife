@@ -9,9 +9,7 @@ app.factory("loadingInterceptor", function ($q, $rootScope, $timeout) {
       return $q.reject(rejection);
     },
     response: function (response) {
-      $timeout(function () {
-        $rootScope.loading = false;
-      }, 1000);
+      $rootScope.loading = false;      
       return response;
     },
     responseError: function (rejection) {

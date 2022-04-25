@@ -12,7 +12,7 @@ app.factory('authInterceptor', function ($location, AuthTokenService, $q) {
 
     responseError: function(response) {
       if (response.status === 401 || response.status === 403) {
-          AuthTokenService.logout();
+          AuthTokenService.reset();
         $location.path('/');
       }
 

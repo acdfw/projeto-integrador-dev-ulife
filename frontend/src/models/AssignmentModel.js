@@ -1,282 +1,27 @@
 app.factory("AssignmentModel", function ($http) {
   return {
-    getTeacherAssignmentById: function (id) {
-      // $http({
-      //     method: 'GET',
-      //     url: '/someUrl'
-      //   }).then(function successCallback(response) {
-      //       // this callback will be called asynchronously
-      //       // when the response is available
-      //     }, function errorCallback(response) {
-      //       // called asynchronously if an error occurs
-      //       // or server returns response with an error status.
-      //     });
-      assignment = {
-        id: "hshadajsdhajd",
-        name: "A1",
-        class: { id: "dasdakdsl", name: "Turma A" },
-        questionnaire: {id: "dadsasdasd", name: "prova teste", questions: examQuestions},
-        studentsResults: [
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'João'
-            },
-            grade: '10.0'
-          },
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'Hélio'
-            },
-            grade: '10.0'
-          },
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'Matheus'
-            },
-            grade: '9.0'
-          },
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'Gilberto'
-            },
-            grade: '5.0'
-          },
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'Marcelo'
-            },
-            grade: '7.5'
-          },
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'Gabriela'
-            },
-            grade: '8.5'
-          },
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'Fernanda'
-            },
-            grade: '7.5'
-          },
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'Daniel'
-            },
-            grade: null
-          },
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'Geralda'
-            },
-            grade: null
-          },
-          {
-            id: 'fasfdfafs',
-            student: {
-              id: 'fsldflkasdlk',
-              name: 'Amanda'
-            },
-            grade: null
-          }
-        ]
-      };
-
-      return assignment;
-    },
-    getTeacherAssignments: function () {
-
-      teacherAssignments = [
-        {
-          id: "hshadajsdhajd",
-          name: "A1",
-          class: { id: "dasdakdsl", name: "Turma A" },
-          questionnaire: {id: "dadsasdasd", name: "P_123143", questions: examQuestions},
-          done: [
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'João'
-              },
-              grade: '10.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'João'
-              },
-              grade: '10.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'Matheus'
-              },
-              grade: '9.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'Gilberto'
-              },
-              grade: '5.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'Marcelo'
-              },
-              grade: '7.5'
-            }
-          ]
-        },
-        {
-          id: "hshadajsdhajd",
-          name: "A2",
-          class: { id: "dasdakdsl", name: "Turma A" },
-          questionnaire: {id: "dadsasdasd", name: "P_5234324", questions: examQuestions},
-          done: [
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'João'
-              },
-              grade: '10.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'Matheus'
-              },
-              grade: '9.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'Gilberto'
-              },
-              grade: '5.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'Marcelo'
-              },
-              grade: '7.5'
-            }
-          ]
-        },
-        {
-          id: "hshadajsdhajd",
-          name: "A1",
-          class: { id: "dasdakdsl", name: "Turma B" },
-          questionnaire: {id: "dadsasdasd", name: "P_4132748", questions: examQuestions},
-          done: [
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'João'
-              },
-              grade: '10.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'João'
-              },
-              grade: '10.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'Matheus'
-              },
-              grade: '9.0'
-            },
-          ]
-        },
-        {
-          id: "hshadajsdhajd",
-          name: "A1",
-          class: { id: "dasdakdsl", name: "Turma C" },
-          questionnaire: {id: "dadsasdasd", name: "P_231413", questions: examQuestions},
-          done: [
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'João'
-              },
-              grade: '10.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'João'
-              },
-              grade: '10.0'
-            },
-            {
-              id: 'fasfdfafs',
-              student: {
-                id: 'fsldflkasdlk',
-                name: 'Matheus'
-              },
-              grade: '9.0'
-            },        
-          ]
-        }
-      ]
-
-      return teacherAssignments;
+    getTeacherAssignments: function (id) {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "GET",
+          url: `${API_URL}/Professor/${id}/turmas/avaliacoes`,
+        }).then(function successCallback(response) {
+          let assignments = response.data.map(obj => ({
+            id: obj.idAvaliacao,
+            name: obj.nomeAvaliacao,
+            class: {id: obj.idTurma, name: obj.nomeTurma},
+            questionnaire: {name: obj.nomeProva},
+            done: obj.qtdRealizadas
+          }))          
+          resolve(assignments);
+        });
+      });     
     },
     create: function () {
       return true;
     },
     getStudentAssignmentById: function (id) {
-      // $http({
-      //     method: 'GET',
-      //     url: '/someUrl'
-      //   }).then(function successCallback(response) {
-      //       // this callback will be called asynchronously
-      //       // when the response is available
-      //     }, function errorCallback(response) {
-      //       // called asynchronously if an error occurs
-      //       // or server returns response with an error status.
-      //     });
-
-      assignment = {
+       assignment = {
         id: "hshadajsdhajd",
         name: "A1",
         class: { id: "dasdakdsl", name: "Turma A" },
@@ -434,6 +179,63 @@ app.factory("AssignmentModel", function ($http) {
     },
     submit: function (obj) {
       console.log(obj)
+    },
+    getTeacherAssignmentsByClassId: async function (id) {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "GET",
+          url: `${API_URL}/Turma/${id}/avaliacoes`,
+        }).then(function successCallback(response) {
+          let teacherAssignmentsByClass = response.data.map((obj) => ({
+            id: obj.identificador,
+            name: obj.nomeAvaliacao
+          }));
+          resolve(teacherAssignmentsByClass);
+        });
+      });
+    },
+    getTeacherAssignmentById: function (id) {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "GET",
+          url: `${API_URL}/Avaliacao/${id}/prova/questoes`,
+        }).then(function successCallback(response) {
+          let obj = response.data;
+          console.log(obj)
+          let assignment = {
+            name: obj.nomeAvaliacao,
+            class: {name: obj.nomeTurma},
+            questionnaire: {
+              name: obj.nomeProva,
+              questions: obj.questoes.map((question) => ({
+                id: question.id,
+                title: question.nomeQuestao,
+                statement: question.enunciado,
+                options: question.alternativas.map((opt) => ({
+                  id: opt.id,
+                  statement: opt.texto,
+                })),
+              })),
+            },
+          };
+          resolve(assignment);
+        });
+      });
+    },
+    getTeacherGradesByAssignmentId: function (id) {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "GET",
+          url: `${API_URL}/Avaliacao/${id}/alunos-matriculados-notas`,
+        }).then(function successCallback(response) {
+          let studentsResults = response.data.map(obj => ({
+            id: obj.matricula,
+            name: obj.nomeAluno,
+            grade: obj.nota
+          }))          
+          resolve(studentsResults);
+        });
+      });
     },
   };
 });
