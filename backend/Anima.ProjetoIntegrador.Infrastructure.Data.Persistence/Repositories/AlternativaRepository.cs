@@ -16,6 +16,11 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return Add(alternativa).Id;
         }
 
+        public int Criar(IEnumerable<Alternativa> alternativas)
+        {
+            return AddRange(alternativas);
+        }
+
         public Guid Alterar(Alternativa alternativa)
         {
             return Update(alternativa).Id;

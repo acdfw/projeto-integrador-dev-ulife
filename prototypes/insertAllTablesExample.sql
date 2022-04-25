@@ -53,18 +53,19 @@ VALUES
 (  'ED7F7CEE-1514-8D34-CDC7-B351B03B7FB4','PROGRAMAÇÃO',  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
 (  'E1BD8206-22F6-1ED0-5E2F-F4A24B3D48CD','TECNOLOGIAS APLICADAS A SISTEMAS DE INFORMAÇÃO',  'EC44538B-C8D3-8842-D336-8C4E371B7B9E');
 
-INSERT INTO [questao] (id,enunciado,professor_id)
+
+INSERT INTO [questao] (id,nome,enunciado,professor_id)
 VALUES
-(  '23A50283-E406-EC39-347D-6D68044B2617','Procurando minimizar o número de spams que uma empresa recebe, os administradores de rede resolveram implementar a técnica de greylist, que consiste em: ', 'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
-(  '3A6B406E-D83E-1E26-149E-1E19F268759A','Em relação a assinaturas digitais, analise as afirmativas a seguir: I. Certificado categoria S2 é o certificado usado para assinatura digital, com tamanho mínimo de 1024 bits, gerado por software e armazenado em um token. II. A verificação da assinatura digital de um documento eletrônico é realizada através da chave pública do remetente do documento. III. O DSA, algoritmo usado para assinaturas digitais, possui uma variante que utiliza curvas elípticas. Está correto somente o que se afirma em:' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
-(  '568DBB92-A5DE-8C2D-EAFD-973D8187CD8D','Uma empresa deseja ser certificada na implementação da norma ISO 27001. Para tal, ela deve seguir com rigor o que preconiza a norma, como por exemplo:' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
-(  '7A31BC13-5D1C-CFC2-49B5-62660A6C64A2','Para criptografar mensagens de tamanho arbitrário, existem vários modos de operação especificando como a criptografia será aplicada. Um desses modos é frágil em termos de segurança, pois não oculta o padrão de dados da mensagem original, mantendo-o na mensagem codificada. Esse modo de operação, menos seguro, é o:',  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
-(  '2F936AE7-6B77-3ED8-CA4A-77945F856612','O número inteiro –2 (menos dois) tem a seguinte representação em 16 bits, usando complemento a 2:' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
-(  'C8D6156D-7476-5647-E7C3-8DE0D22591D6','O resultado da multiplicação entre os inteiros 7F16 x 1216, ambos representados em complemento a 2 na base 16' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
-(  'BC358B5E-6D78-34C6-0468-837ECA522878','O acesso a dados em registradores internos da Unidade Central de Processamento (UCP):' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
-(  '9EE513A7-A4B7-A4D9-DA5A-A1659DCF827C','A estratégia de alocação de memória que busca o menor espaço livre suficiente para satisfazer cada requisição denomina-se:' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
-(  '783A2951-A279-A225-AE16-95CBB34DC7FB','Segundo Ian Sommerville, as arquiteturas orientadas a serviços (SOA) são uma forma de desenvolvimento de sistemas distribuídos em que os componentes de sistema são serviços autônomos, executando em computadores geograficamente distribuídos. Para que  acesso a esses serviços ocorra, são utilizados alguns padrões, dentre os quais estão o SOAP, WSDL e WS-BPEL. A linguagem WSDL é baseada em XML e tem como função especificar um serviço (web service) considerando os seguintes aspectos:',  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
-(  'A84864C2-B45C-B065-BBB4-30869B3CD110','Cristiano implementou o syslog nos servidores Linux que administra com o intuito de enviar todas as mensagens de log para um único servidor, que centralizará todos os logs da rede. Cristiano não está preocupado com a quantidade de mensagens de log  transmitidas entre os clientes e o servidor centralizador de log, pois:',  'EC44538B-C8D3-8842-D336-8C4E371B7B9E');
+(  '23A50283-E406-EC39-347D-6D68044B2617','Técnica de Greylist','Procurando minimizar o número de spams que uma empresa recebe, os administradores de rede resolveram implementar a técnica de greylist, que consiste em: ', 'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
+(  '3A6B406E-D83E-1E26-149E-1E19F268759A','Assinaturas Digitais','Em relação a assinaturas digitais, analise as afirmativas a seguir: I. Certificado categoria S2 é o certificado usado para assinatura digital, com tamanho mínimo de 1024 bits, gerado por software e armazenado em um token. II. A verificação da assinatura digital de um documento eletrônico é realizada através da chave pública do remetente do documento. III. O DSA, algoritmo usado para assinaturas digitais, possui uma variante que utiliza curvas elípticas. Está correto somente o que se afirma em:' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
+(  '568DBB92-A5DE-8C2D-EAFD-973D8187CD8D','Norma ISO 27001','Uma empresa deseja ser certificada na implementação da norma ISO 27001. Para tal, ela deve seguir com rigor o que preconiza a norma, como por exemplo:' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
+(  '7A31BC13-5D1C-CFC2-49B5-62660A6C64A2','Criptografia de Mensagens','Para criptografar mensagens de tamanho arbitrário, existem vários modos de operação especificando como a criptografia será aplicada. Um desses modos é frágil em termos de segurança, pois não oculta o padrão de dados da mensagem original, mantendo-o na mensagem codificada. Esse modo de operação, menos seguro, é o:',  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
+(  '2F936AE7-6B77-3ED8-CA4A-77945F856612','Representação Binária','O número inteiro –2 (menos dois) tem a seguinte representação em 16 bits, usando complemento a 2:' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
+(  'C8D6156D-7476-5647-E7C3-8DE0D22591D6','Multiplicação na base 16','O resultado da multiplicação entre os inteiros 7F16 x 1216, ambos representados em complemento a 2 na base 16' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
+(  'BC358B5E-6D78-34C6-0468-837ECA522878','UCP','O acesso a dados em registradores internos da Unidade Central de Processamento (UCP):' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
+(  '9EE513A7-A4B7-A4D9-DA5A-A1659DCF827C','Alocação de Memória','A estratégia de alocação de memória que busca o menor espaço livre suficiente para satisfazer cada requisição denomina-se:' ,  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
+(  '783A2951-A279-A225-AE16-95CBB34DC7FB','WSDL','Segundo Ian Sommerville, as arquiteturas orientadas a serviços (SOA) são uma forma de desenvolvimento de sistemas distribuídos em que os componentes de sistema são serviços autônomos, executando em computadores geograficamente distribuídos. Para que o acesso a esses serviços ocorra, são utilizados alguns padrões, dentre os quais estão o SOAP, WSDL e WS-BPEL. A linguagem WSDL é baseada em XML e tem como função especificar um serviço (web service) considerando os seguintes aspectos:',  'EC44538B-C8D3-8842-D336-8C4E371B7B9E'),
+(  'A84864C2-B45C-B065-BBB4-30869B3CD110','Mensagens de Log','Cristiano implementou o syslog nos servidores Linux que administra com o intuito de enviar todas as mensagens de log para um único servidor, que centralizará todos os logs da rede. Cristiano não está preocupado com a quantidade de mensagens de log  transmitidas entre os clientes e o servidor centralizador de log, pois:',  'EC44538B-C8D3-8842-D336-8C4E371B7B9E');
 
 
 INSERT INTO [prova_questao] (id,prova_id,questao_id)
@@ -153,7 +154,7 @@ VALUES
 (  'F9D8A748-A3E8-D84F-2297-159BCC39AC4A',  'BC358B5E-6D78-34C6-0468-837ECA522878', 'é mais lento que o acesso a dados em memória RAM' , 0),
 (  'BCAC3B59-7E67-DBD8-4475-7123414197CC',  '9EE513A7-A4B7-A4D9-DA5A-A1659DCF827C', 'minor fit' , 0),
 (  'D5DC0211-E4BE-A91C-F4C2-E97370784C1A',  '9EE513A7-A4B7-A4D9-DA5A-A1659DCF827C', 'save fit' , 0),
-(  '2A827766-1679-0FE4-5CA9-89D7A5DFF285',  '9EE513A7-A4B7-A4D9-DA5A-A1659DCF827C', 'best fit' , 0),
+(  '2A827766-1679-0FE4-5CA9-89D7A5DFF285',  '9EE513A7-A4B7-A4D9-DA5A-A1659DCF827C', 'best fit' , 1),
 (  'EDF2B9A4-587D-9D6B-9F4E-640D3986BCC3',  '9EE513A7-A4B7-A4D9-DA5A-A1659DCF827C', 'first fit' , 0),
 (  '8667E501-B9D2-1605-3CE5-24C95CBE7F22',  '9EE513A7-A4B7-A4D9-DA5A-A1659DCF827C', 'worst fit' , 0),
 (  '749A23A6-06C3-6084-CEC2-2A554A3188D5',  '783A2951-A279-A225-AE16-95CBB34DC7FB', 'descrição das operações, protocolo de Internet e tipo de arquivo' , 1),
@@ -185,15 +186,29 @@ VALUES
 (  'D45C5BD5-5DDA-B295-306E-9A936B49453D',  'F65097F9-7A2C-4876-C301-9F1A9798BE0C',  'B5B94925-1613-1688-C2F9-5A62126F275E')
 
 
-INSERT INTO [avaliacao] (id, turma_id, prova_id)
+INSERT INTO [avaliacao] (id, turma_id, prova_id, nome)
 VALUES 
-('1F34DD28-AF77-4F0D-9C59-00810D187DDA', 'DE4E6DF2-1842-21A6-F5DE-18BB234D3EFD', '74571868-177D-B263-9965-700F2723BA15'),
-('1FE4A6D6-1E93-4647-A000-6F5F87E39A3E', '943B2E18-C593-3C42-A60D-2976D7747492', '38FA234D-1BC4-B469-E7B5-91ED1D385E94'),
-('0D55D120-9DB5-4CA7-AC7C-CF440EE8502C', '12BE106F-615B-B53C-6AEF-1457132179CA', 'ED7F7CEE-1514-8D34-CDC7-B351B03B7FB4'),
-('5E66CEA3-DDE2-4D5C-B77D-109174B3EC90', 'B5B94925-1613-1688-C2F9-5A62126F275E', 'E1BD8206-22F6-1ED0-5E2F-F4A24B3D48CD')
+('1F34DD28-AF77-4F0D-9C59-00810D187DDA', 'DE4E6DF2-1842-21A6-F5DE-18BB234D3EFD', '74571868-177D-B263-9965-700F2723BA15', 'A1'),
+('1FE4A6D6-1E93-4647-A000-6F5F87E39A3E', '943B2E18-C593-3C42-A60D-2976D7747492', '38FA234D-1BC4-B469-E7B5-91ED1D385E94', 'A2'),
+('0D55D120-9DB5-4CA7-AC7C-CF440EE8502C', '12BE106F-615B-B53C-6AEF-1457132179CA', 'ED7F7CEE-1514-8D34-CDC7-B351B03B7FB4', 'A3'),
+('5E66CEA3-DDE2-4D5C-B77D-109174B3EC90', 'B5B94925-1613-1688-C2F9-5A62126F275E', 'E1BD8206-22F6-1ED0-5E2F-F4A24B3D48CD', 'A4')
 
 
 INSERT INTO [avaliacao_matricula] (id, avaliacao_id, matricula_id, nota)
 VALUES
 ('1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', '1F34DD28-AF77-4F0D-9C59-00810D187DDA', 'E4B3F921-E313-068A-4ACB-967EE7E287E0', 7),
 ('76BFE45A-800C-47F9-A10B-C89ECF1F92F2', '1FE4A6D6-1E93-4647-A000-6F5F87E39A3E', 'AEA0DE88-4485-3B29-EEE2-2833650546E7', 9.5)
+
+
+INSERT INTO [folha_resposta] (id, avaliacao_matricula_id, questao_id, alternativa_id)
+VALUES
+('74DFE7B1-7C1F-43B2-A034-E478E917E3C0', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', '23A50283-E406-EC39-347D-6D68044B2617','53018B7C-032A-C05D-73A3-A63DBA415241'),
+('A3E93270-A3EE-47B2-880F-E7911FEE8138', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', '3A6B406E-D83E-1E26-149E-1E19F268759A','B82748A5-94E4-2511-A2F6-653F2070898C'),
+('69F0EB1B-1106-4200-A7BD-2C58523049D4', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', '568DBB92-A5DE-8C2D-EAFD-973D8187CD8D','697DE067-3595-1152-96E9-5963123B9DF3'),
+('16B87D89-25A1-4BE4-97DD-CA4B1AC68C90', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', '7A31BC13-5D1C-CFC2-49B5-62660A6C64A2','7A66C8B9-2AE4-23E8-A54E-5638BD0D7277'),
+('120E0510-0BA4-4813-959C-84C0B597F814', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', '2F936AE7-6B77-3ED8-CA4A-77945F856612','C3613C06-176F-CB2E-6276-B99D6086F513'),
+('996F4B96-F271-4604-A846-39258E094CDA', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', 'C8D6156D-7476-5647-E7C3-8DE0D22591D6','55293613-0142-AE23-E063-D61D99DAC7B4'),
+('D10F51AD-17CA-4F77-B6A7-5E07D005C9BD', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', 'BC358B5E-6D78-34C6-0468-837ECA522878','A9768AC1-6E09-E71E-5AC4-B5B82A3D3FCA'),
+('0F82B338-04A7-4420-92F7-7AE9E19F17A7', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', '9EE513A7-A4B7-A4D9-DA5A-A1659DCF827C','EDF2B9A4-587D-9D6B-9F4E-640D3986BCC3'),
+('725B30BD-D773-4049-BE64-00DA1902E049', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', '783A2951-A279-A225-AE16-95CBB34DC7FB','749A23A6-06C3-6084-CEC2-2A554A3188D5'),
+('4A208ADF-A442-4E62-8C86-F86AF1D60C68', '1D6138BB-1F55-4C7F-85EB-5E54ECB5E645', 'A84864C2-B45C-B065-BBB4-30869B3CD110','CA5A163D-86D1-9733-8684-E987B8A84782');

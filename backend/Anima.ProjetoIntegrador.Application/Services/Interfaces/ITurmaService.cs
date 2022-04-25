@@ -8,5 +8,6 @@ namespace Anima.ProjetoIntegrador.Application.Services.Interfaces
         IList<AvaliacaoTurmaResponse> ConsultarAvaliacoesPorTurma(Guid id);
         IList<TurmaAlunoMatriculaResponse> ConsultarInscritosPorTurma(Guid id);
         NovaTurmaResponse Criar(NovaTurmaRequest request);
+        TurmaResponse? ObterTurma(Guid guid);
     }
 }

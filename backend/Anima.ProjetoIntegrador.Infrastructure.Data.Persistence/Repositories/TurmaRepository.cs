@@ -49,6 +49,18 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return query.ToList();
         }
 
+        public TurmaResponse? ObterPorId(Guid id)
+        {
+            var query = from turma in _context.Set<Turma>()
+                        where turma.Id == id
+                        select new TurmaResponse
+                        {
+                            NomeTurma = turma.Nome.ToString()
+                        };
+
+            return query.FirstOrDefault();
+        }
+
         public IList<TurmaResponse> ConsultarTurmas()
         {
             return GetQueryable().Select(q => new TurmaResponse

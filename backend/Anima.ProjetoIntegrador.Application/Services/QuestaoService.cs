@@ -11,10 +11,15 @@ namespace Anima.ProjetoIntegrador.Application.Services
     public class QuestaoService : IQuestaoService
     {
         private readonly IQuestaoRepository _questaoRepository;
+        private readonly IAlternativaRepository _alternativaRepository;
+        private readonly IProfessorRepository _professorRepository;
 
-        public QuestaoService(IQuestaoRepository questaoRepository)
+        public QuestaoService(IQuestaoRepository questaoRepository, IAlternativaRepository alternativaRepository,
+            IProfessorRepository professorRepository)
         {
             _questaoRepository = questaoRepository;
+            _alternativaRepository = alternativaRepository;
+            _professorRepository = professorRepository;
         }
 
         public QuestaoAlternativaResponse? ConsultarAlternativasPorQuestao(Guid id)
@@ -39,24 +44,38 @@ namespace Anima.ProjetoIntegrador.Application.Services
         public NovaQuestaoResponse Criar(NovaQuestaoRequest request)
         {
             var response = new NovaQuestaoResponse();
-            var notFoundErros = new List<string>();
+            var badRequestErros = new List<string>();
 
             var ValidateResult = QuestaoValidate.Validate(request, new QuestaoValidator());
 
             if (!ValidateResult.IsValid)
             {
-                notFoundErros = ValidateErrors.ListErrors(notFoundErros, ValidateResult);
-                response.AddError(StatusCodes.Status404NotFound, notFoundErros);
+                badRequestErros = ValidateErrors.ListErrors(badRequestErros, ValidateResult);
+                response.AddError(StatusCodes.Status400BadRequest, badRequestErros);
                 return response;
             }
+
+            var professorId = _professorRepository.ObterProfessorPorUsuario(Guid.Parse(request.UsuarioId));
 
             var questao = new Questao
             {
                 Enunciado = request.Enunciado,
-                ProfessorId = Guid.Parse(request.ProfessorId)
+                Nome = request.Nome,
+                ProfessorId = professorId
             };
 
-            response.Id = _questaoRepository.Criar(questao).ToString();
+            var questaoId = _questaoRepository.Criar(questao);
+
+            var alternativas = request.Alternativas.Select(a => new Alternativa
+            {
+                QuestaoId = questaoId,
+                Texto = a.Texto,
+                AlternativaCorreta = a.AlternativaCorreta
+            });
+
+            _alternativaRepository.Criar(alternativas);
+
+            response.Id = questaoId.ToString();
 
             return response;
         }

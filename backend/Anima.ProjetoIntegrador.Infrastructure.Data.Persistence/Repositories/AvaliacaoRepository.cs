@@ -23,7 +23,8 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         {
                             ProvaId = prova.Id.ToString(),
                             NomeProva = prova.Nome,
-                            NomeAvaliacao = avaliacao.Nome
+                            NomeAvaliacao = avaliacao.Nome,
+                            NomeTurma = turma.Nome,
                         };
 
             return query.FirstOrDefault();
@@ -40,6 +41,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                             on matricula.Id equals avaliacaoMatricula.MatriculaId
                         into avaliacaoMatriculaLeft
                         from avaliacaoMatriculaLefted in avaliacaoMatriculaLeft.DefaultIfEmpty()
+                        join folhaResposta in _context.Set<FolhaResposta>()
+                            on avaliacaoMatriculaLefted.Id equals folhaResposta.AvaliacaoMatriculaId
+                        into folhaRespostaLeft
+                        from folhaRespostaLefted in folhaRespostaLeft.DefaultIfEmpty()
                         join aluno in _context.Set<Aluno>()
                             on matricula.AlunoId equals aluno.Id
                         join usuario in _context.Set<Usuario>()
@@ -47,9 +52,9 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         where avaliacao.Id == id
                         select new AlunoMatriculadoTurmaResponse
                         {
+                            FolhaRepostaId = folhaRespostaLefted.Id.ToString(),
                             Matricula = matricula.Id.ToString(),
                             NomeAluno = usuario.Nome,
-                            NomeTurma = turma.Nome,
                             Nota = avaliacaoMatriculaLefted.Nota
                         };
 

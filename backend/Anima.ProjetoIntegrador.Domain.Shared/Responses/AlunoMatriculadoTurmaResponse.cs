@@ -5,6 +5,6 @@
         public string? Matricula { get; set; }
         public string? NomeAluno { get; set; }
         public double? Nota { get; set; }
-        public string? NomeTurma { get; set; }
+        public string? FolhaRepostaId { get; set; }
     }
 }

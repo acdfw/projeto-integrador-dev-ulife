@@ -44,16 +44,30 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Não existem alunos matriculados para a turma.");
         }
 
+        [HttpGet("{id}")]
+        [Authorize(Roles = "professor")]
+        public IActionResult Obter(string id)
+        {
+            var turma = _turmaService.ObterTurma(Guid.Parse(id));
+
+            if (turma is not null)
+            {
+                return Ok(turma);
+            }
+
+            return NotFound("Turma não encontrada.");
+        }
+
         [HttpPost]
         [Authorize(Roles = "professor")]
         public IActionResult CriarTurma([FromBody] NovaTurmaRequest request)
         {
             var response = _turmaService.Criar(request);
 
-            if (response.Errors.Any(e => e.Key == StatusCodes.Status404NotFound))
+            if (response.Errors.Any(e => e.Key == StatusCodes.Status400BadRequest))
             {
-                var notFoundErrors = string.Join(" ", response.Errors[StatusCodes.Status404NotFound]);
-                return NotFound(notFoundErrors);
+                var badRequestErrors = string.Join(" ", response.Errors[StatusCodes.Status400BadRequest]);
+                return BadRequest(badRequestErrors);
             }
 
             return Created(string.Empty, $"Turma criada: {response.Id}");

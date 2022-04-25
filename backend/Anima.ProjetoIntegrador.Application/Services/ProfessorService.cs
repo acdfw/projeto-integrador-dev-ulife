@@ -9,13 +9,15 @@ namespace Anima.ProjetoIntegrador.Application.Services
         private readonly IProfessorRepository _professorRepository;
         private readonly IAvaliacaoMatriculaRepository _avaliacaoMatriculaRepository;
         private readonly IProvaQuestaoRepository _provaQuestaoRepository;
+        private readonly IAlternativaRepository _alternativaRepository;
 
         public ProfessorService(IProfessorRepository professorRepository, IAvaliacaoMatriculaRepository avaliacaoMatriculaRepository,
-            IProvaQuestaoRepository provaQuestaoRepository)
+            IProvaQuestaoRepository provaQuestaoRepository, IAlternativaRepository alternativaRepository)
         {
             _professorRepository = professorRepository;
             _avaliacaoMatriculaRepository = avaliacaoMatriculaRepository;
             _provaQuestaoRepository = provaQuestaoRepository;
+            _alternativaRepository = alternativaRepository;
         }
 
         public IList<TurmaQuantidadeInscritosAvaliacoesProfessorResponse> ConsultarTurmasQuantidadeInscritosAvaliacoes(Guid id)
@@ -95,6 +97,28 @@ namespace Anima.ProjetoIntegrador.Application.Services
             }
 
             return provas;
+        }
+
+        public IList<QuestaoResponse> ConsultarQuestoesDoProfessor(Guid id)
+        {
+            var questoes = _professorRepository.ConsultarQuestoesDoProfessor(id);
+            if (questoes.Any())
+            {
+                var questoesId = questoes.Select(x => Guid.Parse(x.Id));
+                var alternativas = _alternativaRepository.ConsultarPorQuestoes(questoesId);
+
+                if (alternativas.Any())
+                {
+                    var alternativasAgrupadas = alternativas.GroupBy(x => x.QuestaoId).ToDictionary(x => x.Key, x => x.ToList());
+
+                    foreach (var questao in questoes)
+                    {
+                        questao.Alternativas = alternativasAgrupadas[questao.Id];
+                    }
+                }
+            }
+
+            return questoes;
         }
     }
 }

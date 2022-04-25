@@ -27,7 +27,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Configurations
                 .IsRequired()
                 .HasColumnName("professor_id");
 
-
+            builder
+                .Property(x => x.Nome)
+                .IsRequired()
+                .HasColumnName("nome");
         }
     }
 }

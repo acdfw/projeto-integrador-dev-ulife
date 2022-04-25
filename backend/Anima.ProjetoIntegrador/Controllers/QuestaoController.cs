@@ -40,13 +40,13 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         {
             var response = _questaoService.Criar(request);
 
-            if (response.Errors.Any(e => e.Key == StatusCodes.Status404NotFound))
+            if (response.Errors.Any(e => e.Key == StatusCodes.Status400BadRequest))
             {
-                var notFoundErrors = string.Join(" ", response.Errors[StatusCodes.Status404NotFound]);
-                return NotFound(notFoundErrors);
+                var badRequestErrors = string.Join(" ", response.Errors[StatusCodes.Status400BadRequest]);
+                return BadRequest(badRequestErrors);
             }
 
-            return Created(string.Empty, $"Alternativa criada: {response.Id}");
+            return Created(string.Empty, $"Questão criada: {response.Id}");
         }
     }
 }

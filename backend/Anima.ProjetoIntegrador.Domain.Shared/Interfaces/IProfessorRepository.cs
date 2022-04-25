@@ -9,5 +9,6 @@ namespace Anima.ProjetoIntegrador.Domain.Interfaces
         IList<AvaliacaoProfessorResponse> ConsultarAvaliacoesDasSuasTurmas(Guid id);
         IList<ProvaProfessorResponse> ConsultarProvasDoProfessor(Guid id);
         Guid ObterProfessorPorUsuario(Guid usuarioId);
+        IList<QuestaoResponse> ConsultarQuestoesDoProfessor(Guid id);
     }
 }

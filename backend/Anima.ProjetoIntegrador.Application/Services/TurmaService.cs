@@ -29,6 +29,11 @@ namespace Anima.ProjetoIntegrador.Application.Services
             return _turmaRepository.ConsultarInscritosPorTurma(id);
         }
 
+        public TurmaResponse? ObterTurma(Guid guid)
+        {
+            return _turmaRepository.ObterPorId(guid);
+        }
+
         public NovaTurmaResponse Criar(NovaTurmaRequest request)
         {   
             var response = new NovaTurmaResponse();
@@ -53,6 +58,6 @@ namespace Anima.ProjetoIntegrador.Application.Services
             response.Id = _turmaRepository.Criar(turma).ToString();
 
             return response;
-        }
+        }        
     }
 }

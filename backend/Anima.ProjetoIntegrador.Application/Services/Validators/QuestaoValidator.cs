@@ -12,7 +12,7 @@ namespace Anima.ProjetoIntegrador.Application.Services.Validators
             RuleFor(questao => questao.Enunciado)
                 .NotNull().NotEmpty().WithMessage("O enunciado não pode estar vazio!");
 
-            RuleFor(questao => questao.ProfessorId)
+            RuleFor(questao => questao.UsuarioId)
                 .NotNull().NotEmpty().WithMessage("O id do professor não pode estar vazio!");
         }
     }
