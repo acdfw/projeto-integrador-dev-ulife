@@ -21,6 +21,14 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return entity;
         }
 
+        public int AddRange(IEnumerable<TEntity> entities)
+        {
+            _context.Set<TEntity>().AddRange(entities);
+            _context.SaveChanges();
+
+            return entities.Count();
+        }
+
         public TEntity Update(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);

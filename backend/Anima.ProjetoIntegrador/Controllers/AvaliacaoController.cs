@@ -30,7 +30,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             return NotFound("Avaliação não encontrada.");
         }
 
-        [HttpGet("{id}/avaliacao/turma/alunos-matriculados-notas")]
+        [HttpGet("{id}/alunos-matriculados-notas")]
         [Authorize(Roles = "professor")]
         public IActionResult ConsultarTurmaInscritosPorAvaliacao(string id)
         {
@@ -50,10 +50,10 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         {
             var response = _avaliacaoService.Criar(request);
 
-            if (response.Errors.Any(e => e.Key == StatusCodes.Status404NotFound))
+            if (response.Errors.Any(e => e.Key == StatusCodes.Status400BadRequest))
             {
-                var notFoundErrors = string.Join(" ", response.Errors[StatusCodes.Status404NotFound]);
-                return NotFound(notFoundErrors);
+                var badRequestErros = string.Join(" ", response.Errors[StatusCodes.Status400BadRequest]);
+                return BadRequest(badRequestErros);
             }
 
             return Created(string.Empty, $"Avaliação criada: {response.Id}");

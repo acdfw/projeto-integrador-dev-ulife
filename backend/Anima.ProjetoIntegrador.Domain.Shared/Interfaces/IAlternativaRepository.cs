@@ -6,9 +6,8 @@ namespace Anima.ProjetoIntegrador.Domain.Interfaces
     public interface IAlternativaRepository
     {
         Guid Criar(Alternativa alternativa);
-
-        Guid Alterar(Alternativa alternativa);
-        
+        int Criar(IEnumerable<Alternativa> alternativas);
+        Guid Alterar(Alternativa alternativa);        
         IList<AlternativaResponse> ConsultarPorQuestoes(IEnumerable<Guid> questoesId);
     }
 }

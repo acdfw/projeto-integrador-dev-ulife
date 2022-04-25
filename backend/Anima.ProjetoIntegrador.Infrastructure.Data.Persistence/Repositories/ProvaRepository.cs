@@ -23,6 +23,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         select new QuestaoResponse
                         {
                             Id = questao.Id.ToString(),
+                            NomeQuestao = questao.Nome,
                             Enunciado = questao.Enunciado
                         };
 

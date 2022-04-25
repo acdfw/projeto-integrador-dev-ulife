@@ -28,6 +28,11 @@ namespace Anima.ProjetoIntegrador.Application.Services
             return _turmaRepository.ConsultarInscritosPorTurma(id);
         }
 
+        public TurmaResponse? ObterTurma(Guid guid)
+        {
+            return _turmaRepository.ObterPorId(guid);
+        }
+
         public NovaTurmaResponse Criar(NovaTurmaRequest request)
         {
             var response = new NovaTurmaResponse();
@@ -45,7 +50,7 @@ namespace Anima.ProjetoIntegrador.Application.Services
 
             if (notFoundErros.Any())
             {
-                response.AddError(StatusCodes.Status404NotFound, notFoundErros);
+                response.AddError(StatusCodes.Status400BadRequest, notFoundErros);
             }
 
             if (response.Errors.Any())
@@ -63,6 +68,6 @@ namespace Anima.ProjetoIntegrador.Application.Services
             response.Id = _turmaRepository.Criar(turma).ToString();
 
             return response;
-        }
+        }        
     }
 }

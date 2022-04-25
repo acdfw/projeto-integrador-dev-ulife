@@ -66,7 +66,7 @@ namespace Anima.ProjetoIntegrador.Application.Services
 
             if (notFoundErros.Any())
             {
-                response.AddError(StatusCodes.Status404NotFound, notFoundErros);
+                response.AddError(StatusCodes.Status400BadRequest, notFoundErros);
             }
 
             if (response.Errors.Any())

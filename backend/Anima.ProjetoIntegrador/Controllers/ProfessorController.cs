@@ -56,5 +56,19 @@ namespace Anima.ProjetoIntegrador.API.Controllers
 
             return NotFound("Não existem questionários para o professor.");
         }
+
+        [HttpGet("{id}/questoes")]
+        [Authorize(Roles = "professor")]
+        public IActionResult ConsultarQuestoesDoProfessor(string id)
+        {
+            var questoes = _professorService.ConsultarQuestoesDoProfessor(Guid.Parse(id));
+
+            if (questoes.Any())
+            {
+                return Ok(questoes);
+            }
+
+            return NotFound("Não existem questões para o professor.");
+        }
     }
 }

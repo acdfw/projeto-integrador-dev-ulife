@@ -10,10 +10,15 @@ namespace Anima.ProjetoIntegrador.Application.Services
     public class QuestaoService : IQuestaoService
     {
         private readonly IQuestaoRepository _questaoRepository;
+        private readonly IAlternativaRepository _alternativaRepository;
+        private readonly IProfessorRepository _professorRepository;
 
-        public QuestaoService(IQuestaoRepository questaoRepository)
+        public QuestaoService(IQuestaoRepository questaoRepository, IAlternativaRepository alternativaRepository,
+            IProfessorRepository professorRepository)
         {
             _questaoRepository = questaoRepository;
+            _alternativaRepository = alternativaRepository;
+            _professorRepository = professorRepository;
         }
 
         public QuestaoAlternativaResponse? ConsultarAlternativasPorQuestao(Guid id)
@@ -38,21 +43,38 @@ namespace Anima.ProjetoIntegrador.Application.Services
         public NovaQuestaoResponse Criar(NovaQuestaoRequest request)
         {
             var response = new NovaQuestaoResponse();
-            var notFoundErros = new List<string>();
+            var badRequestErros = new List<string>();
 
             if (string.IsNullOrEmpty(request.Enunciado))
             {
-                notFoundErros.Add("É necessário um enunciado para criar a questão.");
+                badRequestErros.Add("É necessário um enunciado para criar a questão.");
             }
 
-            if (string.IsNullOrEmpty(request.ProfessorId))
+            if (string.IsNullOrEmpty(request.Nome))
             {
-                notFoundErros.Add("É necessário um professor para criar a avaliação.");
+                badRequestErros.Add("É necessário um título para criar a questão.");
             }
 
-            if (notFoundErros.Any())
+            if (string.IsNullOrEmpty(request.UsuarioId))
             {
-                response.AddError(StatusCodes.Status404NotFound, notFoundErros);
+                badRequestErros.Add("É necessário um professor para criar a questão.");
+            }
+
+            if (!request.Alternativas.Any())
+            {
+                badRequestErros.Add("É necessário alternativas para criar a questão.");
+            } 
+            else
+            {
+                if(request.Alternativas.Any(a => string.IsNullOrEmpty(a.Texto)))
+                {
+                    badRequestErros.Add("É necessário texto para as alternativas da questão.");
+                }
+            }
+
+            if (badRequestErros.Any())
+            {
+                response.AddError(StatusCodes.Status400BadRequest, badRequestErros);
             }
 
             if (response.Errors.Any())
@@ -60,13 +82,27 @@ namespace Anima.ProjetoIntegrador.Application.Services
                 return response;
             }
 
+            var professorId = _professorRepository.ObterProfessorPorUsuario(Guid.Parse(request.UsuarioId));
+
             var questao = new Questao
             {
                 Enunciado = request.Enunciado,
-                ProfessorId = Guid.Parse(request.ProfessorId)
+                Nome = request.Nome,
+                ProfessorId = professorId
             };
 
-            response.Id = _questaoRepository.Criar(questao).ToString();
+            var questaoId = _questaoRepository.Criar(questao);
+
+            var alternativas = request.Alternativas.Select(a => new Alternativa
+            {
+                QuestaoId = questaoId,
+                Texto = a.Texto,
+                AlternativaCorreta = a.AlternativaCorreta
+            });
+
+            _alternativaRepository.Criar(alternativas);
+
+            response.Id = questaoId.ToString();
 
             return response;
         }

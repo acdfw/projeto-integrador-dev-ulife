@@ -13,6 +13,7 @@ namespace Anima.ProjetoIntegrador.Domain.Entities
         public string? Enunciado { get; set; }
         public Guid ProfessorId { get; set; }
         public virtual Professor? Professor { get; set; }
+        public string? Nome { get; set; }
         public virtual ICollection<Alternativa>? Alternativas { get; set; }
         public virtual ICollection<ProvaQuestao>? ProvasQuestoes { get; set; }
     }

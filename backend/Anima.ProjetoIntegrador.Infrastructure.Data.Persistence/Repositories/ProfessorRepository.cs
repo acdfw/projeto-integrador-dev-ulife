@@ -90,5 +90,21 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         {
             return _context.Set<Professor>().FirstOrDefault(p => p.UsuarioId == usuarioId).Id;
         }
+
+        public IList<QuestaoResponse> ConsultarQuestoesDoProfessor(Guid id)
+        {
+            var query = from professor in _context.Set<Professor>()
+                        join questao in _context.Set<Questao>()
+                            on professor.Id equals questao.ProfessorId
+                        where professor.UsuarioId == id
+                        select new QuestaoResponse
+                        {
+                            Id = questao.Id.ToString(),
+                            NomeQuestao = questao.Nome,
+                            Enunciado = questao.Enunciado
+                        };
+
+            return query.ToList();
+        }
     }
 }
