@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Anima.ProjetoIntegrador.Domain.Shared\Anima.ProjetoIntegrador.Domain.csproj" />
     <ProjectReference Include="..\Anima.ProjetoIntegrador.Infrastructure.Auth\Anima.ProjetoIntegrador.Infrastructure.Auth.csproj" />
   </ItemGroup>

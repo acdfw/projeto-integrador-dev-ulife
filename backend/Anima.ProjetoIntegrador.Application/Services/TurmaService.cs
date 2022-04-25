@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Anima.ProjetoIntegrador.Application.Services.Validators;
 using Anima.ProjetoIntegrador.Domain.Entities;
 using Anima.ProjetoIntegrador.Domain.Interfaces;
 using Anima.ProjetoIntegrador.Domain.Requests;
@@ -29,27 +30,16 @@ namespace Anima.ProjetoIntegrador.Application.Services
         }
 
         public NovaTurmaResponse Criar(NovaTurmaRequest request)
-        {
+        {   
             var response = new NovaTurmaResponse();
             var notFoundErros = new List<string>();
 
-            if (string.IsNullOrEmpty(request.Nome))
-            {
-                notFoundErros.Add("É necessário um nome para criar a turma.");
-            }
+            var ValidateResult = TurmaValidate.Validate(request, new TurmaValidator());
 
-            if (string.IsNullOrEmpty(request.UsuarioId))
+            if (!ValidateResult.IsValid)
             {
-                notFoundErros.Add("É necessário um professor para criar a turma.");
-            }
-
-            if (notFoundErros.Any())
-            {
+                notFoundErros = ValidateErrors.ListErrors(notFoundErros, ValidateResult);
                 response.AddError(StatusCodes.Status404NotFound, notFoundErros);
-            }
-
-            if (response.Errors.Any())
-            {
                 return response;
             }
 

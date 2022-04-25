@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Anima.ProjetoIntegrador.Application.Services.Validators;
 using Anima.ProjetoIntegrador.Domain.Entities;
 using Anima.ProjetoIntegrador.Domain.Interfaces;
 using Anima.ProjetoIntegrador.Domain.Requests;
@@ -40,23 +41,12 @@ namespace Anima.ProjetoIntegrador.Application.Services
             var response = new NovaQuestaoResponse();
             var notFoundErros = new List<string>();
 
-            if (string.IsNullOrEmpty(request.Enunciado))
-            {
-                notFoundErros.Add("É necessário um enunciado para criar a questão.");
-            }
+            var ValidateResult = QuestaoValidate.Validate(request, new QuestaoValidator());
 
-            if (string.IsNullOrEmpty(request.ProfessorId))
+            if (!ValidateResult.IsValid)
             {
-                notFoundErros.Add("É necessário um professor para criar a avaliação.");
-            }
-
-            if (notFoundErros.Any())
-            {
+                notFoundErros = ValidateErrors.ListErrors(notFoundErros, ValidateResult);
                 response.AddError(StatusCodes.Status404NotFound, notFoundErros);
-            }
-
-            if (response.Errors.Any())
-            {
                 return response;
             }
 

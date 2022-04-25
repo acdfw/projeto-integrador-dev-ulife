@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Anima.ProjetoIntegrador.Application.Services.Validators;
 using Anima.ProjetoIntegrador.Domain.Entities;
 using Anima.ProjetoIntegrador.Domain.Interfaces;
 using Anima.ProjetoIntegrador.Domain.Requests;
@@ -21,23 +22,12 @@ namespace Anima.ProjetoIntegrador.Application.Services
             var response = new NovaAlternativaResponse();
             var notFoundErros = new List<string>();
 
-            if (string.IsNullOrEmpty(request.Texto))
-            {
-                notFoundErros.Add("É necessário um texto para a alternativa.");
-            }
+            var ValidateResult = AlternativaValidate.Validate(request, new AlternativaValidator());
 
-            if (string.IsNullOrEmpty(request.QuestaoId))
-            { 
-                notFoundErros.Add("É necessário uma questão para a alternativa.");
-            }
-
-            if (notFoundErros.Any())
+            if (!ValidateResult.IsValid)
             {
+                notFoundErros = ValidateErrors.ListErrors(notFoundErros, ValidateResult);
                 response.AddError(StatusCodes.Status404NotFound, notFoundErros);
-            }
-
-            if (response.Errors.Any())
-            {
                 return response;
             }
 
@@ -49,7 +39,6 @@ namespace Anima.ProjetoIntegrador.Application.Services
             };
 
             response.Id = _alternativaRepository.Criar(alternativa).ToString();
-
             return response;
         }
     }
