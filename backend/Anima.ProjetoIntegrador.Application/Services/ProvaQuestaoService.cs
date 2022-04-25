@@ -1,4 +1,5 @@
 ﻿using Anima.ProjetoIntegrador.Application.Services.Interfaces;
+using Anima.ProjetoIntegrador.Application.Services.Validators;
 using Anima.ProjetoIntegrador.Domain.Entities;
 using Anima.ProjetoIntegrador.Domain.Interfaces;
 using Anima.ProjetoIntegrador.Domain.Requests;
@@ -21,23 +22,12 @@ namespace Anima.ProjetoIntegrador.Application.Services
             var response = new NovaProvaQuestaoResponse();
             var notFoundErros = new List<string>();
 
-            if (string.IsNullOrEmpty(request.ProvaId))
-            {
-                notFoundErros.Add("É necessário uma prova.");
-            }
+            var ValidateResult = ProvaQuestaoValidate.Validate(request, new ProvaQuestaoValidator());
 
-            if (string.IsNullOrEmpty(request.QuestaoId))
+            if (!ValidateResult.IsValid)
             {
-                notFoundErros.Add("É necessário uma questão.");
-            }
-
-            if (notFoundErros.Any())
-            {
+                notFoundErros = ValidateErrors.ListErrors(notFoundErros, ValidateResult);
                 response.AddError(StatusCodes.Status404NotFound, notFoundErros);
-            }
-
-            if (response.Errors.Any())
-            {
                 return response;
             }
 
