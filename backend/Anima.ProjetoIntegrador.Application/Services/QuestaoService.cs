@@ -50,8 +50,8 @@ namespace Anima.ProjetoIntegrador.Application.Services
 
             if (!ValidateResult.IsValid)
             {
-                notFoundErros = ValidateErrors.ListErrors(notFoundErros, ValidateResult);
-                response.AddError(StatusCodes.Status404NotFound, notFoundErros);
+                badRequestErros = ValidateErrors.ListErrors(badRequestErros, ValidateResult);
+                response.AddError(StatusCodes.Status400BadRequest, badRequestErros);
                 return response;
             }
 
