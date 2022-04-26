@@ -25,13 +25,13 @@
       <br>
       <input list="questionnaires"placeholder="Selecione o questionário" class='w-100' ng-model="questionnaireBase"/>
       <datalist id="questionnaires">
-        <option value="{{questionnaire.id}}" ng-repeat="questionnaire in questionnaires">{{questionnaire.title}}</option>
+        <option value="{{questionnaire.id}}" ng-repeat="questionnaire in questionnaires">{{questionnaire.name}}</option>
       </datalist>
       <br />
       <br />
       <input list="classes"placeholder="Selecione a turma" class='w-100' ng-model="targetClass"/>
       <datalist id="classes">
-        <option value="{{c.id}}" ng-repeat="c in classes">{{c.title}}</option>
+        <option value="{{c.id}}" ng-repeat="c in classes">{{c.name}}</option>
       </datalist>
       <br />
       <br />

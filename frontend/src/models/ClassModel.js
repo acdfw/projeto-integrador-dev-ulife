@@ -1,14 +1,25 @@
 app.factory("ClassModel", function ($http, AuthTokenService) {
   return {
     getTeacherClassById: function (id) {
-      
-      return teacherClass;
-    },
-    getTeacherClasses: async function () {
       return new Promise((resolve, reject) => {
         $http({
           method: "GET",
-          url: `${API_URL}/Professor/${AuthTokenService.getUserId()}/turmas-inscritos-avaliacoes`,
+          url: `${API_URL}/Turma/${id}`,
+        }).then(function successCallback(response) {
+          obj = response.data
+          let teacherClass = {
+            id: obj.id,
+            name: obj.nomeTurma
+          };
+          resolve(teacherClass);
+        });
+      });
+    },
+    getTeacherClasses: async function (id) {
+      return new Promise((resolve, reject) => {
+        $http({
+          method: "GET",
+          url: `${API_URL}/Professor/${id}/turmas-inscritos-avaliacoes`,
         }).then(function successCallback(response) {
           let teacherClasses = response.data.map((obj) => ({
             id: obj.idTurma,

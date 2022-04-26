@@ -1,9 +1,9 @@
 app.controller(
   "TeacherQuestionsListCtrl",
-  function ($scope, QuestionModel, $location, QuestionnaireModel) {
+  function ($scope, getQuestions, $location, QuestionnaireModel) {
     var me = $scope;
 
-    var questions = QuestionModel.getQuestions();
+    var questions = getQuestions;
 
     questions = questions.map((obj) => ({ ...obj, selected: false }));
 
