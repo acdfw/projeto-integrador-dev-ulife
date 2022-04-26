@@ -165,7 +165,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                                            on matricula.TurmaId equals turma.Id
                                        join avaliacao in _context.Set<Avaliacao>()
                                            on turma.Id equals avaliacao.TurmaId
-                                       where aluno.Id == id
+                                       where aluno.UsuarioId == id
                                        select avaliacao;
 
             var queryAvaliacoesDoAluno = from aluno in _context.Set<Aluno>()
@@ -177,27 +177,27 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                                               on avaliacaoMatricula.AvaliacaoId equals avaliacao.Id
                                          join turma in _context.Set<Turma>()
                                              on avaliacao.TurmaId equals turma.Id
-                                         where aluno.Id == id
+                                         where aluno.UsuarioId == id
                                          select avaliacao;
 
             var queryAvaliacoesAbertasTurmas = queryTodasAvaliacoes.Except(queryAvaliacoesDoAluno);
             var provasAbertasTurmas = from avaliacao in queryAvaliacoesAbertasTurmas.ToList()
-                                join turma in _context.Set<Turma>()
-                                    on avaliacao.TurmaId equals turma.Id
-                                join prova in _context.Set<Prova>()
-                                    on avaliacao.ProvaId equals prova.Id
-                                join professor in _context.Set<Professor>()
-                                    on prova.ProfessorId equals professor.Id
-                                join usuario in _context.Set<Usuario>()
-                                    on professor.UsuarioId equals usuario.Id
-                                select new ProvaAbertaRealizadaTodasTurmasAlunoResponse
-                                {
-                                    IdAvaliacao = avaliacao.Id.ToString(),
-                                    NomeProva = prova.Nome,
-                                    NomeTurma = turma.Nome,
-                                    NomeProfessor = usuario.Nome,
-                                    Realizada = false
-                                };
+                                    join turma in _context.Set<Turma>()
+                                        on avaliacao.TurmaId equals turma.Id
+                                    join prova in _context.Set<Prova>()
+                                        on avaliacao.ProvaId equals prova.Id
+                                    join professor in _context.Set<Professor>()
+                                        on prova.ProfessorId equals professor.Id
+                                    join usuario in _context.Set<Usuario>()
+                                        on professor.UsuarioId equals usuario.Id
+                                    select new ProvaAbertaRealizadaTodasTurmasAlunoResponse
+                                    {
+                                        IdAvaliacao = avaliacao.Id.ToString(),
+                                        NomeAvaliacao = avaliacao.Nome,
+                                        NomeTurma = turma.Nome,
+                                        NomeProfessor = usuario.Nome,
+                                        Realizada = false
+                                    };
 
             return provasAbertasTurmas.ToList();
         }
@@ -219,13 +219,14 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                             on prova.ProfessorId equals professor.Id
                         join usuario in _context.Set<Usuario>()
                             on professor.UsuarioId equals usuario.Id                        
-                        where aluno.Id == id
+                        where aluno.UsuarioId == id
                         select new ProvaAbertaRealizadaTodasTurmasAlunoResponse
                         {
                             IdAvaliacao = avaliacao.Id.ToString(),
-                            NomeProva = prova.Nome,
+                            NomeAvaliacao = avaliacao.Nome,
                             NomeTurma = turma.Nome,
                             NomeProfessor = usuario.Nome,
+                            Nota = avaliacaoMatricula.Nota,
                             Realizada = true
                         };
 
