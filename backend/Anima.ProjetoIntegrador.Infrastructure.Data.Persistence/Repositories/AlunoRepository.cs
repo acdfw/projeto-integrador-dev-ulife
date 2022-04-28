@@ -195,8 +195,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                                         IdAvaliacao = avaliacao.Id.ToString(),
                                         NomeAvaliacao = avaliacao.Nome,
                                         NomeTurma = turma.Nome,
-                                        NomeProfessor = usuario.Nome,
-                                        Realizada = false
+                                        NomeProfessor = usuario.Nome
                                     };
 
             return provasAbertasTurmas.ToList();
@@ -227,7 +226,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                             NomeTurma = turma.Nome,
                             NomeProfessor = usuario.Nome,
                             Nota = avaliacaoMatricula.Nota,
-                            Realizada = true
+                            AvaliacaoMatriculaId = avaliacaoMatricula.Id.ToString()
                         };
 
             return query.ToList();

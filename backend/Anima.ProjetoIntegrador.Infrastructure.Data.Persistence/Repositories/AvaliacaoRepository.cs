@@ -40,11 +40,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         join avaliacaoMatricula in _context.Set<AvaliacaoMatricula>()
                             on matricula.Id equals avaliacaoMatricula.MatriculaId
                         into avaliacaoMatriculaLeft
-                        from avaliacaoMatriculaLefted in avaliacaoMatriculaLeft.DefaultIfEmpty()
-                        join folhaResposta in _context.Set<FolhaResposta>()
-                            on avaliacaoMatriculaLefted.Id equals folhaResposta.AvaliacaoMatriculaId
-                        into folhaRespostaLeft
-                        from folhaRespostaLefted in folhaRespostaLeft.DefaultIfEmpty()
+                        from avaliacaoMatriculaLefted in avaliacaoMatriculaLeft.DefaultIfEmpty()                        
                         join aluno in _context.Set<Aluno>()
                             on matricula.AlunoId equals aluno.Id
                         join usuario in _context.Set<Usuario>()
@@ -52,7 +48,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         where avaliacao.Id == id
                         select new AlunoMatriculadoTurmaResponse
                         {
-                            FolhaRepostaId = folhaRespostaLefted.Id.ToString(),
+                            AvaliacaoId = avaliacao.Id.ToString(),
                             Matricula = matricula.Id.ToString(),
                             NomeAluno = usuario.Nome,
                             Nota = avaliacaoMatriculaLefted.Nota

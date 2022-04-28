@@ -11,16 +11,35 @@ namespace Anima.ProjetoIntegrador.Application.Services
     public class ProvaService : IProvaService
     {
         private readonly IProvaRepository _provaRepository;
+        private readonly IProvaQuestaoRepository _provaQuestaoRepository;
         private readonly IAlternativaRepository _alternativaRepository;
+        private readonly IProfessorRepository _professorRepository;
 
-        public ProvaService(IProvaRepository provaRepository, IAlternativaRepository alternativaRepository)
+        public ProvaService(IProvaRepository provaRepository, IProvaQuestaoRepository provaQuestaoRepository, 
+            IAlternativaRepository alternativaRepository, IProfessorRepository professorRepository)
         {
             _provaRepository = provaRepository;
             _alternativaRepository = alternativaRepository;
+            _provaQuestaoRepository = provaQuestaoRepository;
+            _professorRepository = professorRepository;
         }
 
-        public IList<QuestaoResponse> ConsultarQuestoesPorProva(Guid id)
+        public ProvaResponse ConsultarQuestoesPorProva(Guid id)
         {
+            var errosBadRequest = new List<string>();
+            var errosNotFound = new List<string>();
+            var provaResponse = new ProvaResponse();
+            var prova = _provaRepository.ObterPorId(id);
+
+            if(prova is not null)
+            {
+                provaResponse.Nome = prova.Nome;
+            } 
+            else
+            {
+                errosBadRequest.Add("Prova não encontrada!");
+            }
+
             var questoes = _provaRepository.ConsultarQuestoesPorProva(id);
 
             if (questoes.Any())
@@ -37,9 +56,25 @@ namespace Anima.ProjetoIntegrador.Application.Services
                         questao.Alternativas = alternativasAgrupadas[questao.Id];
                     }
                 }
-            }            
 
-            return questoes;
+                provaResponse.Questoes = questoes;
+            } 
+            else
+            {
+                errosNotFound.Add("Não foram encontradas questões para esta prova!");
+            }
+
+            if (errosBadRequest.Any())
+            {
+                provaResponse.AddError(StatusCodes.Status400BadRequest, errosBadRequest);
+            }
+
+            if (errosNotFound.Any())
+            {
+                provaResponse.AddError(StatusCodes.Status404NotFound, errosNotFound);
+            }
+
+            return provaResponse;
         }
 
         public NovaProvaResponse Criar(NovaProvaRequest request)
@@ -56,13 +91,27 @@ namespace Anima.ProjetoIntegrador.Application.Services
                 return response;
             }
 
+            var professorId = _professorRepository.ObterProfessorPorUsuario(Guid.Parse(request.UsuarioId));
             var prova = new Prova
             {
                 Nome = request.Nome,
-                ProfessorId = Guid.Parse(request.ProfessorId)
+                ProfessorId = professorId
             };
 
+            var provaQuestao = new List<ProvaQuestao>();            
+
             response.Id = _provaRepository.Criar(prova).ToString();
+
+            foreach (var id in request.QuestoesId)
+            {
+                provaQuestao.Add(new ProvaQuestao
+                {
+                    ProvaId = Guid.Parse(response.Id),
+                    QuestaoId = Guid.Parse(id)
+                });
+            }
+
+            _provaQuestaoRepository.Criar(provaQuestao);
 
             return response;
         }

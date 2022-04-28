@@ -7,5 +7,6 @@ namespace Anima.ProjetoIntegrador.Domain.Interfaces
     {
         IList<QuestaoResponse> ConsultarQuestoesPorProva(Guid idProva);
         Guid Criar(Prova prova);
+        Prova? ObterPorId(Guid id);
     }
 }

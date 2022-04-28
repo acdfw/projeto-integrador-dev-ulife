@@ -12,7 +12,7 @@ namespace Anima.ProjetoIntegrador.Application.Services.Validators
             RuleFor(prova => prova.Nome)
                 .NotNull().NotEmpty().WithMessage("O nome da prova não pode ser vazio");
 
-            RuleFor(prova => prova.ProfessorId)
+            RuleFor(prova => prova.UsuarioId)
                 .NotNull().NotEmpty().WithMessage("O id do professor não pode ser vazio");
         }
     }
