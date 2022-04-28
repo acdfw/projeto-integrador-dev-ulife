@@ -1,6 +1,6 @@
 app.controller(
   "TeacherQuestionsListCtrl",
-  function ($scope, getQuestions, $location, QuestionnaireModel) {
+  function ($scope, getQuestions, $location, QuestionnaireModel, AuthTokenService) {
     var me = $scope;
 
     var questions = getQuestions;
@@ -26,15 +26,22 @@ app.controller(
       me.questionsTable.selectedItems = []
     };
 
-    me.createQuestionnaire = () => {
+    me.createQuestionnaire = async () => {
       if (
         me.questionsTable.selectedItems.length > 0 &&
         me.newQuestionnaireName
       ) {
-        QuestionnaireModel.create({
-          name: me.newQuestionnaireName,
-          questions: me.questionsTable.selectedItems.map((obj) => obj.id),
-        });
+        try{
+          response = await QuestionnaireModel.create({
+            nome: me.newQuestionnaireName,
+            usuarioId: AuthTokenService.getUserId(),
+            questoesId: me.questionsTable.selectedItems.map((obj) => obj.id),
+          });
+          alert(response.msg)
+        }catch(err){
+          alert(err.err)
+        }
+        
       } else {
         alert("O questionário precisa de um nome e de questões");
       }

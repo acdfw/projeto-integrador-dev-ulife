@@ -1,4 +1,4 @@
-app.controller("HomeCtrl", function ($scope, $location) {
+app.controller("HomeCtrl", function ($scope) {
   var me = $scope;
 
   me.OpenModal = (type) => {

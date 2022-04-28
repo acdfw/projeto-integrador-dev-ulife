@@ -19,8 +19,8 @@ app.factory("MenuService", function (AuthTokenService) {
         default:
           return [
             { text: "Home", link: "#/" },
-            { text: "Equipe", link: "#/equipe" },
-            { text: "Sobre", link: "#/sobre" },
+            { text: "Equipe", link: "#/team" },
+            { text: "Sobre", link: "#/about" },
           ];
       }
     },
