@@ -472,3 +472,74 @@ let exams = [
     questions: examQuestions,
   },
 ];
+
+assignments = [
+  {
+    id: "hshadajsdhajd",
+    name: "A1",
+    class: { id: "dasdakdsl", name: "Turma A" },
+    teacher: { id: "dasdakdsl", name: "Ricardo" },
+    questionnaire: {id: "dadsasdasd", name: "prova teste", questions: examQuestions},
+    studentResult: {
+      id: 'sdvcdjfwejkc',
+      grade: '9.5'
+    }
+  },
+  {
+    id: "hshadajsdhajd",
+    name: "A2",
+    class: { id: "dasdakdsl", name: "Turma A" },
+    teacher: { id: "dasdakdsl", name: "Ricardo" },
+    questionnaire: {id: "dadsasdasd", name: "prova teste", questions: examQuestions},
+    studentResult: {
+      id: 'fjsdkfnkjscd',
+      grade: '10.0'
+    }
+  },
+  {
+    id: "hshadajsdhajd",
+    name: "A3",
+    class: { id: "dasdakdsl", name: "Turma A" },
+    teacher: { id: "dasdakdsl", name: "Ricardo" },
+    questionnaire: {id: "dadsasdasd", name: "prova teste", questions: examQuestions},
+    studentResult: null
+  },
+  {
+    id: "hshadajsdhajd",
+    name: "A1",
+    class: { id: "dasdakdsl", name: "Turma B" },
+    teacher: { id: "dasdakdsl", name: "Matheus" },
+    questionnaire: {id: "dadsasdasd", name: "prova teste", questions: examQuestions},
+    studentResult: {
+      id: 'fsdfgsfddsgv',
+      grade: '8.5'
+    } 
+  },
+  {
+    id: "hshadajsdhajd",
+    name: "A2",
+    class: { id: "dasdakdsl", name: "Turma B" },
+    teacher: { id: "dasdakdsl", name: "Matheus" },
+    questionnaire: {id: "dadsasdasd", name: "prova teste", questions: examQuestions},
+    studentResult: {
+      id: 'dasdasfdvc xs',
+      grade: '9.0'
+    }
+  },
+  {
+    id: "hshadajsdhajd",
+    name: "A3",
+    class: { id: "dasdakdsl", name: "Turma B" },
+    teacher: { id: "dasdakdsl", name: "Matheus" },
+    questionnaire: {id: "dadsasdasd", name: "prova teste", questions: examQuestions},
+    studentResult: null
+  },
+  {
+    id: "hshadajsdhajd",
+    name: "A1",
+    class: { id: "dasdakdsl", name: "Turma C" },
+    teacher: { id: "dasdakdsl", name: "João" },
+    questionnaire: {id: "dadsasdasd", name: "prova teste", questions: examQuestions},
+    studentResult: null
+  },
+]

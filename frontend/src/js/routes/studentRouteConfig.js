@@ -19,6 +19,11 @@ app.config([
       controller: "StudentAssignmentsListCtrl",
       authorize: true,
       role: "aluno",
+      resolve: {
+        getStudentAssignments: function (AssignmentModel, AuthTokenService) {
+          return AssignmentModel.getStudentAssignments(AuthTokenService.getUserId());
+        },
+      },
     })
     .when("/student/classes", {
       templateUrl: "views/student/StudentClassesList.html",
