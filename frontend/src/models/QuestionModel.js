@@ -30,8 +30,18 @@ app.factory("QuestionModel", function ($http) {
         });
       });
     },
-    create: function (obj) {
-        console.log(obj)
+    create: function (data) {
+        return new Promise((resolve, reject) => {
+          $http({
+            method: "POST",
+            url: `${API_URL}/Questao`,
+            data: data
+          }).then(response => {
+            resolve({msg: response.data})
+          }).catch(err => {
+            reject({msg: err.data})
+          });
+        });
     }
   };
 });

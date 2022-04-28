@@ -1,7 +1,7 @@
-.pointer{
-    cursor: pointer;
+.pointer {
+  cursor: pointer;
 }
 
-.selected{
-    background-color: rgba(169, 169, 169, 0.623);
+.selected {
+  background-color: rgba(169, 169, 169, 0.623);
 }

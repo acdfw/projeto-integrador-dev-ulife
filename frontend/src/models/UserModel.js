@@ -1,30 +1,32 @@
-app.factory("UserModel", function ($http, AuthTokenService, $location, $rootScope) {
-  return {
-    login: function (data) {
-      $http({
-          method: 'POST',
+app.factory(
+  "UserModel",
+  function ($http, AuthTokenService, $location, $rootScope) {
+    return {
+      login: function (data) {
+        $http({
+          method: "POST",
           url: `${API_URL}/login`,
-          data: data
+          data: data,
         }).then(function successCallback(response) {
-          AuthTokenService.setRole(response.data.usuario.role)
-          AuthTokenService.setToken(response.data.token)
-          AuthTokenService.setUserId(response.data.usuario.id)
-          if(response.data.usuario.role == "professor"){
-            $location.path('/student/classes');
-          }else if(response.data.usuario.role == "professor"){
-            $location.path('/teacher/classes');
+          AuthTokenService.setRole(response.data.usuario.role);
+          AuthTokenService.setToken(response.data.token);
+          AuthTokenService.setUserId(response.data.usuario.id);
+          if (response.data.usuario.role == "aluno") {
+            $location.path("/student/classes");
+          } else if (response.data.usuario.role == "professor") {
+            $location.path("/teacher/classes");
           }
-          console.log(response)
-          });
-            
-      return true;
-    },
-    logout: function () {
+        });
+
+        return true;
+      },
+      logout: function () {
         AuthTokenService.reset();
-        $location.path('/');
-    },
-    register: function (data) {
-      $http.post("api/signup", data);
-    },
-  };
-});
+        $location.path("/");
+      },
+      register: function (data) {
+        $http.post("api/signup", data);
+      },
+    };
+  }
+);
