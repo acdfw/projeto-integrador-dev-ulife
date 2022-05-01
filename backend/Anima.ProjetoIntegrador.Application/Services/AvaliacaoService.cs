@@ -33,6 +33,8 @@ namespace Anima.ProjetoIntegrador.Application.Services
                 {
                     NomeProva = avaliacaoProva.NomeProva,
                     NomeAvaliacao = avaliacaoProva.NomeAvaliacao,
+                    NomeTurma = avaliacaoProva.NomeTurma,
+                    NomeProfessor = avaliacaoProva.NomeProfessor,
                     Questoes = provaComQuestoes.Questoes
                 };
             }

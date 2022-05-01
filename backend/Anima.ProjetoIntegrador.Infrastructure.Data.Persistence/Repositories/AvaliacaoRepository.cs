@@ -16,6 +16,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             var query = from avaliacao in _context.Set<Avaliacao>()
                         join turma in _context.Set<Turma>()
                             on avaliacao.TurmaId equals turma.Id
+                        join professor in _context.Set<Professor>()
+                            on turma.ProfessorId equals professor.Id
+                        join usuario in _context.Set<Usuario>()
+                            on professor.UsuarioId equals usuario.Id
                         join prova in _context.Set<Prova>()
                             on avaliacao.ProvaId equals prova.Id
                         where avaliacao.Id == id
@@ -25,6 +29,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                             NomeProva = prova.Nome,
                             NomeAvaliacao = avaliacao.Nome,
                             NomeTurma = turma.Nome,
+                            NomeProfessor = usuario.Nome
                         };
 
             return query.FirstOrDefault();
@@ -86,6 +91,11 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         };
 
             return query.SingleOrDefault();
+        }
+
+        public Avaliacao? ObterPorId(Guid avaliacaoId)
+        {
+            return _context.Set<Avaliacao>().FirstOrDefault(a => a.Id == avaliacaoId);
         }
     }
 }

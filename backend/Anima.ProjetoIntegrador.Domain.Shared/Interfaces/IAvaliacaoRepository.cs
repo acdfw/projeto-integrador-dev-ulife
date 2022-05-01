@@ -9,5 +9,6 @@ namespace Anima.ProjetoIntegrador.Domain.Interfaces
         IList<AlunoMatriculadoTurmaResponse> ConsultarTurmaInscritosPorAvaliacao(Guid id);
         Guid Criar(Avaliacao avaliacao);
         TurmaProfessorAlunoResponse ObterProfessorAlunoTurmaDaAvaliacao(Guid id);
+        Avaliacao? ObterPorId(Guid avaliacaoId);
     }
 }

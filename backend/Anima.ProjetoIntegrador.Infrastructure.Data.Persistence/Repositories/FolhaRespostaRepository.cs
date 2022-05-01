@@ -20,5 +20,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 
             return query.ToList();
         }
+
+        public void Criar(IEnumerable<FolhaResposta> folhaRespostas)
+        {
+            AddRange(folhaRespostas);
+        }
     }
 }

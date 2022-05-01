@@ -2,7 +2,6 @@
 using Anima.ProjetoIntegrador.Domain.Interfaces;
 using Anima.ProjetoIntegrador.Domain.Responses;
 using Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Contexts;
-using Microsoft.EntityFrameworkCore;
 
 namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 {
@@ -31,6 +30,11 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         public AvaliacaoMatricula? ObterPorId(Guid avaliacaoMatriculaId)
         {
             return _context.Set<AvaliacaoMatricula>().FirstOrDefault(a => a.Id == avaliacaoMatriculaId);
+        }
+
+        public Guid Criar(AvaliacaoMatricula avaliacaoMatricula)
+        {
+            return Add(avaliacaoMatricula).Id;
         }
     }
 }
