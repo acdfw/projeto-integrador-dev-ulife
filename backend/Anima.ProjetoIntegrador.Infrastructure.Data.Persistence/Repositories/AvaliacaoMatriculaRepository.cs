@@ -26,5 +26,15 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
 
             return query.ToList();
         }
+
+        public AvaliacaoMatricula? ObterPorId(Guid avaliacaoMatriculaId)
+        {
+            return _context.Set<AvaliacaoMatricula>().FirstOrDefault(a => a.Id == avaliacaoMatriculaId);
+        }
+
+        public Guid Criar(AvaliacaoMatricula avaliacaoMatricula)
+        {
+            return Add(avaliacaoMatricula).Id;
+        }
     }
 }

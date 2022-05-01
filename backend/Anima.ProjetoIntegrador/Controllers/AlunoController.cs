@@ -55,6 +55,6 @@ namespace Anima.ProjetoIntegrador.API.Controllers
             }
 
             return NotFound("Não existem quaisquer turmas no qual o aluno esteja matriculado ou não.");
-        }
+        }        
     }
 }

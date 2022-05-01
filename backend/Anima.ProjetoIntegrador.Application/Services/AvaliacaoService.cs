@@ -27,13 +27,15 @@ namespace Anima.ProjetoIntegrador.Application.Services
 
             if (avaliacaoProva is not null)
             {
-                var questoes = _provaService.ConsultarQuestoesPorProva(Guid.Parse(avaliacaoProva.ProvaId));
+                var provaComQuestoes = _provaService.ConsultarQuestoesPorProva(Guid.Parse(avaliacaoProva.ProvaId));
 
                 return new AvaliacaoProvaQuestoesAlternativasResponse
                 {
                     NomeProva = avaliacaoProva.NomeProva,
                     NomeAvaliacao = avaliacaoProva.NomeAvaliacao,
-                    Questoes = questoes
+                    NomeTurma = avaliacaoProva.NomeTurma,
+                    NomeProfessor = avaliacaoProva.NomeProfessor,
+                    Questoes = provaComQuestoes.Questoes
                 };
             }
 

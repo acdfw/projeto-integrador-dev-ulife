@@ -32,5 +32,10 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         {
             return Add(provaQuestao).Id;
         }
+
+        public void Criar(IEnumerable<ProvaQuestao> provasQuestao)
+        {
+            AddRange(provasQuestao);
+        }
     }
 }

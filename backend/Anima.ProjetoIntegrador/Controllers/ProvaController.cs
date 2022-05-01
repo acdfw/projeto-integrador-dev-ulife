@@ -20,14 +20,21 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         [Authorize(Roles = "professor")]
         public IActionResult ConsultarQuestoesPorProva(string id)
         {
-            var questoes = _provaService.ConsultarQuestoesPorProva(Guid.Parse(id));
+            var response = _provaService.ConsultarQuestoesPorProva(Guid.Parse(id));
 
-            if (questoes.Any())
+            if (response.Errors.Any(e => e.Key == StatusCodes.Status400BadRequest))
             {
-                return Ok(questoes);
+                var badRequestErrors = string.Join(" ", response.Errors[StatusCodes.Status400BadRequest]);
+                return BadRequest(badRequestErrors);
             }
 
-            return NotFound("Não existem questões cadastradas para a prova.");
+            if (response.Errors.Any(e => e.Key == StatusCodes.Status404NotFound))
+            {
+                var notFoundErrors = string.Join(" ", response.Errors[StatusCodes.Status404NotFound]);
+                return NotFound(notFoundErrors);
+            }
+
+            return Ok(response);
         }
 
         [HttpPost]

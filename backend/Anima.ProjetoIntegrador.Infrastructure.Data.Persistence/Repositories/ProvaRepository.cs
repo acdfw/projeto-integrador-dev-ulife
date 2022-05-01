@@ -30,6 +30,11 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
             return query.ToList();
         }
 
+        public Prova? ObterPorId(Guid id)
+        {
+            return _context.Set<Prova>().FirstOrDefault(p => p.Id == id);
+        }
+
         public Guid Criar(Prova prova)
         {
             return Add(prova).Id;

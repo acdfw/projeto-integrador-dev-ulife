@@ -17,7 +17,7 @@ namespace Anima.ProjetoIntegrador.API.Controllers
         }
 
         [HttpGet("{id}/prova/questoes")]
-        [Authorize(Roles = "professor")]
+        [Authorize(Roles = "professor,aluno")]
         public IActionResult ObterProvaTurmaQuestoesPorAvaliacao(string id)
         {
             var provaTurmaComQuestoes = _avaliacaoService.ObterProvaTurmaQuestoesPorAvaliacao(Guid.Parse(id));
