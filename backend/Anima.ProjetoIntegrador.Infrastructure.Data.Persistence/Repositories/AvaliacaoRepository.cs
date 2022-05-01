@@ -60,6 +60,32 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
         public Guid Criar(Avaliacao avaliacao)
         {
             return Add(avaliacao).Id;
-        }        
+        }
+
+        public TurmaProfessorAlunoResponse ObterProfessorAlunoTurmaDaAvaliacao(Guid id)
+        {
+            var query = from avaliacao in _context.Set<Avaliacao>()
+                        join turma in _context.Set<Turma>()
+                            on avaliacao.TurmaId equals turma.Id
+                        join matricula in _context.Set<Matricula>()
+                            on turma.Id equals matricula.TurmaId
+                        join aluno in _context.Set<Aluno>()
+                            on matricula.AlunoId equals aluno.Id
+                        join usuarioAluno in _context.Set<Usuario>()
+                            on aluno.UsuarioId equals usuarioAluno.Id
+                        join professor in _context.Set<Professor>()
+                            on turma.ProfessorId equals professor.Id
+                        join usuarioProfessor in _context.Set<Usuario>()
+                            on professor.UsuarioId equals usuarioProfessor.Id
+                        where avaliacao.Id == id
+                        select new TurmaProfessorAlunoResponse
+                        {
+                            NomeTurma = turma.Nome,
+                            NomeProfessor = usuarioProfessor.Nome,
+                            NomeAluno = usuarioAluno.Nome
+                        };
+
+            return query.SingleOrDefault();
+        }
     }
 }

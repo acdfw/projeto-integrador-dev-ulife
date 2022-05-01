@@ -192,8 +192,9 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                                         on professor.UsuarioId equals usuario.Id
                                     select new ProvaAbertaRealizadaTodasTurmasAlunoResponse
                                     {
-                                        IdAvaliacao = avaliacao.Id.ToString(),
+                                        AvaliacaoId = avaliacao.Id.ToString(),
                                         NomeAvaliacao = avaliacao.Nome,
+                                        TurmaId = turma.Id.ToString(),
                                         NomeTurma = turma.Nome,
                                         NomeProfessor = usuario.Nome
                                     };
@@ -221,8 +222,9 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         where aluno.UsuarioId == id
                         select new ProvaAbertaRealizadaTodasTurmasAlunoResponse
                         {
-                            IdAvaliacao = avaliacao.Id.ToString(),
+                            AvaliacaoId = avaliacao.Id.ToString(),
                             NomeAvaliacao = avaliacao.Nome,
+                            TurmaId = turma.Id.ToString(),
                             NomeTurma = turma.Nome,
                             NomeProfessor = usuario.Nome,
                             Nota = avaliacaoMatricula.Nota,

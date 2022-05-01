@@ -2,8 +2,9 @@
 {
     public class ProvaAbertaRealizadaTodasTurmasAlunoResponse : BaseResponse
     {
-        public string? IdAvaliacao { get; set; }
+        public string? AvaliacaoId { get; set; }
         public string? NomeAvaliacao { get; set; }
+        public string? TurmaId { get; set; }
         public string? NomeTurma { get; set; }
         public string? NomeProfessor { get; set; }
         public double? Nota { get; set; }

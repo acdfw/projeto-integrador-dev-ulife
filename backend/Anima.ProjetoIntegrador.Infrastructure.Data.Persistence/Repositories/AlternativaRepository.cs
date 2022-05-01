@@ -36,6 +36,7 @@ namespace Anima.ProjetoIntegrador.Infrastructure.Data.Persistence.Repositories
                         {
                             Id = alternativa.Id.ToString(),
                             Texto = alternativa.Texto,
+                            AlternativaCorreta = alternativa.AlternativaCorreta,
                             QuestaoId = questao.Id.ToString()
                         };
 
