@@ -543,3 +543,200 @@ assignments = [
     studentResult: null
   },
 ]
+
+assignment = {
+  id: "hshadajsdhajd",
+  name: "A1",
+  class: { id: "dasdakdsl", name: "Turma A" },
+  student: { id: "dasdakdsl", name: "Bruno" },
+  teacher: { id: "dasdakdsl", name: "Ricardo" },
+  questionnaire: {
+    id: "dadsasdasd",
+    name: "prova teste",
+    questions: examQuestions,
+  },
+  studentResult: {
+    id: "sdvcdjfwejkc",
+    grade: "9.5",
+    questions: [
+      {
+        id: "dkjasheknewqdasd",
+        studentAnswer: "daskfmkldfklsadlksamd",
+        correctAnswer: "daskfmkldfklsadlksamd",
+      },
+      {
+        id: "dasffwefsawdfsadsf",
+        studentAnswer: "dasdasdgrefsdfsgdf",
+        correctAnswer: "gsgfdhdfgfdtertjhr",
+      },
+      {
+        id: "gfsdcsdgrtweger",
+        studentAnswer: "gsgfdhdfgfdtertjhr",
+        correctAnswer: "fsgsfdgterteergdfg",
+      },
+      {
+        id: "asdgsaewrqefdqwf",
+        studentAnswer: "fsgsfdgterteergdfg",
+        correctAnswer: "fsgsfdgterteergdfg",
+      },
+      {
+        id: "gsadwerewqgfdsbfdgh",
+        studentAnswer: "gsgfdhdfgfdtertjhr",
+        correctAnswer: "gsgfdhdfgfdtertjhr",
+      },
+      {
+        id: "sfgtrewthdgsbsdgfhb",
+        studentAnswer: "nfgtrygfdshetrwgdsf",
+        correctAnswer: "nfgtrygfdshetrwgdsf",
+      },
+      {
+        id: "bregvdcxvsert",
+        studentAnswer: null,
+        correctAnswer: "dasdasdgrefsdfsgdf",
+      },
+      {
+        id: "dvgergdgfhtyhtyb",
+        studentAnswer: "nfgtrygfdshetrwgdsf",
+        correctAnswer: "nfgtrygfdshetrwgdsf",
+      },
+      {
+        id: "bgsvthwnhrj",
+        studentAnswer: "dasdasdgrefsdfsgdf",
+        correctAnswer: "fsgsfdgterteergdfg",
+      },
+      {
+        id: "vefrhytkrtjyhnhr",
+        studentAnswer: "daskfmkldfklsadlksamd",
+        correctAnswer: "gsgfdhdfgfdtertjhr",
+      },
+    ],
+  },
+};
+
+let studentClasses = [
+  {
+    id: "ajhksdhaskjdhkajsd",
+    name: "Turma A",
+    teacher: {
+      id: "dahjkshdkjad",
+      name: "Ricardo",
+    },
+    assignments: [
+      {
+        id: "jakjdhjkashda",
+        title: "A1",
+        grade: "9.0",
+      },
+      {
+        id: "gdfgdfgdfg",
+        title: "A2",
+        grade: null,
+      },
+      {
+        id: "htrhggfhgge",
+        title: "A3",
+        grade: null,
+      },
+    ],
+  },
+  {
+    id: "fsdfsdfsdfsdf",
+    name: "Turma B",
+    teacher: {
+      id: "dahjkshdkjad",
+      name: "Marcos",
+    },
+    assignments: [
+      {
+        id: "dfgdgtger",
+        title: "A1",
+        grade: "9.0",
+      },
+      {
+        id: "dgdfgdgdfg",
+        title: "A2",
+        grade: "8.5",
+      },
+      {
+        id: "dhdfhdgdgddg",
+        title: "A3",
+        grade: null,
+      },
+    ],
+  },
+  {
+    id: "sdftgerdfgvd",
+    name: "Turma C",
+    teacher: {
+      id: "dahjkshdkjad",
+      name: "Marcos",
+    },
+    assignments: [
+      {
+        id: "dfgdgtger",
+        title: "A1",
+        grade: null,
+      },
+      {
+        id: "dgdfgdgdfg",
+        title: "A2",
+        grade: null,
+      },
+      {
+        id: "dhdfhdgdgddg",
+        title: "A3",
+        grade: null,
+      },
+    ],
+  },
+  {
+    id: "sfsdsdcasfdsc",
+    name: "Turma D",
+    teacher: {
+      id: "dahjkshdkjad",
+      name: "Claudio",
+    },
+    assignments: [
+      {
+        id: "dfgdgtger",
+        title: "A1",
+        grade: null,
+      },
+      {
+        id: "dgdfgdgdfg",
+        title: "A2",
+        grade: null,
+      },
+      {
+        id: "dhdfhdgdgddg",
+        title: "A3",
+        grade: null,
+      },
+    ],
+  },
+  {
+    id: "sfsdsdcasfdsc",
+    name: "Turma E",
+    teacher: {
+      id: "dahjkshdkjad",
+      name: "Carlos",
+    },
+    assignments: [
+      {
+        id: "dfgdgtger",
+        title: "A1",
+        grade: null,
+      },
+      {
+        id: "dgdfgdgdfg",
+        title: "A2",
+        grade: null,
+      },
+      {
+        id: "dhdfhdgdgddg",
+        title: "A3",
+        grade: null,
+      },
+    ],
+  },
+];

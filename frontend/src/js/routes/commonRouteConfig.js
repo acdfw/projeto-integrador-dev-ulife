@@ -15,6 +15,8 @@ app.config([
         },
       })
       .when("/404", { templateUrl: "views/404.html" })
+      .when("/401", { templateUrl: "views/401.html" })
+      .when("/403", { templateUrl: "views/403.html" })
       .otherwise("/404");
   },
 ]);
