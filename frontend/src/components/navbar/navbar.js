@@ -6,7 +6,7 @@ app.directive("navbar", function (MenuService) {
       var me = $scope;
       var root = $rootScope;
 
-      root.brandname = "Whiteboard";
+      root.brandname = "ULearn";
 
       root.$watch("Role", () => {
         me.menu = MenuService.getMenu();

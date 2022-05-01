@@ -1,8 +1,8 @@
-app.controller("StudentAssignmentToDoCtrl", function ($scope, AssignmentModel, $routeParams) {
+app.controller("StudentAssignmentToDoCtrl", function ($scope, getAssignment, $routeParams, AuthTokenService, AssignmentModel) {
   var me = $scope;
 
-  var assignment = AssignmentModel.getStudentAssignmentById($routeParams.id);
- 
+  console.log(getAssignment)
+  var assignment = getAssignment
   me.assignmentName = assignment.name;
   me.className = assignment.class.name;
   me.teacherName = assignment.teacher.name;
@@ -19,20 +19,26 @@ app.controller("StudentAssignmentToDoCtrl", function ($scope, AssignmentModel, $
       }else{
         answer = question.answer.id
       }
-      answers.push(answer)
+      answers.push({questaoId: question.id, alternativaid: answer})
     })
     return answers;
   }
 
-  me.submitExam = () => {
+  me.submitExam = async () => {
     var answers = getAnswers();
-
-    if(answers.filter(answer => answer == null).length > 0){
+    console.log('aqui')
+    if(answers.filter(answer => answer.alternativaId == null).length > 0){
       if(confirm("Você não respondeu todas as perguntas. Deseja prosseguir?")){
-        AssignmentModel.submit({
-          assignment: assignment.id,
-          answers: answers
-        })
+        try{
+          let response =  await AssignmentModel.submit({
+            avaliacaoId: $routeParams.id,
+            usuarioId: AuthTokenService.getUserId(),          
+            respostas: answers
+          })
+          alert(response.msg)
+        }catch(err){
+          alert(err.msg)
+        }
       }
     }
   }

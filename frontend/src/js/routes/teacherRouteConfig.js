@@ -87,6 +87,11 @@ app.config([
         controller: "TeacherAssignmentDoneCtrl",
         authorize: true,
         role: "professor",
+        resolve: {
+          getAssignment: function (AssignmentModel, $route) {
+            return AssignmentModel.getDoneAssignmentById($route.current.params.id);
+          },
+        }
       })
       .when("/teacher/questionnaires", {
         templateUrl: "views/teacher/TeacherQuestionnairesList.html",

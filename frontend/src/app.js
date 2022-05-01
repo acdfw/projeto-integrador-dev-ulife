@@ -5,7 +5,7 @@ var app = angular.module("website", [
   "ngStorage",
 ]);
 
-const API_URL = 'https://225c-45-234-103-42.sa.ngrok.io/api'
+const API_URL = 'https://f14c-45-234-103-41.sa.ngrok.io/api'
 
 // TEACHER
 // raymondchagas@ecossistemaanima.com.br
@@ -14,3 +14,6 @@ const API_URL = 'https://225c-45-234-103-42.sa.ngrok.io/api'
 // STUDENT
 // nevillecaetano@animaeducacao.com.br
 // VGY61ENH5JK
+
+/// /teacher/assignment-done/1D6138BB-1F55-4C7F-85EB-5E54ECB5E645
+

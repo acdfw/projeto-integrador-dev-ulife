@@ -1,6 +1,6 @@
 app.controller("StudentAssignmentsListCtrl", function ($scope, getStudentAssignments) {
   var me = $scope;
-
+  console.log(getStudentAssignments)
   var assignments = getStudentAssignments;
 
   assignments = assignments.map( obj => ({
@@ -8,7 +8,7 @@ app.controller("StudentAssignmentsListCtrl", function ($scope, getStudentAssignm
     className : obj.class.name,
     teacherName : obj.teacher.name,
     grade : obj.studentResult ? obj.studentResult.grade :  '-',
-    link: obj.studentResult ? `/student/assignment-done/${obj.id}` : `/student/assignment-todo/${obj.id}`
+    link: obj.studentResult ? `/student/assignment-done/${obj.studentResult.id}` : `/student/assignment-todo/${obj.id}`
   }))
 
   me.table = {

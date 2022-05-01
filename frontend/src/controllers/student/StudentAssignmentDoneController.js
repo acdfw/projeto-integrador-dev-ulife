@@ -1,7 +1,7 @@
-app.controller("StudentAssignmentDoneCtrl", function ($scope, AssignmentModel, $routeParams) {
+app.controller("StudentAssignmentDoneCtrl", function ($scope, getAssignment) {
   var me = $scope;
 
-  var assignment = AssignmentModel.getDoneAssignmentById($routeParams.id);
+  var assignment = getAssignment;
  
   me.assignmentName = assignment.name;
   me.className = assignment.class.name;
@@ -9,7 +9,7 @@ app.controller("StudentAssignmentDoneCtrl", function ($scope, AssignmentModel, $
 
   me.questionnaire = assignment.questionnaire.questions.sort((a,b) => a.id - b.id);
 
-  me.answers = assignment.studentResult.questions.sort((a,b) => a.id - b.id);
+  me.answers = assignment.answers.sort((a,b) => a.id - b.id);
 
 
 
