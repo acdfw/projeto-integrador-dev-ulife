@@ -1,7 +1,7 @@
-app.controller("StudentAssignmentsListCtrl", function ($scope, AssignmentModel) {
+app.controller("StudentAssignmentsListCtrl", function ($scope, getStudentAssignments) {
   var me = $scope;
 
-  var assignments = AssignmentModel.getStudentAssignments();
+  var assignments = getStudentAssignments;
 
   assignments = assignments.map( obj => ({
     assignment : obj.name,

@@ -106,6 +106,11 @@ app.config([
         controller: "TeacherQuestionnaireViewCtrl",
         authorize: true,
         role: "professor",
+        resolve: {
+          getQuestionnaire: function (QuestionnaireModel, $route) {
+            return QuestionnaireModel.getQuestionnaireById($route.current.params.id);
+          },
+        },
       })
       .when("/teacher/questions", {
         templateUrl: "views/teacher/TeacherQuestionsList.html",
